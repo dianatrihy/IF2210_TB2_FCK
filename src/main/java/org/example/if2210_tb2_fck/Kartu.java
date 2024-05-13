@@ -1,20 +1,21 @@
 package org.example.if2210_tb2_fck;
 
+
 public class Kartu {
-    private String name;
-    private Integer location;
+    private String nama;
+    private boolean diLadang;
 
-    //constructor
+    public Kartu(){
+        this.nama = null;
+        this.diLadang = false;
+    }
+
     public Kartu(String name) {
-        this.name = name;
-        this.location = null;
+        this.nama = name;
+        this.diLadang = false;
     }
 
-    public Integer getLocation() {
-        return location;
-    }
-
-    public void setLocation(Integer location){
-        this.location = location;
+    public String getName() {
+        return this.nama;
     }
 }
