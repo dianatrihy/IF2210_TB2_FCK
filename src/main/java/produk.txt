@@ -1,0 +1,11 @@
+Produk Hewan
+hiu darat; sirip hiu; 500; 12
+sapi; susu; 100; 4
+domba; daging domba; 120; 6
+kuda; daging kuda; 150; 8
+ayam; telur; 50; 2
+beruang; daging beruang; 500; 12
+Produk Tumbuhan
+biji jagung; jagung; 150; 10
+biji labu; labu; 500; 10
+biji stroberi; stroberi; 350; 5
