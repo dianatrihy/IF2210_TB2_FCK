@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="669.0" style="-fx-background-color: #4b84b3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="445.0" fitWidth="531.0" layoutX="-8.0" pickOnBounds="true" style="-fx-opacity: 65%;">
+         <image>
+            <Image url="@img/BGOlympus.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="271.0" fitWidth="482.0" layoutX="28.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Lightning1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="344.0" fitWidth="345.0" layoutX="96.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 65%;">
+         <image>
+            <Image url="@img/SLOT.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="87.0" fitWidth="111.0" layoutX="112.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Lightning2.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffce" height="103.0" layoutY="344.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: 70%;" width="669.0">
+         <effect>
+            <Glow />
+         </effect>
+      </Rectangle>
+      <ImageView fitHeight="53.0" fitWidth="86.0" layoutX="557.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Crown.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffce" height="154.0" layoutX="14.0" layoutY="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="111.0">
+         <effect>
+            <Glow>
+               <input>
+                  <DropShadow />
+               </input>
+            </Glow>
+         </effect></Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffce" height="121.0" layoutX="14.0" layoutY="26.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="111.0">
+         <effect>
+            <Glow />
+         </effect></Rectangle>
+      <Text layoutX="30.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1:">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font></Text>
+      <Button layoutX="14.0" layoutY="190.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="111.0" style="-fx-background-color: #fadb3e; -fx-border-color: 000000;" text="NEXT" textAlignment="CENTER" textFill="#260000" wrapText="true">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Text layoutX="30.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2:">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font></Text>
+      <Text layoutX="25.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turn:">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font></Text>
+      <Pane layoutX="140.0" layoutY="25.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="204.0" layoutY="25.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="269.0" layoutY="25.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="336.0" layoutY="25.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="401.0" layoutY="25.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="140.0" layoutY="100.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="204.0" layoutY="100.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="269.0" layoutY="100.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="336.0" layoutY="100.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="401.0" layoutY="100.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="140.0" layoutY="175.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="204.0" layoutY="175.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="269.0" layoutY="175.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="336.0" layoutY="175.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="401.0" layoutY="175.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="140.0" layoutY="251.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="204.0" layoutY="251.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="269.0" layoutY="251.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="336.0" layoutY="251.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="401.0" layoutY="251.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="113.0" layoutY="361.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFFF;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="177.0" layoutY="361.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="244.0" layoutY="361.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="308.0" layoutY="361.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="373.0" layoutY="361.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane layoutX="441.0" layoutY="361.0" prefHeight="69.0" prefWidth="51.0" style="-fx-background-color: #FFFFF9;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffce" height="53.0" layoutX="14.0" layoutY="369.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="82.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.6315789222717285" green="0.6315789222717285" blue="0.6315789222717285" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rectangle>
+      <Text layoutX="28.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deck Aktif">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font>
+      </Text>
+      <Button layoutX="542.0" layoutY="66.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-border-color: 000000;" text="Ladangku" textAlignment="CENTER" textFill="#260000" wrapText="true">
+         <font>
+            <Font name="Bodoni MT" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.21929824352264404" green="0.21895982325077057" blue="0.21523717045783997" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button layoutX="542.0" layoutY="109.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-border-color: 000000;" text="Ladang Lawan" textAlignment="CENTER" textFill="#260000" wrapText="true">
+         <font>
+            <Font name="Bodoni MT" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.21929824352264404" green="0.21895982325077057" blue="0.21523717045783997" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button layoutX="542.0" layoutY="153.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-border-color: 000000;" text="Toko" textAlignment="CENTER" textFill="#260000" wrapText="true">
+         <font>
+            <Font name="Bodoni MT" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.21929824352264404" green="0.21895982325077057" blue="0.21523717045783997" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button layoutX="542.0" layoutY="197.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-border-color: 000000;" text="Save State" textAlignment="CENTER" textFill="#260000" wrapText="true">
+         <font>
+            <Font name="Bodoni MT" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.21929824352264404" green="0.21895982325077057" blue="0.21523717045783997" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button layoutX="542.0" layoutY="242.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-border-color: 000000;" text="Load State" textAlignment="CENTER" textFill="#260000" wrapText="true">
+         <font>
+            <Font name="Bodoni MT" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.21929824352264404" green="0.21895982325077057" blue="0.21523717045783997" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button layoutX="542.0" layoutY="288.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-border-color: 000000;" text="Load Plugin" textAlignment="CENTER" textFill="#260000" wrapText="true">
+         <font>
+            <Font name="Bodoni MT" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.21929824352264404" green="0.21895982325077057" blue="0.21523717045783997" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Text layoutX="532.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="3.0" text="MADE BY:">
+         <font>
+            <Font name="Bodoni MT Black" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="534.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kelompok Penangkal Petir" wrappingWidth="93.63934326171875">
+         <font>
+            <Font name="Bodoni Bd BT Bold" size="12.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="44.0" fitWidth="51.0" layoutX="628.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Lightning.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="82.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="82.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="69.0" fitWidth="111.0" layoutX="582.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Lightning2.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
