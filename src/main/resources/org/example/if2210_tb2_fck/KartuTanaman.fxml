@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="294.0" fitWidth="503.0" layoutX="-1.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/BgCard.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="51.0" layoutX="-3.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: 50%;" width="505.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="144.0" layoutX="221.0" layoutY="71.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: 70%;" width="233.0" />
+      <Button layoutX="462.0" layoutY="12.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="23.0" style="-fx-background-color: #ff0000;" text="X">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="12.0" />
+         </font>
+         <effect>
+            <InnerShadow height="42.41" radius="10.1025" width="0.0">
+               <color>
+                  <Color red="1.0" green="0.8487654328346252" blue="0.8487654328346252" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Button>
+      <Text layoutX="47.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jagung">
+         <font>
+            <Font name="Berlin Sans FB" size="30.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="169.0" fitWidth="163.0" layoutX="52.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Assets/Produk/Jagung.png" />
+         </image>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="1.0" green="1.0" blue="1.0" />
+               </color>
+            </DropShadow>
+         </effect>
+      </ImageView>
+      <Button layoutX="121.0" layoutY="228.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="258.0" text="Panen">
+         <font>
+            <Font name="Bodoni Bd BT Bold" size="12.0" />
+         </font>
+      </Button>
+      <Text layoutX="243.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Umur:">
+         <font>
+            <Font name="Bodoni MT" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="243.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Aktif:">
+         <font>
+            <Font name="Bodoni MT" size="16.0" />
+         </font>
+      </Text>
+      <Accordion />
+      <Text layoutX="294.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+         <font>
+            <Font name="Bodoni MT" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="242.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accelerate (2)">
+         <font>
+            <Font name="Bodoni MT" size="16.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

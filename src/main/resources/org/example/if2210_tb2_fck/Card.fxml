@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: #f5d362;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <effect>
+      <DropShadow>
+         <color>
+            <Color red="0.035087719559669495" green="0.035087719559669495" blue="0.035087719559669495" />
+         </color>
+      </DropShadow>
+   </effect>
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="24.0" layoutX="-5.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
+      <ImageView fitHeight="56.0" fitWidth="59.0" layoutX="18.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Assets/Hewan/Ayam.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="3.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ayam" textAlignment="CENTER" wrappingWidth="87.05046081542969">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>
