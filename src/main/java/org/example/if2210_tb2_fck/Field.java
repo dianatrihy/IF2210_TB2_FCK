@@ -1,5 +1,7 @@
 package org.example.if2210_tb2_fck;
 
+import org.example.if2210_tb2_fck.Item.Item;
+
 public class Field extends GridMatrix<MakhlukHidup>{
     public Field() {
         super(4, 5);

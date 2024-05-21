@@ -13,8 +13,12 @@ public class Tanaman extends MakhlukHidup {
         return umur;
     }
 
-    public void addUmur() {
-        this.umur += 1;
+    public void addUmur(int n) {
+        this.umur += n;
+    }
+
+    public void kurangiUmur(int n) {
+        this.umur -= n;
     }
 
 //    public boolean siapHarvest(){

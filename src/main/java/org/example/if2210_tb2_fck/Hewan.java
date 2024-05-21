@@ -18,6 +18,10 @@ public class Hewan extends MakhlukHidup {
         this.berat += berat;
     }
 
+    public void kurangiBerat(Integer berat) {
+        this.berat -= berat;
+    }
+
 //    public boolean siapHarvest(){
 //        return berat >= berat_harvest;
 //    }
