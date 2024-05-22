@@ -11,7 +11,7 @@ public class MakhlukHidup extends Kartu{
 
     //constructor
     public MakhlukHidup(String name, String type){
-        super(name);
+        super(name, "Makhluk Hidup");
         this.type = type;
         Map<String, Integer> item_aktif = new HashMap<>();
     }

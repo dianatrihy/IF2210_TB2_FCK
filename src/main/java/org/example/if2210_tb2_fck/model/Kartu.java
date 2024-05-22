@@ -6,14 +6,10 @@ public class Kartu {
     private boolean diLadang;
     private String jenis; //MakhlukHidup, Produk, Item
 
-    public Kartu(){
-        this.nama = null;
-        this.diLadang = false;
-    }
-
-    public Kartu(String name) {
+    public Kartu(String name, String jenis) {
         this.nama = name;
         this.diLadang = false;
+        this.jenis = jenis;
     }
     
     public String getName() {
@@ -37,6 +33,10 @@ public class Kartu {
 
     public boolean getDiLadang(){
         return this.diLadang;
+    }
+
+    public void setDiLadang(boolean diLadang){
+        this.diLadang = diLadang;
     }
 
     public String getJenis(){

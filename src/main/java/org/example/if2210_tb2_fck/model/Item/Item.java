@@ -5,8 +5,8 @@ import org.example.if2210_tb2_fck.model.Kartu;
 import org.example.if2210_tb2_fck.model.Tanaman;
 
 public class Item extends Kartu {
-    public Item() {
-        super("Item");
+    public Item(String name) {
+        super(name, "Item");
     }
 
     public void use(Hewan hewan) {
