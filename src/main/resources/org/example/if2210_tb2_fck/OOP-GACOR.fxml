@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="445.0" maxWidth="669.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1069.0" style="-fx-background-color: #4b84b3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="445.0" maxWidth="669.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1069.0" style="-fx-background-color: #4b84b3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.if2210_tb2_fck.controller.DragAndDrop">
    <children>
       <ImageView fitHeight="645.0" fitWidth="907.0" layoutX="-8.0" pickOnBounds="true" style="-fx-opacity: 65%;">
          <image>
@@ -428,6 +428,31 @@
          </effect>
       </Pane>
       <Pane layoutX="773.0" layoutY="382.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF; -fx-opacity: 40%;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <Pane fx:id="deckAktifPane" layoutX="177.0" layoutY="527.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <ImageView fx:id="kartu1" fitHeight="180.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/BgCard.jpg"/>
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="ladangPane" layoutX="291.0" layoutY="20.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF; -fx-opacity: 40%;">
          <effect>
             <DropShadow>
                <color>
