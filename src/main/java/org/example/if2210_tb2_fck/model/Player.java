@@ -1,6 +1,6 @@
-package org.example.if2210_tb2_fck;
+package org.example.if2210_tb2_fck.model;
 
-import org.example.if2210_tb2_fck.Item.Item;
+import org.example.if2210_tb2_fck.model.Item.Item;
 
 public class Player {
     private String nama;

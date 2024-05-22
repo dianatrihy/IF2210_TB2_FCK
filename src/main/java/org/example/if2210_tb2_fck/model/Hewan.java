@@ -1,4 +1,4 @@
-package org.example.if2210_tb2_fck;
+package org.example.if2210_tb2_fck.model;
 
 public class Hewan extends MakhlukHidup {
     private Integer berat;

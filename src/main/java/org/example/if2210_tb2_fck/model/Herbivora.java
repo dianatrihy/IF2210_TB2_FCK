@@ -1,4 +1,4 @@
-package org.example.if2210_tb2_fck;
+package org.example.if2210_tb2_fck.model;
 
 public class Herbivora extends Hewan {
     public Herbivora(String name){

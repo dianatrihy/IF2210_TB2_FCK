@@ -1,4 +1,4 @@
-package org.example.if2210_tb2_fck;
+package org.example.if2210_tb2_fck.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
