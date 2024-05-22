@@ -7,6 +7,8 @@ public class DeckInventory {
     private int numofelements;       //jumlahelement
     public DeckInventory(int numofelements){
         this.numofelements = numofelements;
+
+        this.deckinventory = new ArrayList<>();
         List<String> namahewan = Arrays.asList("Kuda", "Sapi", "Ayam", "Domba", "Hiu");
         List<String> namaproduk = Arrays.asList("DagingBeruang", "DagingDomba", "DagingKuda", "Jagung", "Pumpkin", "SharkFin", "Strawberry", "Susu", "Telur");
         List<String> namatanaman = Arrays.asList("CornSeeds", "StrawberrySeeds", "PumpkinSeeds");
@@ -29,7 +31,7 @@ public class DeckInventory {
         Collections.shuffle(tempnama);
         for (String card : tempnama) {
             System.out.println(card);
-            deckinventory.add(new Kartu(card));
+            this.deckinventory.add(new Kartu(card));
         }
 
     }
