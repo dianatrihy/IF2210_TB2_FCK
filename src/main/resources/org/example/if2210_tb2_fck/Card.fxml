@@ -19,7 +19,7 @@
    </effect>
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="24.0" layoutX="-5.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
-      <ImageView fitHeight="56.0" fitWidth="59.0" layoutX="18.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cardImage" fitHeight="56.0" fitWidth="59.0" layoutX="18.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Assets/Hewan/Ayam.png" />
          </image>
