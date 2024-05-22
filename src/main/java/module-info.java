@@ -13,6 +13,12 @@ module org.example.if2210_tb2_fck {
 
     opens org.example.if2210_tb2_fck to javafx.fxml;
     exports org.example.if2210_tb2_fck;
-    exports org.example.if2210_tb2_fck.Item;
-    opens org.example.if2210_tb2_fck.Item to javafx.fxml;
+    exports org.example.if2210_tb2_fck.model.Item;
+    opens org.example.if2210_tb2_fck.model.Item to javafx.fxml;
+
+    opens org.example.if2210_tb2_fck.controller to javafx.fxml;
+    exports org.example.if2210_tb2_fck.controller;
+
+    opens org.example.if2210_tb2_fck.command to javafx.fxml;
+    exports org.example.if2210_tb2_fck.command;
 }
