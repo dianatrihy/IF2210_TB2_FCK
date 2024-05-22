@@ -40,7 +40,7 @@ public class Produk extends Kartu {
         }
     }
 
-    private Produk(String name) {
+    public Produk(String name) {
         super(name, "Produk");
         this.weight = weight_map.get(name);
         this.type = type_map.get(name);
