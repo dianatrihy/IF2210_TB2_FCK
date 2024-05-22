@@ -3,8 +3,8 @@ package org.example.if2210_tb2_fck;
 import org.example.if2210_tb2_fck.Item.Item;
 
 public class Field extends GridMatrix<MakhlukHidup>{
-    public Field() {
-        super(4, 5);
+    public Field(int row, int col) {
+        super(row, col);
     }
 
     public void kasihItemDiLadang(Item item, int row, int col){
