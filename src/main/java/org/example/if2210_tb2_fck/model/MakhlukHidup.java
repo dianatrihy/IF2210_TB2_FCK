@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MakhlukHidup extends Kartu{
-    private String type;
+    private String type; //Hewan, Tanaman
     private Map<String, Integer> item_aktif;
 
     //constructor

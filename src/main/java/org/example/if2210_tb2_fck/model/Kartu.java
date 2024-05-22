@@ -4,7 +4,7 @@ package org.example.if2210_tb2_fck.model;
 public class Kartu {
     private String nama;
     private boolean diLadang;
-    private String jenis;
+    private String jenis; //MakhlukHidup, Produk, Item
 
     public Kartu(){
         this.nama = null;
