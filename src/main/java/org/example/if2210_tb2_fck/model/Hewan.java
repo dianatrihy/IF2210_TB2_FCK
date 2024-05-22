@@ -14,6 +14,18 @@ public class Hewan extends MakhlukHidup {
         return berat;
     }
 
+    public Integer getBeratHarvest(String name){
+        return switch (name) {
+            case "Hiu" -> 20;
+            case "Sapi" -> 10;
+            case "Domba" -> 12;
+            case "Kuda" -> 14;
+            case "Ayam" -> 5;
+            case "Beruang" -> 25;
+            default -> 0;
+        };
+    }
+
     public void addBerat(Integer berat) {
         this.berat += berat;
     }
@@ -22,9 +34,9 @@ public class Hewan extends MakhlukHidup {
         this.berat -= berat;
     }
 
-//    public boolean siapHarvest(){
-//        return berat >= berat_harvest;
-//    }
+    public boolean siapHarvest(){
+        return berat >= getBeratHarvest(this.getName());
+    }
 
 //    public boolean canEat(Produk makanan) {return false;}
 }
