@@ -14,7 +14,7 @@ public class DeckInventory {
         List<String> namaherbivora = Arrays.asList("Kuda", "Sapi", "Domba");
         List<String> namakarnivora = Arrays.asList("Hiu");
         List<String> namaomnivora = Arrays.asList("Ayam");
-//        List<String> namaproduk = Arrays.asList("DagingBeruang", "DagingDomba", "DagingKuda", "Jagung", "Pumpkin", "SharkFin", "Strawberry", "Susu", "Telur");
+        List<String> namaproduk = Arrays.asList("DagingBeruang", "DagingDomba", "DagingKuda", "Jagung", "Pumpkin", "SharkFin", "Strawberry", "Susu", "Telur");
         List<String> namatanaman = Arrays.asList("CornSeeds", "StrawberrySeeds", "PumpkinSeeds");
         List<String> namaitem = Arrays.asList("Accelerate", "BearTrap", "Delay", "Destroy", "InstantHarvest", "Protect");
 
@@ -25,7 +25,7 @@ public class DeckInventory {
         tempnama.addAll(getBalancedList(namaherbivora, cardsPerType, extraCards > 0 ? 1 : 0));
         tempnama.addAll(getBalancedList(namakarnivora, cardsPerType, extraCards > 1 ? 1 : 0));
         tempnama.addAll(getBalancedList(namaomnivora, cardsPerType, extraCards > 2 ? 1 : 0));
-//        tempnama.addAll(getBalancedList(namaproduk, cardsPerType, extraCards > 3 ? 1 : 0));
+        tempnama.addAll(getBalancedList(namaproduk, cardsPerType, extraCards > 3 ? 1 : 0));
         tempnama.addAll(getBalancedList(namatanaman, cardsPerType, extraCards > 4 ? 1 : 0));
         tempnama.addAll(getBalancedList(namaitem, cardsPerType, extraCards > 5 ? 1 : 0));
 
@@ -38,8 +38,8 @@ public class DeckInventory {
                 deckinventory.add(new Karnivora(card));
             } else if (namaomnivora.contains(card)) {
                 deckinventory.add(new Omnivora(card));
-//            } else if (namaproduk.contains(card)) {
-//                deckinventory.add(new Produk(card));
+            } else if (namaproduk.contains(card)) {
+                deckinventory.add(new Produk(card));
             } else if (namatanaman.contains(card)) {
                 deckinventory.add(new Tanaman(card));
             } else if (namaitem.contains(card)) {
