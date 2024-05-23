@@ -1,6 +1,5 @@
 package org.example.if2210_tb2_fck.model;
 
-import java.io.*;
 import java.util.*;
 
 public class Toko {
@@ -28,20 +27,16 @@ public class Toko {
     }
 
     private static void populateCatalogPrice() {
-        try (BufferedReader br = new BufferedReader(new FileReader("produk.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(";");
-                if (parts.length != 3) {
-                    continue;
-                }
-                String productName = parts[1].trim();
-                int price = Integer.parseInt(parts[2].trim());
-                catalog_price.put(productName, price);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        catalog_price.put("sirip hiu", 500);
+        catalog_price.put("susu", 100);
+        catalog_price.put("daging domba", 120);
+        catalog_price.put("daging kuda", 150);
+        catalog_price.put("telur", 50);
+        catalog_price.put("daging beruang", 500);
+        catalog_price.put("jagung", 150);
+        catalog_price.put("labu", 500);
+        catalog_price.put("stroberi", 350);
+    
     }
 
     private void defaultPopulateCatalogStock() {
