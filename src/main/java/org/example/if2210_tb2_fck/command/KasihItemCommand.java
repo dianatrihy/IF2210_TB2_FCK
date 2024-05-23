@@ -21,13 +21,7 @@ public class KasihItemCommand implements ICommand {
         Kartu card = ladang.retrieveKartu(row, col);
         if (card != null) {
             MakhlukHidup makhlukHidup = (MakhlukHidup) card;
-            if (makhlukHidup instanceof Hewan) {
-                item.apply((Hewan) makhlukHidup);
-            } else if (makhlukHidup instanceof Tanaman) {
-                item.apply((Tanaman) makhlukHidup);
-            } else {
-                System.out.println("Maaf, Kartu bukan merupakan hewan atau tanaman.");
-            }
+            player.kasihItem(item, makhlukHidup);
         } else {
             System.out.println("Maaf, tidak ada kartu yang dipilih.");
         }

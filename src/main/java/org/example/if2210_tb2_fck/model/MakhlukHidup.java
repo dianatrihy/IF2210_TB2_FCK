@@ -15,7 +15,7 @@ public class MakhlukHidup extends Kartu{
     public MakhlukHidup(String name, String type){
         super(name, "Makhluk Hidup");
         this.type = type;
-        Map<String, Integer> item_aktif = new HashMap<>();
+        this.item_aktif = new HashMap<>();
     }
 
     public String getType(){
@@ -45,7 +45,7 @@ public class MakhlukHidup extends Kartu{
     public void setProtected(boolean isProtected) {
         if (isProtected) {
             if (!item_aktif.containsKey("Protect")) {
-                item_aktif.put("Protect", 1);
+                this.addItem("Protect");
             }
         } else {
             item_aktif.remove("Protect");

@@ -50,8 +50,12 @@ public class Player {
 
 
 
-    public void kasihItem(Item kartu_item, MakhlukHidup kartuMH){
-        // kartu_item.applyEffect(kartuMH);
+    public void kasihItem(Item kartu_item, MakhlukHidup kartuMH) {
+        if (kartuMH instanceof Hewan) {
+            kartu_item.apply((Hewan) kartuMH);
+        } else if (kartuMH instanceof Tanaman) {
+            kartu_item.apply((Tanaman) kartuMH);
+        }
     }
 
     public void beli(){
