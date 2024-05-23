@@ -10,38 +10,39 @@ import java.io.IOException;
 
 public class DeckAktifController {
 
-    private Pane deckAktifPane;
+    @FXML
+    private Pane deckAktifPane1;
+    @FXML
+    private Pane deckAktifPane2;
+    @FXML
+    private Pane deckAktifPane3;
+    @FXML
+    private Pane deckAktifPane4;
+    @FXML
+    private Pane deckAktifPane5;
+    @FXML
+    private Pane deckAktifPane6;
 
     private DeckAktif deckAktif;
-
     private DragAndDrop dad;
 
-    public void setDeckAktifPane(Pane deckAktifPane) {
-        this.deckAktifPane = deckAktifPane;
-        if (this.deckAktif != null) {
-            updateDeckAktifView();
-        }
-    }
-
-    public void setDeckAktif(DeckAktif deckAktif) {
+    public void setDeckAktif(DeckAktif deckAktif){
         this.deckAktif = deckAktif;
         this.dad = new DragAndDrop();
-        if (this.deckAktifPane != null) {
-            updateDeckAktifView();
-        }
+        updateDeckAktifView();
     }
 
-    public void updateDeckAktifView() {
-        deckAktifPane.getChildren().clear();
-        for (Kartu kartu : deckAktif.getAllCards()) {
-            System.out.println("KARTU TERSIMPAN: " + kartu.getName()); // debug
-            if (kartu != null) {
+    public void updateDeckAktifView(){
+        Pane[] panes = {deckAktifPane1, deckAktifPane2, deckAktifPane3, deckAktifPane4, deckAktifPane5, deckAktifPane6};
+        for (int i = 0; i < deckAktif.getCol(); i++){
+            Kartu kartu = deckAktif.retrieveKartu(0, i);
+            if (kartu != null){
                 try {
                     Pane cardPane = dad.loadCard("/org/example/if2210_tb2_fck/Card.fxml");
                     CardController cardController = (CardController) cardPane.getProperties().get("controller");
                     cardController.setCard(kartu);
-                    deckAktifPane.getChildren().add(cardPane);
-                } catch (IOException e) {
+                    panes[i].getChildren().add(cardPane);
+                } catch (IOException e){
                     e.printStackTrace();
                 }
             }

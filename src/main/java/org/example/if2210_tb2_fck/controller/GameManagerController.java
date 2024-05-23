@@ -70,15 +70,9 @@ public class GameManagerController {
         Pane mainView = loader.load();
         mainPane.getChildren().setAll(mainView);
 
-        // Inisialisasi DeckAktifController
-        DeckAktifController deckController = new DeckAktifController();
+        // Load DeckAktifController
+        DeckAktifController deckController = loader.getController();
         deckController.setDeckAktif(getCurrentPlayer().getDeckAktif());
-
-        // Temukan deckAktifPane di dalam mainView
-        Pane deckAktifPane = (Pane) mainView.lookup("#deckAktifPane");
-        if (deckAktifPane != null) {
-            deckController.setDeckAktifPane(deckAktifPane);
-        }
     }
 
     public Player getCurrentPlayer(){
