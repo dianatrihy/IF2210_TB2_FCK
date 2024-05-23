@@ -2,6 +2,7 @@ package org.example.if2210_tb2_fck.controller;
 import java.io.IOException;
 
 import org.example.if2210_tb2_fck.model.Kartu;
+import org.example.if2210_tb2_fck.model.MakhlukHidup;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -89,7 +90,7 @@ public class CustomLadangController {
         generateCustomPanes();
     }
 
-    public void setCardToPane(int row, int col, Kartu kartu) throws IOException {
+    public void setCardToPane(int row, int col, MakhlukHidup kartu) throws IOException {
         String paneId = "Pane" + row + col;
         Pane pane = (Pane) anchorPane.lookup("#" + paneId);
         if (pane != null) {
@@ -106,7 +107,12 @@ public class CustomLadangController {
             Pane cardPane = loader.load();
 
             CardController cardController = loader.getController();
-            cardController.setCard(kartu);
+            if (kartu.siapHarvest()){
+                cardController.setCardKW(kartu);
+            }
+            else{
+                cardController.setCard(kartu);
+            }
             pane.getChildren().clear();
             pane.setStyle("");
             pane.getChildren().add(cardPane);

@@ -37,6 +37,31 @@ public class Kartu {
         return resource.toString();
     }
 
+    public String getNamaProdukKW(){
+        String subPath = "";
+        if (nama.equals("Ayam")) {
+            subPath = "Telur";
+        } else if (nama.equals("Beruang")) {
+            subPath = "DagingBeruang";
+        } else if (nama.equals("Domba")) {
+            subPath = "DagingDomba";
+        } else if (nama.equals("Kuda")) {
+            subPath = "DagingKuda";
+        } else if (nama.equals("CornSeeds")) {
+            subPath = "Jagung";
+        } else if (nama.equals("PumpkinSeeds")) {
+            subPath = "Pumpkin";
+        } else if (nama.equals("StrawberrySeeds")) {
+            subPath = "Strawberry";
+        } else if (nama.equals("Hiu")) {
+            subPath = "SharkFin";
+        } else if (nama.equals("Sapi")) {
+            subPath = "Susu";
+        }
+        return subPath;
+    }
+
+    
     public boolean getDiLadang(){
         return this.diLadang;
     }

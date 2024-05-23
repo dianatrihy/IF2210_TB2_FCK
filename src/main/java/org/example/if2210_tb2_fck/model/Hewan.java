@@ -34,6 +34,7 @@ public class Hewan extends MakhlukHidup {
         this.berat -= berat;
     }
 
+    @Override
     public boolean siapHarvest(){
         return berat >= getBeratHarvest(this.getName());
     }

@@ -61,7 +61,7 @@ public class MakhlukHidup extends Kartu{
             case "Ayam" -> "Telur";
             case "Beruang" -> "DagingBeruang";
             case "CornSeeds" -> "Jagung";
-            case "PumpkinSeeds" -> "Pumpkion";
+            case "PumpkinSeeds" -> "Pumpkin";
             case "StrawberrySeeds" -> "Strawberry";
             default -> null;
         };
@@ -73,4 +73,9 @@ public class MakhlukHidup extends Kartu{
         this.item_aktif = null;
         return produk;
     }
+
+    public boolean siapHarvest() {
+        return false; 
+    }
+
 }

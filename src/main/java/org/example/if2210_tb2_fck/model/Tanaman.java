@@ -31,8 +31,13 @@ public class Tanaman extends MakhlukHidup {
     public void kurangiUmur(int n) {
         this.umur -= n;
     }
-
+    @Override
     public boolean siapHarvest(){
         return umur >= getUmurHarvest(this.getName());
+    }
+
+    // DEBUG SET UMUR
+    public void setUmur(int umur){
+        this.umur = umur;
     }
 }
