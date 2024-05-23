@@ -4,8 +4,9 @@ public class Karnivora extends Hewan{
     public Karnivora(String name){
         super(name);
     }
-//    @Override
-//    public boolean canEat(Produk makanan){
-//        return ...;
-//    }
+    @Override
+    public boolean canEat(Produk makanan){
+        String name = makanan.getName();
+        return name.equals("DagingDomba") || name.equals("DagingKuda") || name.equals("DagingBeruang") || name.equals("Susu") || name.equals("Telur") || name.equals("SharkFin");
+    }
 }

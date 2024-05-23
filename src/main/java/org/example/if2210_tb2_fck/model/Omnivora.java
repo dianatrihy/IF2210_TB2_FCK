@@ -5,8 +5,8 @@ public class Omnivora extends Hewan{
         super(name);
     }
 
-//    @Override
-//    public boolean canEat(Produk makanan){
-//        return ...;
-//    }
+    @Override
+    public boolean canEat(Produk makanan){
+        return true;
+    }
 }

@@ -38,5 +38,7 @@ public class Hewan extends MakhlukHidup {
         return berat >= getBeratHarvest(this.getName());
     }
 
-//    public boolean canEat(Produk makanan) {return false;}
+    public boolean canEat(Produk makanan) {
+        return false;
+    }
 }

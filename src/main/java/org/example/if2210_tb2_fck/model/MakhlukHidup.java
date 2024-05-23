@@ -51,4 +51,26 @@ public class MakhlukHidup extends Kartu{
             item_aktif.remove("Protect");
         }
     }
+
+    public String getProdukName(){
+        return switch (this.getName()) {
+            case "Hiu" -> "SharkFin";
+            case "Sapi" -> "Susu";
+            case "Domba" -> "DagingDomba";
+            case "Kuda" -> "DagingKuda";
+            case "Ayam" -> "Telur";
+            case "Beruang" -> "DagingBeruang";
+            case "CornSeeds" -> "Jagung";
+            case "PumpkinSeeds" -> "Pumpkion";
+            case "StrawberrySeeds" -> "Strawberry";
+            default -> null;
+        };
+    }
+
+    public Produk changeToProduk(){
+        Produk produk = new Produk(this.getProdukName());
+        this.type = null;
+        this.item_aktif = null;
+        return produk;
+    }
 }
