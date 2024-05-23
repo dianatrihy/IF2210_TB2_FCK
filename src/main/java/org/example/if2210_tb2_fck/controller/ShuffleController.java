@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.util.List;
 import org.example.if2210_tb2_fck.model.Kartu;
-import org.example.if2210_tb2_fck.model.DeckInventory;
+import org.example.if2210_tb2_fck.model.Player;
 
 import org.example.if2210_tb2_fck.controller.DragAndDrop;
 
@@ -26,22 +26,28 @@ public class ShuffleController {
     @FXML
     private Button shuffleButton;
 
-    private DeckInventory deck_inventory;
+    private Player player;
     private DragAndDrop dad;
 
-    public ShuffleController() {
+    public ShuffleController(){
         this.dad = new DragAndDrop();
-        this.deck_inventory = new DeckInventory(40);
+    }
+
+    public ShuffleController(Player player){
+        this.dad = new DragAndDrop();
+        this.player = player;
     }
 
     @FXML
     public void initialize() throws IOException {
-        handleShuffle();
+        if (player != null){
+            handleShuffle();
+        }
     }
 
     @FXML
     public void handleShuffle() throws IOException {
-        List<Kartu> shuffledCards = deck_inventory.shuffleDeck();
+        List<Kartu> shuffledCards = player.getDeckInventory().shuffleDeck();
 
         setCardToPane(pane1, shuffledCards.get(0));
         setCardToPane(pane2, shuffledCards.get(1));
@@ -55,5 +61,9 @@ public class ShuffleController {
         cardController.setCard(kartu);
         pane.getChildren().clear();
         pane.getChildren().add(cardPane);
+    }
+
+    public void setPlayer(Player player){
+        this.player = player;
     }
 }
