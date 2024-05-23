@@ -1,6 +1,7 @@
 package org.example.if2210_tb2_fck.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GridMatrix<T> {
     private int row;            //ukuran baris
@@ -50,6 +51,17 @@ public class GridMatrix<T> {
         numofelements++;
     }
 
+    public List<T> getAllKartu() {
+        List<T> ret = new ArrayList<T>();
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                ret.add(matrix.get(i).get(col));
+            }
+        }
+
+        return ret;
+    }
 
     // cek apakah ada kartu di idrow dan idcol
     public boolean isPresent(int idrow, int idcol){

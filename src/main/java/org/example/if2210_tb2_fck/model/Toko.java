@@ -60,4 +60,6 @@ public class Toko {
     public void sell(String name) {
         catalog_stock.put(name, catalog_stock.get(name) + 1);
     }
+
+    
 }
