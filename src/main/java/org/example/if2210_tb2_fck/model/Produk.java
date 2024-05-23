@@ -6,7 +6,7 @@ public class Produk extends Kartu {
     private static Map<String, String> producer_product;
     private static Map<String, Integer> weight_map;
     private static Map<String, Integer> type_map;
-    private String name;
+//    private String name;
     private Integer weight;
     private Integer type;
 
@@ -61,9 +61,9 @@ public class Produk extends Kartu {
         return new Produk(name);
     }
 
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return this.name;
+//    }
 
     public Integer getWeight() {
         return this.weight;
