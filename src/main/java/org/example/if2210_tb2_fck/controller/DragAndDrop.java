@@ -115,7 +115,7 @@ public class DragAndDrop {
         });
     }
 
-    private Pane loadCard(String fxmlPath) throws IOException {
+    public Pane loadCard(String fxmlPath) throws IOException {
         URL resourceUrl = getClass().getResource(fxmlPath);
         if (resourceUrl == null) {
             throw new IOException("Cannot find FXML file: " + fxmlPath);
