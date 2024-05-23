@@ -23,7 +23,11 @@ public class KasihMakan implements ICommand{
             MakhlukHidup makhluk = (MakhlukHidup) card;
             if (makhluk instanceof Hewan) {
                 Hewan hewan = (Hewan) makhluk;
-                hewan.addBerat(produk.getWeight());
+                if (hewan.canEat(produk)){
+                    hewan.addBerat(produk.getWeight());
+                } else {
+                    System.out.println("Hewannya gak bisa makan ituu");
+                }
             } else {
                 System.out.println("Bukan merupakan kartu Hewan.");
             }
