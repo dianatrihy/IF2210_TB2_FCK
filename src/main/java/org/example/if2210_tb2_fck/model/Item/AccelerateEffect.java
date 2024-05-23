@@ -3,7 +3,10 @@ package org.example.if2210_tb2_fck.model.Item;
 import org.example.if2210_tb2_fck.model.Hewan;
 import org.example.if2210_tb2_fck.model.Tanaman;
 
-public class AccelerateEffect implements ItemEffect {
+public class AccelerateEffect extends Item implements ItemEffect {
+    public AccelerateEffect() {
+        super("Accelerate");
+    }
     @Override
     public void apply(Hewan hewan) {
         hewan.addBerat(8);

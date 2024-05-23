@@ -1,5 +1,7 @@
 package org.example.if2210_tb2_fck.model;
 
+import org.example.if2210_tb2_fck.model.Item.ProtectEffect;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,4 +42,13 @@ public class MakhlukHidup extends Kartu{
         return (item_aktif.containsKey("Protect"));
     }
 
+    public void setProtected(boolean isProtected) {
+        if (isProtected) {
+            if (!item_aktif.containsKey("Protect")) {
+                item_aktif.put("Protect", 1);
+            }
+        } else {
+            item_aktif.remove("Protect");
+        }
+    }
 }

@@ -3,7 +3,10 @@ package org.example.if2210_tb2_fck.model.Item;
 import org.example.if2210_tb2_fck.model.Hewan;
 import org.example.if2210_tb2_fck.model.Tanaman;
 
-public class DelayEffect implements ItemEffect {
+public class DelayEffect extends Item implements ItemEffect {
+    public DelayEffect() {
+        super("Delay");
+    }
     @Override
     public void apply(Hewan hewan) {
         hewan.kurangiBerat(5);
