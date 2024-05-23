@@ -125,4 +125,8 @@ public class DragAndDrop {
         card.getProperties().put("controller", loader.getController());
         return card;
     }
+
+    public void enableDragAndDrop(Pane cardPane) {
+        setupDragAndDrop(cardPane);
+    }
 }
