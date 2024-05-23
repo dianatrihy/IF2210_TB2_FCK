@@ -10,6 +10,7 @@ module org.example.if2210_tb2_fck {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.io;
+    requires java.compiler;
 
     opens org.example.if2210_tb2_fck to javafx.fxml;
     exports org.example.if2210_tb2_fck;
