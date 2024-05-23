@@ -1,6 +1,8 @@
 package org.example.if2210_tb2_fck.model;
 
 
+import java.net.URL;
+
 public class Kartu {
     private String nama;
     private boolean diLadang;
@@ -16,19 +18,23 @@ public class Kartu {
         return this.nama;
     }
 
-    public String getIcon(){
-        String basePath = "D:/IF2210_TB2_FCK/src/main/resources/org/example/if2210_tb2_fck/Assets/";
+    public String getIcon() {
+        String basePath = "/org/example/if2210_tb2_fck/Assets/";
         String subPath = "";
-        if (jenis.equals("Hewan")) {
-            subPath = "Hewan/";
+        if (jenis.equals("Makhluk Hidup")) {
+            subPath = "MakhlukHidup/";
         } else if (jenis.equals("Produk")) {
-            subPath = "Produk/"; 
-        } else if (jenis.equals("Tanaman")) {
-            subPath = "Tanaman/";
+            subPath = "Produk/";
         } else if (jenis.equals("Item")) {
             subPath = "Item/";
         }
-        return basePath + subPath + this.nama + ".png";
+        String fullPath = basePath + subPath + this.nama + ".png";
+        System.out.println("Looking for resource: " + fullPath); // Debug line
+        URL resource = getClass().getResource(fullPath);
+        if (resource == null) {
+            throw new RuntimeException("Resource not found: " + fullPath);
+        }
+        return resource.toString();
     }
 
     public boolean getDiLadang(){
