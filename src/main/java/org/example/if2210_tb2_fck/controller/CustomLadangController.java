@@ -14,7 +14,7 @@ public class CustomLadangController {
     private AnchorPane anchorPane; // Assuming this is your AnchorPane in FXML
     private final double padding = 10;
     private int row = 5;            // Number of rows
-    private int col = 4;            // Number of columns
+    private int col = 6;            // Number of columns
 
     private final double originalWidth = 92;
     private final double originalHeight = 105;
@@ -42,7 +42,8 @@ public class CustomLadangController {
 
         double paneWidth = availableWidth / col;
         double paneHeight = availableHeight / row;
-
+        System.out.println(paneWidth);
+        System.out.println(paneHeight);
         // Adjust pane size based on aspect ratio
         if (paneWidth / aspectRatio < paneHeight) {
             paneHeight = paneWidth / aspectRatio;
@@ -92,7 +93,16 @@ public class CustomLadangController {
         String paneId = "Pane" + row + col;
         Pane pane = (Pane) anchorPane.lookup("#" + paneId);
         if (pane != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Card.fxml"));
+            FXMLLoader loader = null;
+            if(this.row == 4){
+                loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Card.fxml"));
+            }
+            else if(this.row == 3){
+                loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/CardBigger.fxml"));
+            }
+            else if(this.row == 5){
+                loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/CardTiny.fxml"));
+            }
             Pane cardPane = loader.load();
 
             CardController cardController = loader.getController();
