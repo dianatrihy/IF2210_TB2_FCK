@@ -33,20 +33,25 @@ public class CustomLadangController {
         generateCustomPanes();
     }
 
-    int paneCount = 1;
     private void generateCustomPanes() {
-        double availableWidth = 629 - (col + 1) * padding;
-        double availableHeight = 485 - (row + 1) * padding;
-        // double horizontalPadding = (availableWidth - col * 629) / (col + 1);
-        // double verticalPadding = (availableHeight - row * 485) / (row + 1);
+        double totalWidth = anchorPane.getPrefWidth();
+        double totalHeight = anchorPane.getPrefHeight();
+
+        double availableWidth = totalWidth - (col + 1) * padding;
+        double availableHeight = totalHeight - (row + 1) * padding;
+
         double paneWidth = availableWidth / col;
         double paneHeight = availableHeight / row;
 
-        if (paneWidth / originalWidth < paneHeight / originalHeight) {
+        // Adjust pane size based on aspect ratio
+        if (paneWidth / aspectRatio < paneHeight) {
             paneHeight = paneWidth / aspectRatio;
         } else {
             paneWidth = paneHeight * aspectRatio;
         }
+
+        double horizontalPadding = (totalWidth - col * paneWidth) / (col + 1);
+        double verticalPadding = (totalHeight - row * paneHeight) / (row + 1);
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -54,18 +59,19 @@ public class CustomLadangController {
                 pane.setPrefSize(paneWidth, paneHeight);
 
                 // Set position of the pane based on the row and column
-                pane.setLayoutX(padding + j * (paneWidth + padding));
-                pane.setLayoutY(padding + i * (paneHeight + padding));
-                pane.setStyle("-fx-background-color: FFFFFF; -fx-opacity: 40%;");
+                pane.setLayoutX(horizontalPadding + j * (paneWidth + horizontalPadding));
+                pane.setLayoutY(verticalPadding + i * (paneHeight + verticalPadding));
+                pane.setStyle("-fx-background-color: #FFFFFF; -fx-opacity: 40%;");
 
                 pane.setId("Pane" + i + j);
                 System.out.println("Pane" + i + j);
-                paneCount++;
+
                 // Add the pane to your AnchorPane
                 anchorPane.getChildren().add(pane);
             }
         }
     }
+
     // Method to set the number of rows
     public void setRow(int row) {
         this.row = row;
