@@ -7,5 +7,20 @@ public class DeckAktif extends GridMatrix<Kartu> {
         super(1,6);
     }
     
+    public void simpanAuto(Kartu kartu){
+        for (int i = 0; i < getCol(); i++){
+            if (retrieveKartu(0, i) == null){
+                placeKartu(0, i, kartu);
+                return;
+            }
+        }
+    }
+
+    public boolean isFull(){
+        if(getNumOfElements() == 6){
+            return true;
+        }
+        return false;
+    }
 
 }

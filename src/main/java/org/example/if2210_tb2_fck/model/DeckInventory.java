@@ -56,6 +56,16 @@ public class DeckInventory {
         return balancedList;
     }
 
+    // delete kartu di inventory
+    public void deleteKartu(Kartu kartu){
+        for (int i = 0; i < numofelements; i++){
+            if (deckinventory.get(i).getName().equals(kartu.getName())){
+                deckinventory.remove(i);
+                return;
+            }
+        }
+    }
+
     // SHUFFLE 4 CARD
     public ArrayList<Kartu> shuffleDeck(){
         // ambil 4 kartu dari deckinventory secara random

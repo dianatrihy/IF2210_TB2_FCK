@@ -22,6 +22,17 @@ public class GridMatrix<T> {
         }
     }
 
+    public int getNumOfElements(){
+        return numofelements;
+    }
+
+    public int getRow(){
+        return row;
+    }
+
+    public int getCol(){
+        return col;
+    }
     //remove saja dan tidak return apapun
     public void removeKartu(int idrow, int idcol){
         matrix.get(idrow).set(idcol,null);
