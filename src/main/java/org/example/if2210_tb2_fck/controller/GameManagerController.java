@@ -2,6 +2,7 @@ package org.example.if2210_tb2_fck.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.util.Random;
 
 //import org.example.if2210_tb2_fck.model.GameManager;
+import javafx.stage.Stage;
 import org.example.if2210_tb2_fck.model.Player;
 import org.example.if2210_tb2_fck.model.Toko;
 
@@ -36,8 +38,14 @@ public class GameManagerController {
     }
 
     @FXML
-    public void initialize(){
-//        nextTurnButton.setOnAction(event -> handleNextTurn());
+    public void initialize() {
+        startButton.setOnAction(event -> {
+            try {
+                startTurn();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public void handleStartButton() throws IOException {
@@ -50,7 +58,17 @@ public class GameManagerController {
         ShuffleController shuffleController = loader.getController();
         shuffleController.setPlayer(getCurrentPlayer());
         shuffleController.handleShuffle();
-        mainPane.getChildren().setAll(shufflePane);
+//        mainPane.getChildren().setAll(shufflePane);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(shufflePane));
+        stage.showAndWait();
+        showMainView();
+    }
+
+    private void showMainView() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/OOP-GACOR.fxml"));
+        Pane mainView = loader.load();
+        mainPane.getChildren().setAll(mainView);
     }
 
     public Player getCurrentPlayer(){

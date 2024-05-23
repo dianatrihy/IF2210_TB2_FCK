@@ -48,7 +48,13 @@ public class Player {
         // simpan auto ke deckaktif
     }
 
+    public void simpanAutoDeckAktif(Kartu kartu){
+        this.deck_aktif.simpanAuto(kartu);
+    }
 
+    public void deleteKartuDeckInventory(Kartu kartu){
+        this.deck_inventory.deleteKartu(kartu);
+    }
 
     public void kasihItem(Item kartu_item, MakhlukHidup kartuMH) {
         if (kartuMH instanceof Hewan) {
