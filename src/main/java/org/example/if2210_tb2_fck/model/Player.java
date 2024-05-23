@@ -7,13 +7,14 @@ public class Player {
     private int uang;
     private Field ladang;
     private DeckAktif deck_aktif;
-    // private DeckInventory deck_inventory;
+     private DeckInventory deck_inventory;
 
-    public Player(){
+    public Player(String nama){
+        this.nama = nama;
         this.uang = 0;
         this.ladang = new Field(4, 5);
         this.deck_aktif = new DeckAktif();
-        // this.deck_inventory = new DeckInventory();
+        this.deck_inventory = new DeckInventory(40);
     }
 
     public String getNama(){
@@ -32,9 +33,9 @@ public class Player {
         return this.deck_aktif;
     }
 
-    // public DeckInventory getDeckInventory(){
-    //     return this.deck_inventory;
-    // }
+     public DeckInventory getDeckInventory(){
+         return this.deck_inventory;
+     }
 
     public void setUang(int uang){
         this.uang = uang;
