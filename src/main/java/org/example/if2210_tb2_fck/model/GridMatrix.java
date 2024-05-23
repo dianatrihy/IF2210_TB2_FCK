@@ -82,5 +82,18 @@ public class GridMatrix<T> {
         }
     }
 
+    // return list semua kartu
+    public ArrayList<T> getAllCards(){
+        ArrayList<T> allKartu = new ArrayList<T>();
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                T element = matrix.get(i).get(j);
+                if (element != null) {
+                    allKartu.add(element);
+                }
+            }
+        }
+        return allKartu;
+    }
     
 }
