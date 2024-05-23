@@ -54,7 +54,7 @@ public class GameManager {
 
     private void shuffleCards() {
         // to-implement
-        getCurrentPlayer().shuffleDeck();
+        //getCurrentPlayer().shuffleDeck();
         System.out.println("Shuffling cards...");
     }
 

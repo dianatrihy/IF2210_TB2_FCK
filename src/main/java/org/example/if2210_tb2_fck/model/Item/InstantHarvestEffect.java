@@ -5,7 +5,6 @@ import org.example.if2210_tb2_fck.model.Tanaman;
 import org.example.if2210_tb2_fck.model.Produk;
 import org.example.if2210_tb2_fck.model.DeckAktif;
 
-import javax.lang.model.type.DeclaredType;
 
 public class InstantHarvestEffect extends Item implements ItemEffect {
     private DeckAktif deckAktif;
