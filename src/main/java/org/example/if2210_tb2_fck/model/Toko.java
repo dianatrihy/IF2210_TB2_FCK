@@ -27,25 +27,37 @@ public class Toko {
     }
 
     private static void populateCatalogPrice() {
-        catalog_price.put("sirip hiu", 500);
+        catalog_price.put("SharkFin", 500);
         catalog_price.put("susu", 100);
-        catalog_price.put("daging domba", 120);
-        catalog_price.put("daging kuda", 150);
+        catalog_price.put("DagingDomba", 120);
+        catalog_price.put("DagingKuda", 150);
         catalog_price.put("telur", 50);
-        catalog_price.put("daging beruang", 500);
-        catalog_price.put("jagung", 150);
-        catalog_price.put("labu", 500);
-        catalog_price.put("stroberi", 350);
+        catalog_price.put("DagingBeruang", 500);
+        catalog_price.put("Jagung", 150);
+        catalog_price.put("pumpkin", 500);
+        catalog_price.put("strawberry", 350);
     
     }
 
     private void defaultPopulateCatalogStock() {
         for (String key : catalog_price.keySet()) {
-            catalog_stock.put(key, 0);
+            catalog_stock.put(key, 1);
         }
     }
 
-    public void buy() {}
+    public Map<String, Integer> getStockMap() {
+        return catalog_stock;
+    }
 
-    public void sell() {}
+    public int getPrice(String key) {
+        return catalog_price.get(key);
+    }
+
+    public void buy(String name) {
+        catalog_stock.put(name, catalog_stock.get(name) - 1);
+    }
+
+    public void sell(String name) {
+        catalog_stock.put(name, catalog_stock.get(name) + 1);
+    }
 }

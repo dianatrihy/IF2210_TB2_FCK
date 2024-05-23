@@ -26,4 +26,9 @@ public class CardController {
         cardName.setText(kartu.getName());
         cardImage.setImage(new Image(kartu.getIcon()));
     }
+
+    public void setProductCard(String name) {
+        cardName.setText(name);
+        cardImage.setImage(new Image(new Kartu(name, "Produk").getIcon()));
+    }
 }

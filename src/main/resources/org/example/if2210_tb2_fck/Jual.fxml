@@ -49,13 +49,5 @@
             <Font name="Bodoni MT" size="26.0" />
          </font>
       </Text>
-      <Button fx:id="backButton1" layoutX="272.0" layoutY="313.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: #fadb3e; -fx-border-color: 000000;" text="Jual Diri" textAlignment="CENTER" textFill="#260000" wrapText="true">
-         <font>
-            <Font name="Bodoni MT" size="13.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Button>
    </children>
 </AnchorPane>
