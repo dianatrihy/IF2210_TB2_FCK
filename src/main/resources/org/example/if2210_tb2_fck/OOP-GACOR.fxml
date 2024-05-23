@@ -448,7 +448,7 @@
             </DropShadow>
          </effect>
       </Pane>
-      <Pane fx:id="deckAktifPane" layoutX="177.0" layoutY="527.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+      <Pane fx:id="deckAktifPane" layoutX="177.0" layoutY="527.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;" >
          <effect>
             <DropShadow>
                <color>

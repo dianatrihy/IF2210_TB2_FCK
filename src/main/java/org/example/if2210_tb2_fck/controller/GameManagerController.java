@@ -69,6 +69,16 @@ public class GameManagerController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/OOP-GACOR.fxml"));
         Pane mainView = loader.load();
         mainPane.getChildren().setAll(mainView);
+
+        // Inisialisasi DeckAktifController
+        DeckAktifController deckController = new DeckAktifController();
+        deckController.setDeckAktif(getCurrentPlayer().getDeckAktif());
+
+        // Temukan deckAktifPane di dalam mainView
+        Pane deckAktifPane = (Pane) mainView.lookup("#deckAktifPane");
+        if (deckAktifPane != null) {
+            deckController.setDeckAktifPane(deckAktifPane);
+        }
     }
 
     public Player getCurrentPlayer(){
