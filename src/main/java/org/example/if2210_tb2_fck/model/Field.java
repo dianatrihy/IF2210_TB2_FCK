@@ -23,4 +23,9 @@ public class Field extends GridMatrix<MakhlukHidup>{
         removeKartu(startidrow, startidcol);
         placeKartu(finidrow, finidcol, kartu);
     }
+
+    // DEBUGGING TES SHOW LADANG
+    public void addKartu(MakhlukHidup mh, int row, int col){
+        placeKartu(row, col, mh);
+    }
 }

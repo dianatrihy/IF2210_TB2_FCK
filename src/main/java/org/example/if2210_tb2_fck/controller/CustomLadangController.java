@@ -1,5 +1,10 @@
 package org.example.if2210_tb2_fck.controller;
+import java.io.IOException;
+
+import org.example.if2210_tb2_fck.model.Kartu;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -15,6 +20,14 @@ public class CustomLadangController {
     private final double originalHeight = 105;
     private final double aspectRatio = originalWidth / originalHeight;
 
+
+    public CustomLadangController() {
+    }
+
+    public CustomLadangController(int row, int col){
+        this.row = row;
+        this.col = col;
+    }
     // Your initialization method or wherever you set row and col values
     public void initialize() {
         generateCustomPanes();
@@ -67,5 +80,20 @@ public class CustomLadangController {
     public void regeneratePanes() {
         anchorPane.getChildren().clear();
         generateCustomPanes();
+    }
+
+    public void setCardToPane(int row, int col, Kartu kartu) throws IOException {
+        String paneId = "Pane" + row + col;
+        Pane pane = (Pane) anchorPane.lookup("#" + paneId);
+        if (pane != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Card.fxml"));
+            Pane cardPane = loader.load();
+
+            CardController cardController = loader.getController();
+            cardController.setCard(kartu);
+            pane.getChildren().clear();
+            pane.setStyle("");
+            pane.getChildren().add(cardPane);
+        }
     }
 }

@@ -13,7 +13,7 @@ public class Testing extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("OOP-GACOR-KW.fxml"));
-        CustomLadangController controller = new CustomLadangController();
+        CustomLadangController controller = new CustomLadangController(4,5);
         loader.setController(controller);
         Parent root = loader.load();
         stage.setScene(new Scene(root));
