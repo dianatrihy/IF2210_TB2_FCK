@@ -51,18 +51,6 @@ public class GridMatrix<T> {
         numofelements++;
     }
 
-    public List<T> getAllKartu() {
-        List<T> ret = new ArrayList<T>();
-
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                ret.add(matrix.get(i).get(col));
-            }
-        }
-
-        return ret;
-    }
-
     // cek apakah ada kartu di idrow dan idcol
     public boolean isPresent(int idrow, int idcol){
         return retrieveKartu(idrow, idcol)==null;

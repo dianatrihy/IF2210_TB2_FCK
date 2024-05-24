@@ -3,11 +3,14 @@ package org.example.if2210_tb2_fck.controller;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import org.example.if2210_tb2_fck.command.BearAttack;
 import org.example.if2210_tb2_fck.command.ShowLadang;
 import org.example.if2210_tb2_fck.model.Player;
 import org.example.if2210_tb2_fck.model.Toko;
@@ -26,25 +29,37 @@ public class GameManagerController {
     private Button startButton;
 
     @FXML
+    private Button ladangKuButton;
+
+    @FXML
+    private Button ladangLawanButton;
+
+    @FXML
+    private Button tokoButton;
+
+    @FXML
+    private AnchorPane Timer;
+
+    @FXML
     private AnchorPane ladangContainer;
 
     private Player player1;
     private Player player2;
     private int current_turn;
     private static final int MAX_TURNS = 20;
-//    private Toko toko;
+    private Toko toko;
 
     public GameManagerController(){
         this.player1 = new Player("Player 1");
         this.player2 = new Player("Player 2");
         this.current_turn = 1;
-//        this.toko = Toko.getInstance(0);
+        this.toko = Toko.getInstance();
     }
 
     @FXML
     public void initialize() {
         try {
-            loadLadang();
+            loadLadang(getCurrentPlayer());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,38 +71,111 @@ public class GameManagerController {
                 e.printStackTrace();
             }
         });
+
+        ladangKuButton.setOnAction(event -> {
+            try {
+                loadLadang(getCurrentPlayer());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        ladangLawanButton.setOnAction(event -> {
+            try {
+                loadLadang(getOtherPlayer());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        tokoButton.setOnAction(event -> {
+            try {
+                loadToko();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
-    private void loadLadang() throws IOException {
+    private void loadToko() throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Toko.fxml"));
+            TokoController tokoController = new TokoController();
+            tokoController.setPlayer(getCurrentPlayer());
+    
+            loader.setController(tokoController);
+            Parent tokoRoot = loader.load();
+            Scene tokoScene = new Scene(tokoRoot);
+    
+            Stage tokoStage = new Stage();
+            tokoStage.setScene(tokoScene);
+            tokoStage.setTitle("Toko");
+            tokoStage.initOwner(mainPane.getScene().getWindow());
+            tokoStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadTimer() throws IOException{
+        System.out.println("Loading Timer.fxml");
+        FXMLLoader timerLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Timer.fxml"));
+        if (timerLoader != null) {
+            System.out.println("Resource Timer fxml not found!");
+        }
+        System.out.println(timerLoader);
+        AnchorPane timerPane = timerLoader.load();
+        TimerController timerController = timerLoader.getController();
+
+        System.out.println("TimerPane ID: " + timerPane.getId());
+        System.out.println("Timercontroller: " + (timerController != null));
+
+        Timer.getChildren().setAll(timerPane);
+        BearAttack bearAttack = new BearAttack();
+        bearAttack.bearAttackCommand(getCurrentPlayer(), timerController);
+
+
+        System.out.println("Timer.fxml loaded and added to the main view");
+    }
+    
+    private void bearAttack(){
+        System.out.println("Bear attack!");
+        try {
+            loadTimer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadLadang(Player player) throws IOException {
         System.out.println("Loading Ladang.fxml");
         FXMLLoader ladangLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml"));
+        if (getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml") == null) {
+            System.out.println("Resource not found!");
+        }
+
         AnchorPane ladangPane = ladangLoader.load();
         CustomLadangController ladangController = ladangLoader.getController();
 
         System.out.println("LadangPane ID: " + ladangPane.getId());
         System.out.println("LadangController: " + (ladangController != null));
-        System.out.println("LadangPane LayoutX: " + ladangPane.getLayoutX());
-        System.out.println("LadangPane LayoutY: " + ladangPane.getLayoutY());
-        System.out.println("LadangPane PrefWidth: " + ladangPane.getPrefWidth());
-        System.out.println("LadangPane PrefHeight: " + ladangPane.getPrefHeight());
 
         ladangContainer.getChildren().setAll(ladangPane);
 
-//        // Create a Player object and populate its ladang with some Kartu objects
-        Player player = new Player("Thea");
-//        MakhlukHidup mh1 = new MakhlukHidup("CornSeeds", "Tanaman");
-//        MakhlukHidup mh2 = new MakhlukHidup("PumpkinSeeds", "Tanaman");
-//        Tanaman tn1 = new Tanaman("PumpkinSeeds");
-//        tn1.setUmur(10);
-//        player.getLadang().addKartu(mh1, 0, 0);
-//        player.getLadang().addKartu(mh2, 0, 3);
-//        player.getLadang().addKartu(tn1, 0, 1);
+        // Create a Player object and populate its ladang with some Kartu objects
+        Player player1 = new Player("Thea");
+        MakhlukHidup mh1 = new MakhlukHidup("CornSeeds", "Tanaman");
+        MakhlukHidup mh2 = new MakhlukHidup("PumpkinSeeds", "Tanaman");
+        Tanaman tn1 = new Tanaman("PumpkinSeeds");
+        tn1.setUmur(10);
+        player.getLadang().addKartu(mh1, 0, 0);
+        player.getLadang().addKartu(mh2, 0, 3);
+        player.getLadang().addKartu(tn1, 0, 1);
 
         // Instantiate ShowLadang to update the ladang view
-        System.out.println("Before regenerating panes");
-        ladangController.generateCustomPanes();
-        System.out.println("After regenerating panes");
-
+        ShowLadang showLadang = new ShowLadang(player, ladangController);
+        ladangController.regeneratePanes();
+        showLadang.updateLadang(player);
 
         System.out.println("Ladang.fxml loaded and added to the main view");
     }
@@ -163,9 +251,6 @@ public class GameManagerController {
         return random.nextBoolean();
     }
 
-    private void bearAttack(){
-        System.out.println("Bear attack!");
-    }
 
     private void freeAction(){
         System.out.println("Free action phase...");

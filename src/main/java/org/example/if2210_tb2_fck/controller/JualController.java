@@ -4,10 +4,15 @@ import java.io.IOException;
 import java.util.List;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import org.example.if2210_tb2_fck.model.Toko;
 import org.example.if2210_tb2_fck.model.Player;
@@ -18,6 +23,9 @@ public class JualController {
     private Player player;
 
     @FXML
+    private AnchorPane jualPane;
+
+    @FXML
     private GridPane cardGrid;
 
     @FXML
@@ -25,6 +33,26 @@ public class JualController {
 
     @FXML
     private Button backButton;
+
+    @FXML
+    private void handleBackButton() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Toko.fxml"));
+            TokoController tokoController = new TokoController();
+            tokoController.setPlayer(this.player);
+
+            loader.setController(tokoController);
+            Parent tokoRoot = loader.load();
+            Scene tokoScene = new Scene(tokoRoot);
+
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.setScene(tokoScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private static final int MAX_COLUMNS = 5;
 
@@ -38,6 +66,7 @@ public class JualController {
     }
 
     private void handleShowJual() throws IOException {
+        System.out.println(this.player.getNama());
         List<Kartu> deck = player.getDeckAktif().getAllKartu();
         int row = 0;
         int col = 0;
@@ -50,8 +79,8 @@ public class JualController {
                     cardController.setProductCard(kartu.getName());
                 }
                 // Add buy button
-                Button jualButton = new Button("Jual (" + Toko.getInstance(0).getPrice(kartu.getName()) + "$)");
-                jualButton.setOnAction(event -> handleSell(kartu));
+                Button jualButton = new Button("Jual (+" + Toko.getInstance().getPrice(kartu.getName()) + "$)");
+                jualButton.setOnAction(event -> handlePlayerSell(kartu));
                 cardGrid.add(jualButton, col, row + 2);
     
                 cardGrid.add(cardPane, col, row);
@@ -59,7 +88,7 @@ public class JualController {
                 col++;
                 if (col == MAX_COLUMNS) {
                     col = 0;
-                    row += 3; // Increment row by 3 to leave space for stock, button, and next card
+                    row += 3;
                 }
             
             }
@@ -74,7 +103,15 @@ public class JualController {
         return this.player;
     }
 
-    private void handleSell(Kartu kartu) {
-        
+    private void handlePlayerSell(Kartu kartu) {
+        Integer price = Toko.getInstance().getPrice(kartu.getName());
+        this.player.jual(kartu, price);
+        Toko.getInstance().playerSelling(kartu);
+        try {
+            cardGrid.getChildren().clear();
+            handleShowJual();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

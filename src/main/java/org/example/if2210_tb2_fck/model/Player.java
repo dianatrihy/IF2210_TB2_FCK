@@ -72,11 +72,13 @@ public class Player {
         }
     }
 
-    public void beli(){
-
+    public void beli(Kartu kartu, Integer price){
+        this.uang -= price;
+        simpanAutoDeckAktif(kartu);
     }
 
-    public void jual(){
-
+    public void jual(Kartu kartu, Integer price){
+        this.uang += price;
+        this.deck_aktif.deleteCard(kartu);
     }
 }

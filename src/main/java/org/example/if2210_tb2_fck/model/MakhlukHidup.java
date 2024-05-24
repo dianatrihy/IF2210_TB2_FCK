@@ -42,6 +42,12 @@ public class MakhlukHidup extends Kartu{
         return (item_aktif.containsKey("Protect"));
     }
 
+    // cek apakah dia punya trap terpasang
+    public boolean hasTrap() {
+        System.out.println(this.getName() + "punya beartrap");
+        return (item_aktif.containsKey("BearTrap"));
+    }
+
     public void setProtected(boolean isProtected) {
         if (isProtected) {
             if (!item_aktif.containsKey("Protect")) {
