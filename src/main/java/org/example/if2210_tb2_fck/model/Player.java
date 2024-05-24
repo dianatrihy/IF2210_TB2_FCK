@@ -48,8 +48,16 @@ public class Player {
         // simpan auto ke deckaktif
     }
 
+    public void simpanDeckAktif(int row, int col, Kartu kartu){
+        this.deck_aktif.placeKartu(row, col, kartu);
+    }
+
     public void simpanAutoDeckAktif(Kartu kartu){
         this.deck_aktif.simpanAuto(kartu);
+    }
+
+    public void simpanLadang(int row, int col, MakhlukHidup kartu){
+        this.ladang.placeKartu(row, col, kartu);
     }
 
     public void deleteKartuDeckInventory(Kartu kartu){
