@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class YamlParser {
-    public static String parseYaml(String fileName) throws IOException {
-        File file = new File("src/main/resources/org/example/if2210_tb2_fck/state/" + fileName);
+public class YamlParser implements IParser {
+    public String parseGameState(String fileName) throws IOException {
+        File file = new File("src/main/resources/org/example/if2210_tb2_fck/" + fileName);
 
         if (!file.exists()){
             throw new IOException("File not found: " + fileName);
@@ -31,7 +31,7 @@ public class YamlParser {
         }
     }
 
-    public static String parsePlayerYaml(String fileName) throws IOException {
+    public String parsePlayer(String fileName) throws IOException {
         File file = new File("src/main/resources/org/example/if2210_tb2_fck/state/" + fileName);
 
         if (!file.exists()){

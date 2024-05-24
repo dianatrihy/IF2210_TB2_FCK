@@ -6,9 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-public class JsonParser {
-    public static String parseJson(String fileName) throws IOException {
-        File file = new File("src/main/resources/org/example/if2210_tb2_fck/state/" + fileName);
+public class JsonParser implements IParser {
+    public String parseGameState(String fileName) throws IOException {
+        File file = new File("src/main/resources/org/example/if2210_tb2_fck/" + fileName);
 
         if (!file.exists()){
             throw new IOException("File not found: " + fileName);
@@ -26,8 +26,8 @@ public class JsonParser {
         return stringBuilder.toString();
     }
 
-    public static String parsePlayerJson(String fileName) throws IOException {
-        File file = new File("src/main/resources/org/example/if2210_tb2_fck/state/" + fileName);
+    public String parsePlayer(String fileName) throws IOException {
+        File file = new File("src/main/resources/org/example/if2210_tb2_fck/" + fileName);
 
         if (!file.exists()){
             throw new IOException("File not found: " + fileName);
