@@ -70,7 +70,7 @@ public class LoadState {
             String[] ladangData = lines[lineIndex++].trim().split(" ");
             String lokasi = ladangData[0];
             String namaKartu = ladangData[1];
-            System.out.println(namaKartu); // debug
+            System.out.println("LOAD KARTU DI LADANG: " + namaKartu); // debug
             int row = getRowFromLokasi(lokasi);
             int col = getColFromLokasi(lokasi);
             MakhlukHidup kartu = (MakhlukHidup) createKartu(namaKartu);
