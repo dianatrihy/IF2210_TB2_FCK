@@ -30,6 +30,9 @@ public class DeckAktifController {
     private DeckAktif deckAktif;
     private DragAndDrop dad;
 
+    public static final DataFormat CARD_TYPE = new DataFormat("cardType");
+
+
     public void setDeckAktif(DeckAktif deckAktif){
         this.deckAktif = deckAktif;
         this.dad = new DragAndDrop();
@@ -58,10 +61,24 @@ public class DeckAktifController {
         cardPane.setOnDragDetected(event -> {
             Dragboard db = cardPane.startDragAndDrop(TransferMode.MOVE);
             ClipboardContent content = new ClipboardContent();
-            content.putString(kartu.getName());
-            content.put(DataFormat.lookupMimeType("cardType"), kartu.getClass().getSimpleName()); // Include card type in dragboard
+            String kartuName = kartu.getName();
+            String kartuType = kartu.getClass().getSimpleName();
+
+            if (kartuName != null && !kartuName.isEmpty() && kartuType != null) {
+                content.putString(kartuName);
+                content.put(DeckAktifController.CARD_TYPE, kartuType);
+                System.out.println("Drag detected with kartu name: " + kartuName + " and type: " + kartuType);
+            } else {
+                System.out.println("Kartu name or type is null or empty");
+            }
+
             db.setContent(content);
+
+            // Display the drag view
+            db.setDragView(cardPane.snapshot(null, null));
+
             event.consume();
         });
     }
+
 }

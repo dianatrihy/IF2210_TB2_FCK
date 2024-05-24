@@ -19,6 +19,7 @@ public class CustomLadangController {
     private final double padding = 10;
     private int row = 4;            // Number of rows
     private int col = 5;            // Number of columns
+    private boolean isInitialized = false;
 
     private final double originalWidth = 92;
     private final double originalHeight = 105;
@@ -34,12 +35,19 @@ public class CustomLadangController {
     }
     // Your initialization method or wherever you set row and col values
     public void initialize() {
-        System.out.println("AnchorPane ID: " + anchorPane.getId());
-//        System.out.println("CustomLadangController initialized"); // Debugging
-        generateCustomPanes();
+//        System.out.println("AnchorPane ID: " + anchorPane.getId());
+//////        System.out.println("CustomLadangController initialized"); // Debugging
+//        generateCustomPanes();
     }
 
-    private void generateCustomPanes() {
+    public void generateCustomPanes() {
+        if (isInitialized) {
+            System.out.println("Custom panes already initialized.");
+            return;
+        }
+
+        isInitialized = true;
+
         double totalWidth = anchorPane.getPrefWidth();
         double totalHeight = anchorPane.getPrefHeight();
 
@@ -69,7 +77,7 @@ public class CustomLadangController {
                 pane.setStyle("-fx-background-color: #FFFFFF; -fx-opacity: 40%;");
 
                 pane.setId("Pane" + i + j);
-                System.out.println("Pane" + i + j);
+                System.out.println("Pane" + i + j + " created with width: " + paneWidth + " and height: " + paneHeight);
 
                 // Add drag and drop handlers
                 setupDragAndDropHandlers(pane);
@@ -98,16 +106,15 @@ public class CustomLadangController {
 
     public void setCardToPane(int row, int col, Kartu kartu) throws IOException {
         String paneId = "Pane" + row + col;
+        System.out.println(paneId);
         Pane pane = (Pane) anchorPane.lookup("#" + paneId);
         if (pane != null) {
             FXMLLoader loader = null;
             if(this.row == 4){
                 loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Card.fxml"));
-            }
-            else if(this.row == 3){
+            } else if(this.row == 3){
                 loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/CardBigger.fxml"));
-            }
-            else if(this.row == 5){
+            } else if(this.row == 5){
                 loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/CardTiny.fxml"));
             }
 
@@ -130,11 +137,14 @@ public class CustomLadangController {
             pane.getChildren().clear();
             pane.setStyle("");
             pane.getChildren().add(cardPane);
+        }  else {
+            System.out.println("Pane with ID " + paneId + " not found.");
         }
     }
 
     private void setupDragAndDropHandlers(Pane pane) {
         pane.setOnDragOver(event -> {
+            System.out.println("Drag over event on " + pane.getId());
             if (event.getGestureSource() != pane && event.getDragboard().hasString()) {
                 event.acceptTransferModes(TransferMode.MOVE);
             }
@@ -143,27 +153,33 @@ public class CustomLadangController {
 
         pane.setOnDragDropped(event -> {
             Dragboard db = event.getDragboard();
-            if (db.hasString()) {
+            boolean success = false;
+            if (db.hasString() && db.getContent(DeckAktifController.CARD_TYPE) != null) {
                 String cardName = db.getString();
-                String cardType = db.getContent(DataFormat.lookupMimeType("cardType")).toString();
+                String cardType = db.getContent(DeckAktifController.CARD_TYPE).toString();
+                System.out.println("Dropping card with name: " + cardName + " and type: " + cardType);
 
                 Kartu kartu = createCardByType(cardType, cardName);
                 try {
+                    System.out.println("Setting card to pane at row: " + pane.getId().substring(4, 5) + " col: " + pane.getId().substring(5));
                     setCardToPane(Integer.parseInt(pane.getId().substring(4, 5)), Integer.parseInt(pane.getId().substring(5)), kartu);
+                    success = true;
+                    System.out.println("Card dropped successfully.");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                event.setDropCompleted(true);
             } else {
-                event.setDropCompleted(false);
+                System.out.println("Drop data is invalid.");
             }
+            event.setDropCompleted(success);
             event.consume();
         });
     }
 
+
     private Kartu createCardByType(String cardType, String cardName) {
         switch (cardType) {
-            case "MakhlukHidup":
+            case "Makhluk Hidup":
                 return new MakhlukHidup(cardName, "Makhluk Hidup");
             case "Hewan":
                 return new Hewan(cardName);
