@@ -124,8 +124,12 @@ public class CustomLadangController {
                 // Set position of the pane based on the row and column
                 pane.setLayoutX(horizontalPadding + j * (paneWidth + horizontalPadding));
                 pane.setLayoutY(verticalPadding + i * (paneHeight + verticalPadding));
+
                 pane.setStyle("-fx-background-color: #FFFFFF; -fx-opacity: 40%;");
     
+
+
+
                 pane.setId("Pane" + i + j);
                 // System.out.println("Pane" + i + j + " created with width: " + paneWidth + " and height: " + paneHeight);
     
@@ -134,7 +138,7 @@ public class CustomLadangController {
     
                 // Add the pane to your AnchorPane
                 anchorPane.getChildren().add(pane);
-    
+
                 // Check if kartu exists and set it to the pane
                 Kartu kartu = ladangplayer.retrieveKartu(i, j);
                 if (kartu != null) {
@@ -145,6 +149,9 @@ public class CustomLadangController {
                         e.printStackTrace();
                     }
                 }
+
+                pane.toFront();
+
             }
         }
     }
@@ -168,7 +175,6 @@ public class CustomLadangController {
 
     public void setCardToPane(int row, int col, Kartu kartu) throws IOException {
         String paneId = "Pane" + row + col;
-        System.out.println(paneId);
         Pane pane = (Pane) anchorPane.lookup("#" + paneId);
         if (pane != null) {
             System.out.println("successfully created pane");
@@ -213,6 +219,14 @@ public class CustomLadangController {
             }
             event.consume();
         });
+        pane.setOnDragEntered(event -> {
+            System.out.println("Drag entered event on " + pane.getId());
+        });
+
+        pane.setOnDragExited(event -> {
+            System.out.println("Drag exited event on " + pane.getId());
+        });
+
         pane.setOnDragEntered(event -> {
             System.out.println("Drag entered event on " + pane.getId());
         });

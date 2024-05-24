@@ -158,13 +158,11 @@ public class GameManagerController {
         AnchorPane ladangPane = ladangLoader.load();
         CustomLadangController ladangController = ladangLoader.getController();
 
-        System.out.println("LadangPane ID: " + ladangPane.getId());
-        System.out.println("LadangController: " + (ladangController != null));
-
         ladangContainer.getChildren().setAll(ladangPane);
 
         // Create a Player object and populate its ladang with some Kartu objects
         Player player1 = new Player("Thea");
+
         MakhlukHidup mh1 = new MakhlukHidup("CornSeeds", "Tanaman");
         MakhlukHidup mh2 = new MakhlukHidup("PumpkinSeeds", "Tanaman");
         mh1.addItem("BearTrap");
@@ -185,6 +183,7 @@ public class GameManagerController {
         // player.getLadang().addKartu(tn3, 3, 1);
         // player.getLadang().addKartu(tn4, 2, 3);
         // player.getLadang().addKartu(tn5, 3, 2);
+
 
         // Instantiate ShowLadang to update the ladang view
         ShowLadang showLadang = new ShowLadang(player, ladangController);
