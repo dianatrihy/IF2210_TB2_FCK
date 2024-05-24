@@ -40,20 +40,67 @@ public class CustomLadangController {
 //        generateCustomPanes();
     }
 
-    public void generateCustomPanes() {
+    // public void generateCustomPanes() {
+    //     if (isInitialized) {
+    //         System.out.println("Custom panes already initialized.");
+    //         return;
+    //     }
+
+    //     isInitialized = true;
+
+    //     double totalWidth = anchorPane.getPrefWidth();
+    //     double totalHeight = anchorPane.getPrefHeight();
+
+    //     double availableWidth = totalWidth - (col + 1) * padding;
+    //     double availableHeight = totalHeight - (row + 1) * padding;
+
+    //     double paneWidth = availableWidth / col;
+    //     double paneHeight = availableHeight / row;
+    //     // Adjust pane size based on aspect ratio
+    //     if (paneWidth / aspectRatio < paneHeight) {
+    //         paneHeight = paneWidth / aspectRatio;
+    //     } else {
+    //         paneWidth = paneHeight * aspectRatio;
+    //     }
+
+    //     double horizontalPadding = (totalWidth - col * paneWidth) / (col + 1);
+    //     double verticalPadding = (totalHeight - row * paneHeight) / (row + 1);
+
+    //     for (int i = 0; i < row; i++) {
+    //         for (int j = 0; j < col; j++) {
+    //             Pane pane = new Pane();
+    //             pane.setPrefSize(paneWidth, paneHeight);
+
+    //             // Set position of the pane based on the row and column
+    //             pane.setLayoutX(horizontalPadding + j * (paneWidth + horizontalPadding));
+    //             pane.setLayoutY(verticalPadding + i * (paneHeight + verticalPadding));
+    //             pane.setStyle("-fx-background-color: #FFFFFF; -fx-opacity: 40%;");
+
+    //             pane.setId("Pane" + i + j);
+    //             System.out.println("Pane" + i + j + " created with width: " + paneWidth + " and height: " + paneHeight);
+
+    //             // Add drag and drop handlers
+    //             setupDragAndDropHandlers(pane);
+                
+    //             // Add the pane to your AnchorPane
+    //             anchorPane.getChildren().add(pane);
+    //         }
+    //     }
+    // }
+    public void generateCustomPanes(Player p) {
         if (isInitialized) {
             System.out.println("Custom panes already initialized.");
             return;
         }
-
+    
         isInitialized = true;
-
+    
         double totalWidth = anchorPane.getPrefWidth();
         double totalHeight = anchorPane.getPrefHeight();
-
+    
         double availableWidth = totalWidth - (col + 1) * padding;
         double availableHeight = totalHeight - (row + 1) * padding;
-
+    
         double paneWidth = availableWidth / col;
         double paneHeight = availableHeight / row;
         // Adjust pane size based on aspect ratio
@@ -62,31 +109,46 @@ public class CustomLadangController {
         } else {
             paneWidth = paneHeight * aspectRatio;
         }
-
+    
         double horizontalPadding = (totalWidth - col * paneWidth) / (col + 1);
         double verticalPadding = (totalHeight - row * paneHeight) / (row + 1);
-
+    
+        org.example.if2210_tb2_fck.model.Field ladangplayer = p.getLadang();
+        // Tanaman tes = new Tanaman("PumpkinSeeds");
+        // p.getLadang().placeKartu(1, 2, tes);
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 Pane pane = new Pane();
                 pane.setPrefSize(paneWidth, paneHeight);
-
+    
                 // Set position of the pane based on the row and column
                 pane.setLayoutX(horizontalPadding + j * (paneWidth + horizontalPadding));
                 pane.setLayoutY(verticalPadding + i * (paneHeight + verticalPadding));
                 pane.setStyle("-fx-background-color: #FFFFFF; -fx-opacity: 40%;");
-
+    
                 pane.setId("Pane" + i + j);
-                System.out.println("Pane" + i + j + " created with width: " + paneWidth + " and height: " + paneHeight);
-
+                // System.out.println("Pane" + i + j + " created with width: " + paneWidth + " and height: " + paneHeight);
+    
                 // Add drag and drop handlers
                 setupDragAndDropHandlers(pane);
-                
+    
                 // Add the pane to your AnchorPane
                 anchorPane.getChildren().add(pane);
+    
+                // Check if kartu exists and set it to the pane
+                Kartu kartu = ladangplayer.retrieveKartu(i, j);
+                if (kartu != null) {
+                    System.out.println("DIA GA NULL DI "+i + j);
+                    try {
+                        setCardToPane(i, j, kartu);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
     }
+    
 
     // Method to set the number of rows
     public void setRow(int row) {
@@ -99,9 +161,9 @@ public class CustomLadangController {
     }
 
     // Method to regenerate the panes based on updated row and column sizes
-    public void regeneratePanes() {
+    public void regeneratePanes(Player p) {
         anchorPane.getChildren().clear();
-        generateCustomPanes();
+        generateCustomPanes(p);
     }
 
     public void setCardToPane(int row, int col, Kartu kartu) throws IOException {
@@ -109,6 +171,7 @@ public class CustomLadangController {
         System.out.println(paneId);
         Pane pane = (Pane) anchorPane.lookup("#" + paneId);
         if (pane != null) {
+            System.out.println("successfully created pane");
             FXMLLoader loader = null;
             if(this.row == 4){
                 loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Card.fxml"));
@@ -146,9 +209,16 @@ public class CustomLadangController {
         pane.setOnDragOver(event -> {
             System.out.println("Drag over event on " + pane.getId());
             if (event.getGestureSource() != pane && event.getDragboard().hasString()) {
-                event.acceptTransferModes(TransferMode.MOVE);
+                event.acceptTransferModes(TransferMode.ANY);
             }
             event.consume();
+        });
+        pane.setOnDragEntered(event -> {
+            System.out.println("Drag entered event on " + pane.getId());
+        });
+
+        pane.setOnDragExited(event -> {
+            System.out.println("Drag exited event on " + pane.getId());
         });
 
         pane.setOnDragDropped(event -> {

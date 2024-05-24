@@ -16,21 +16,9 @@ public class ShowLadang {
     }
 
     public void updateLadang(Player p) {
-        org.example.if2210_tb2_fck.model.Field ladangplayer = p.getLadang();
-        int row = ladangplayer.getRow();
-        int col = ladangplayer.getCol();
+        System.out.println("PRINT LADANGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG");
 
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                Kartu kartu = ladangplayer.retrieveKartu(i, j);
-                if(kartu != null){
-                    try {
-                        controller.setCardToPane(i, j, kartu);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
+        controller.generateCustomPanes(p);
     }
 }
+

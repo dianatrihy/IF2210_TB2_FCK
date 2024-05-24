@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="84.0" prefWidth="76.0" style="-fx-background-color: #f5d362;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.if2210_tb2_fck.controller.CardController">
+   <effect>
+      <DropShadow>
+         <color>
+            <Color red="0.035087719559669495" green="0.035087719559669495" blue="0.035087719559669495" />
+         </color>
+      </DropShadow>
+   </effect>
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="17.0" layoutX="-3.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="79.0" />
+      <ImageView fx:id="cardImage" fitHeight="47.0" fitWidth="47.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="cardName" layoutX="3.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="70.27266693115234">
+         <font>
+            <Font name="Bodoni MT" size="5.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

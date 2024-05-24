@@ -132,7 +132,7 @@ public class GameManagerController {
 
         Timer.getChildren().setAll(timerPane);
         BearAttack bearAttack = new BearAttack();
-        bearAttack.bearAttackCommand(getCurrentPlayer(), timerController);
+        bearAttack.bearAttackCommand(getCurrentPlayer(), timerController, this);
 
 
         System.out.println("Timer.fxml loaded and added to the main view");
@@ -145,6 +145,7 @@ public class GameManagerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
     }
 
     private void loadLadang(Player player) throws IOException {
@@ -153,7 +154,7 @@ public class GameManagerController {
         if (getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml") == null) {
             System.out.println("Resource not found!");
         }
-
+        
         AnchorPane ladangPane = ladangLoader.load();
         CustomLadangController ladangController = ladangLoader.getController();
 
@@ -166,19 +167,55 @@ public class GameManagerController {
         Player player1 = new Player("Thea");
         MakhlukHidup mh1 = new MakhlukHidup("CornSeeds", "Tanaman");
         MakhlukHidup mh2 = new MakhlukHidup("PumpkinSeeds", "Tanaman");
-        Tanaman tn1 = new Tanaman("PumpkinSeeds");
+        mh1.addItem("BearTrap");
+        mh2.addItem("BearTrap");
+        Tanaman tn1 = new Tanaman("StrawberrySeeds");
+        tn1.addItem("BearTrap");
+        // Tanaman tn2 = new Tanaman("PumpkinSeeds");
+
+        // Tanaman tn3 = new Tanaman("PumpkinSeeds");
+        // Tanaman tn4 = new Tanaman("PumpkinSeeds");
+        // Tanaman tn5 = new Tanaman("PumpkinSeeds");
+
         tn1.setUmur(10);
         player.getLadang().addKartu(mh1, 0, 0);
         player.getLadang().addKartu(mh2, 0, 3);
-        player.getLadang().addKartu(tn1, 0, 1);
+        player.getLadang().addKartu(tn1, 1, 1);
+        // player.getLadang().addKartu(tn2, 2, 1);
+        // player.getLadang().addKartu(tn3, 3, 1);
+        // player.getLadang().addKartu(tn4, 2, 3);
+        // player.getLadang().addKartu(tn5, 3, 2);
 
         // Instantiate ShowLadang to update the ladang view
         ShowLadang showLadang = new ShowLadang(player, ladangController);
-        ladangController.regeneratePanes();
         showLadang.updateLadang(player);
 
         System.out.println("Ladang.fxml loaded and added to the main view");
     }
+
+    private void loadLadangKW(Player player) throws IOException {
+        System.out.println("Loading Ladang.fxml");
+        FXMLLoader ladangLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml"));
+        if (getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml") == null) {
+            System.out.println("Resource not found!");
+        }
+    
+        AnchorPane ladangPane = ladangLoader.load();
+        CustomLadangController ladangController = ladangLoader.getController();
+        Tanaman tnx = new Tanaman("PumpkinSeeds");
+        player.getLadang().addKartu(tnx, 1, 2);
+        System.out.println("LadangPane ID: " + ladangPane.getId());
+        System.out.println("LadangController: " + (ladangController != null));
+    
+        ladangContainer.getChildren().setAll(ladangPane);
+    
+        // Menggunakan pemain yang diberikan sebagai argumen
+        // untuk memperbarui ladang pada controller
+        ladangController.regeneratePanes(player);
+    
+        System.out.println("LadangKWWWWWWWWWW.fxml loaded and added to the main view");
+    }
+    
 
     public void handleStartButton() throws IOException {
         startTurn();
@@ -240,17 +277,26 @@ public class GameManagerController {
 
     public void startTurn() throws IOException {
         shuffleCards();
+        loadLadangKW(getCurrentPlayer());
         if (bearAttackOccurs()){
             bearAttack();
+            System.out.println("HAIHAI SELESAI KENA BERUANG YA");
         }
         freeAction();
     }
 
     private boolean bearAttackOccurs(){
-        Random random = new Random();
-        return random.nextBoolean();
+        // Random random = new Random();
+        // return random.nextBoolean();
+        return false;
     }
-
+    public void refreshLadang() {
+        try {
+            loadLadangKW(getCurrentPlayer());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void freeAction(){
         System.out.println("Free action phase...");
