@@ -157,20 +157,17 @@ public class GameManagerController {
         AnchorPane ladangPane = ladangLoader.load();
         CustomLadangController ladangController = ladangLoader.getController();
 
-        System.out.println("LadangPane ID: " + ladangPane.getId());
-        System.out.println("LadangController: " + (ladangController != null));
-
         ladangContainer.getChildren().setAll(ladangPane);
 
         // Create a Player object and populate its ladang with some Kartu objects
         Player player1 = new Player("Thea");
-        MakhlukHidup mh1 = new MakhlukHidup("CornSeeds", "Tanaman");
-        MakhlukHidup mh2 = new MakhlukHidup("PumpkinSeeds", "Tanaman");
-        Tanaman tn1 = new Tanaman("PumpkinSeeds");
-        tn1.setUmur(10);
-        player.getLadang().addKartu(mh1, 0, 0);
-        player.getLadang().addKartu(mh2, 0, 3);
-        player.getLadang().addKartu(tn1, 0, 1);
+//        MakhlukHidup mh1 = new MakhlukHidup("CornSeeds", "Tanaman");
+//        MakhlukHidup mh2 = new MakhlukHidup("PumpkinSeeds", "Tanaman");
+//        Tanaman tn1 = new Tanaman("PumpkinSeeds");
+//        tn1.setUmur(10);
+//        player.getLadang().addKartu(mh1, 0, 0);
+//        player.getLadang().addKartu(mh2, 0, 2);
+//        player.getLadang().addKartu(tn1, 0, 1);
 
         // Instantiate ShowLadang to update the ladang view
         ShowLadang showLadang = new ShowLadang(player, ladangController);

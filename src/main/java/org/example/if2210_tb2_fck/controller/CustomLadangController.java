@@ -74,7 +74,7 @@ public class CustomLadangController {
                 // Set position of the pane based on the row and column
                 pane.setLayoutX(horizontalPadding + j * (paneWidth + horizontalPadding));
                 pane.setLayoutY(verticalPadding + i * (paneHeight + verticalPadding));
-                pane.setStyle("-fx-background-color: #FFFFFF; -fx-opacity: 40%;");
+                pane.setStyle("-fx-background-color: red; -fx-opacity: 40%;");
 
                 pane.setId("Pane" + i + j);
                 System.out.println("Pane" + i + j + " created with width: " + paneWidth + " and height: " + paneHeight);
@@ -84,6 +84,7 @@ public class CustomLadangController {
                 
                 // Add the pane to your AnchorPane
                 anchorPane.getChildren().add(pane);
+                pane.toFront();
             }
         }
     }
@@ -106,7 +107,6 @@ public class CustomLadangController {
 
     public void setCardToPane(int row, int col, Kartu kartu) throws IOException {
         String paneId = "Pane" + row + col;
-        System.out.println(paneId);
         Pane pane = (Pane) anchorPane.lookup("#" + paneId);
         if (pane != null) {
             FXMLLoader loader = null;
@@ -146,9 +146,17 @@ public class CustomLadangController {
         pane.setOnDragOver(event -> {
             System.out.println("Drag over event on " + pane.getId());
             if (event.getGestureSource() != pane && event.getDragboard().hasString()) {
-                event.acceptTransferModes(TransferMode.MOVE);
+                event.acceptTransferModes(TransferMode.ANY);
             }
             event.consume();
+        });
+
+        pane.setOnDragEntered(event -> {
+            System.out.println("Drag entered event on " + pane.getId());
+        });
+
+        pane.setOnDragExited(event -> {
+            System.out.println("Drag exited event on " + pane.getId());
         });
 
         pane.setOnDragDropped(event -> {

@@ -66,7 +66,7 @@ public class DeckAktifController {
 
             if (kartuName != null && !kartuName.isEmpty() && kartuType != null) {
                 content.putString(kartuName);
-                content.put(DeckAktifController.CARD_TYPE, kartuType);
+                content.put(CARD_TYPE, kartuType);
                 System.out.println("Drag detected with kartu name: " + kartuName + " and type: " + kartuType);
             } else {
                 System.out.println("Kartu name or type is null or empty");
