@@ -11,7 +11,7 @@ public class LoadState {
     Player player2;
 
     public LoadState(String gameState, String playerState1, String playerState2){
-        this.toko = Toko.getInstance(1);
+        this.toko = Toko.getInstance();
         this.player1 = new Player("Player 1");
         this.player2 = new Player("Player 2");
         loadGameState(gameState);

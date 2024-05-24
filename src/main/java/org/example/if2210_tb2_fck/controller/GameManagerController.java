@@ -9,6 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import org.example.if2210_tb2_fck.command.BearAttack;
 import org.example.if2210_tb2_fck.command.ShowLadang;
 import org.example.if2210_tb2_fck.model.Player;
 import org.example.if2210_tb2_fck.model.Toko;
@@ -34,6 +36,9 @@ public class GameManagerController {
 
     @FXML
     private Button tokoButton;
+
+    @FXML
+    private AnchorPane Timer;
 
     @FXML
     private AnchorPane ladangContainer;
@@ -107,6 +112,36 @@ public class GameManagerController {
             tokoStage.setTitle("Toko");
             tokoStage.initOwner(mainPane.getScene().getWindow());
             tokoStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadTimer() throws IOException{
+        System.out.println("Loading Timer.fxml");
+        FXMLLoader timerLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Timer.fxml"));
+        if (timerLoader != null) {
+            System.out.println("Resource Timer fxml not found!");
+        }
+        System.out.println(timerLoader);
+        AnchorPane timerPane = timerLoader.load();
+        TimerController timerController = timerLoader.getController();
+
+        System.out.println("TimerPane ID: " + timerPane.getId());
+        System.out.println("Timercontroller: " + (timerController != null));
+
+        Timer.getChildren().setAll(timerPane);
+        BearAttack bearAttack = new BearAttack();
+        bearAttack.bearAttackCommand(getCurrentPlayer(), timerController);
+
+
+        System.out.println("Timer.fxml loaded and added to the main view");
+    }
+    
+    private void bearAttack(){
+        System.out.println("Bear attack!");
+        try {
+            loadTimer();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -216,9 +251,6 @@ public class GameManagerController {
         return random.nextBoolean();
     }
 
-    private void bearAttack(){
-        System.out.println("Bear attack!");
-    }
 
     private void freeAction(){
         System.out.println("Free action phase...");
