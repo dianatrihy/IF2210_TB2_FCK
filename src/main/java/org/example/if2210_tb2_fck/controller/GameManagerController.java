@@ -20,6 +20,7 @@ import org.example.if2210_tb2_fck.model.LoadState;
 
 import java.io.IOException;
 import java.util.Random;
+import javafx.scene.text.Text;
 
 public class GameManagerController {
 
@@ -28,6 +29,9 @@ public class GameManagerController {
 
     @FXML
     private Button startButton;
+
+    @FXML
+    private Text currentPlayerText;
 
     @FXML
     private Button ladangKuButton;
@@ -77,6 +81,8 @@ public class GameManagerController {
             }
         });
 
+        updateCurrentPlayerText();
+
         ladangKuButton.setOnAction(event -> {
             try {
                 loadLadang(getCurrentPlayer());
@@ -108,6 +114,10 @@ public class GameManagerController {
                 e.printStackTrace();
             }
         });
+    }
+
+    private void updateCurrentPlayerText(){
+        currentPlayerText.setText(getCurrentPlayer().getNama() + " (" + getCurrentTurn() + ")");
     }
 
     private void loadToko() throws IOException {
@@ -273,6 +283,7 @@ public class GameManagerController {
         } else {
             startTurn();
         }
+        updateCurrentPlayerText();
     }
 
     public int getCurrentTurn(){

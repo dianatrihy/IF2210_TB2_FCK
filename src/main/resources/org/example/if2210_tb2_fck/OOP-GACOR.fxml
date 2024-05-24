@@ -67,7 +67,13 @@
       <Text layoutX="22.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turn:">
          <font>
             <Font name="Bodoni MT" size="26.0" />
-         </font></Text>
+         </font>
+      </Text>
+      <Text fx:id="currentPlayerText" layoutX="90.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 (1)">
+         <font>
+            <Font name="Bodoni MT" size="26.0" />
+         </font>
+      </Text>
       <Pane layoutX="177.0" layoutY="527.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
          <effect>
             <DropShadow>
