@@ -61,5 +61,9 @@ public class Toko {
         catalog_stock.put(name, catalog_stock.get(name) + 1);
     }
 
+    public void updateStock(Map<String, Integer> newStock){
+        catalog_stock.clear();
+        catalog_stock.putAll(newStock);
+    }
     
 }
