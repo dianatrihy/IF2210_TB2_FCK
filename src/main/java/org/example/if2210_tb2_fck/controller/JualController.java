@@ -3,7 +3,6 @@ package org.example.if2210_tb2_fck.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javafx.css.Style;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -105,13 +104,11 @@ public class JualController {
     }
 
     private void handlePlayerSell(Kartu kartu) {
-        System.out.println("Jual berhasil");
         Integer price = Toko.getInstance().getPrice(kartu.getName());
         this.player.jual(kartu, price);
         Toko.getInstance().playerSelling(kartu);
-        System.out.println("Jual berhasil");
         try {
-            System.out.println("Jual berhasil"); 
+            cardGrid.getChildren().clear();
             handleShowJual();
         } catch (IOException e) {
             e.printStackTrace();

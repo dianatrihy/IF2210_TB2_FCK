@@ -106,6 +106,7 @@ public class TokoController {
         Integer price = Toko.getInstance().getPrice(productKey);
         this.player.beli(boughtCard, price);
         try {
+            cardGrid.getChildren().clear();
             handleShowToko();
         } catch (IOException e) {
             e.printStackTrace();
