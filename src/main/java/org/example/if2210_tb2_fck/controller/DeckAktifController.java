@@ -1,6 +1,10 @@
 package org.example.if2210_tb2_fck.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DataFormat;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 import org.example.if2210_tb2_fck.model.Kartu;
 import org.example.if2210_tb2_fck.model.DeckAktif;
@@ -41,11 +45,23 @@ public class DeckAktifController {
                     Pane cardPane = dad.loadCard("/org/example/if2210_tb2_fck/Card.fxml");
                     CardController cardController = (CardController) cardPane.getProperties().get("controller");
                     cardController.setCard(kartu);
+                    setupDragDetection(cardPane, kartu);
                     panes[i].getChildren().add(cardPane);
                 } catch (IOException e){
                     e.printStackTrace();
                 }
             }
         }
+    }
+
+    private void setupDragDetection(Pane cardPane, Kartu kartu) {
+        cardPane.setOnDragDetected(event -> {
+            Dragboard db = cardPane.startDragAndDrop(TransferMode.MOVE);
+            ClipboardContent content = new ClipboardContent();
+            content.putString(kartu.getName());
+            content.put(DataFormat.lookupMimeType("cardType"), kartu.getClass().getSimpleName()); // Include card type in dragboard
+            db.setContent(content);
+            event.consume();
+        });
     }
 }

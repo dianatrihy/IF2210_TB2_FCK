@@ -1,8 +1,11 @@
 package org.example.if2210_tb2_fck.controller;
 import java.io.IOException;
 
-import org.example.if2210_tb2_fck.model.Kartu;
-import org.example.if2210_tb2_fck.model.MakhlukHidup;
+import javafx.scene.input.DataFormat;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
+import org.example.if2210_tb2_fck.model.*;
+import org.example.if2210_tb2_fck.model.Item.*;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +17,8 @@ public class CustomLadangController {
     @FXML
     private AnchorPane anchorPane; // Assuming this is your AnchorPane in FXML
     private final double padding = 10;
-    private int row = 5;            // Number of rows
-    private int col = 6;            // Number of columns
+    private int row = 10;            // Number of rows
+    private int col = 10;            // Number of columns
 
     private final double originalWidth = 92;
     private final double originalHeight = 105;
@@ -31,6 +34,7 @@ public class CustomLadangController {
     }
     // Your initialization method or wherever you set row and col values
     public void initialize() {
+        System.out.println("CustomLadangController initialized"); // Debugging
         generateCustomPanes();
     }
 
@@ -43,8 +47,6 @@ public class CustomLadangController {
 
         double paneWidth = availableWidth / col;
         double paneHeight = availableHeight / row;
-        System.out.println(paneWidth);
-        System.out.println(paneHeight);
         // Adjust pane size based on aspect ratio
         if (paneWidth / aspectRatio < paneHeight) {
             paneHeight = paneWidth / aspectRatio;
@@ -68,6 +70,9 @@ public class CustomLadangController {
                 pane.setId("Pane" + i + j);
                 System.out.println("Pane" + i + j);
 
+                // Add drag and drop handlers
+                setupDragAndDropHandlers(pane);
+                
                 // Add the pane to your AnchorPane
                 anchorPane.getChildren().add(pane);
             }
@@ -90,7 +95,7 @@ public class CustomLadangController {
         generateCustomPanes();
     }
 
-    public void setCardToPane(int row, int col, MakhlukHidup kartu) throws IOException {
+    public void setCardToPane(int row, int col, Kartu kartu) throws IOException {
         String paneId = "Pane" + row + col;
         Pane pane = (Pane) anchorPane.lookup("#" + paneId);
         if (pane != null) {
@@ -107,10 +112,13 @@ public class CustomLadangController {
             Pane cardPane = loader.load();
 
             CardController cardController = loader.getController();
-            if (kartu.siapHarvest()){
-                cardController.setCardKW(kartu);
-            }
-            else{
+            if (kartu instanceof MakhlukHidup) {
+                if (((MakhlukHidup) kartu).siapHarvest()) {
+                    cardController.setCardKW((MakhlukHidup) kartu);
+                } else {
+                    cardController.setCard(kartu);
+                }
+            } else {
                 cardController.setCard(kartu);
             }
             pane.getChildren().clear();
@@ -118,4 +126,50 @@ public class CustomLadangController {
             pane.getChildren().add(cardPane);
         }
     }
+
+    private void setupDragAndDropHandlers(Pane pane) {
+        pane.setOnDragOver(event -> {
+            if (event.getGestureSource() != pane && event.getDragboard().hasString()) {
+                event.acceptTransferModes(TransferMode.MOVE);
+            }
+            event.consume();
+        });
+
+        pane.setOnDragDropped(event -> {
+            Dragboard db = event.getDragboard();
+            if (db.hasString()) {
+                String cardName = db.getString();
+                String cardType = db.getContent(DataFormat.lookupMimeType("cardType")).toString();
+
+                Kartu kartu = createCardByType(cardType, cardName);
+                try {
+                    setCardToPane(Integer.parseInt(pane.getId().substring(4, 5)), Integer.parseInt(pane.getId().substring(5)), kartu);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                event.setDropCompleted(true);
+            } else {
+                event.setDropCompleted(false);
+            }
+            event.consume();
+        });
+    }
+
+    private Kartu createCardByType(String cardType, String cardName) {
+        switch (cardType) {
+            case "MakhlukHidup":
+                return new MakhlukHidup(cardName, "Makhluk Hidup");
+            case "Hewan":
+                return new Hewan(cardName);
+            case "Tanaman":
+                return new Tanaman(cardName);
+            case "Produk":
+                return new Produk(cardName);
+            case "Item":
+                return new Item(cardName);
+            default:
+                return new Kartu(cardName, "Apapun Itu");
+        }
+    }
+
 }

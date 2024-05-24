@@ -1,19 +1,18 @@
 package org.example.if2210_tb2_fck.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-
-import java.io.IOException;
-import java.util.Random;
-
-//import org.example.if2210_tb2_fck.model.GameManager;
 import javafx.stage.Stage;
 import org.example.if2210_tb2_fck.model.Player;
 import org.example.if2210_tb2_fck.model.Toko;
+
+import java.io.IOException;
+import java.util.Random;
 
 public class GameManagerController {
 
@@ -23,7 +22,9 @@ public class GameManagerController {
     @FXML
     private Button startButton;
 
-//    private GameManager game_manager;
+    @FXML
+    private AnchorPane ladangContainer;
+
     private Player player1;
     private Player player2;
     private int current_turn;
@@ -34,7 +35,7 @@ public class GameManagerController {
         this.player1 = new Player("Player 1");
         this.player2 = new Player("Player 2");
         this.current_turn = 1;
-        this.toko = Toko.getInstance(0); // gatau
+        this.toko = Toko.getInstance(0);
     }
 
     @FXML
@@ -46,6 +47,25 @@ public class GameManagerController {
                 e.printStackTrace();
             }
         });
+
+        // Call loadLadang using Platform.runLater to ensure FXML elements are initialized
+        Platform.runLater(() -> {
+            try {
+                loadLadang();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void loadLadang() throws IOException {
+        System.out.println("Loading Ladang.fxml");
+        FXMLLoader ladangLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml"));
+        AnchorPane ladangPane = ladangLoader.load();
+        CustomLadangController ladangController = ladangLoader.getController();
+
+        ladangContainer.getChildren().setAll(ladangPane);
+        System.out.println("Ladang.fxml loaded and added to the main view");
     }
 
     public void handleStartButton() throws IOException {
@@ -66,17 +86,17 @@ public class GameManagerController {
     }
 
     private void showMainView() throws IOException {
+        System.out.println("Loading OOP-GACOR.fxml");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/OOP-GACOR.fxml"));
         Pane mainView = loader.load();
         mainPane.getChildren().setAll(mainView);
 
-        // Load DeckAktifController
+        System.out.println("Loading DeckAktif.fxml");
         FXMLLoader deckLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/DeckAktif.fxml"));
         Pane deckPane = deckLoader.load();
         DeckAktifController deckController = deckLoader.getController();
         deckController.setDeckAktif(getCurrentPlayer().getDeckAktif());
 
-        // Add DeckAktifPane to the main view
         AnchorPane rootPane = (AnchorPane) mainView;
         rootPane.getChildren().add(deckPane);
     }
@@ -104,7 +124,6 @@ public class GameManagerController {
 
     private void endGame(){
         System.out.println("Game Over!");
-        // to-implement
     }
 
     public void startTurn() throws IOException {
@@ -121,12 +140,10 @@ public class GameManagerController {
     }
 
     private void bearAttack(){
-        // to-implement
         System.out.println("Bear attack!");
     }
 
     private void freeAction(){
-        // to-implement
         System.out.println("Free action phase...");
     }
 }
