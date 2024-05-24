@@ -14,7 +14,7 @@ public class DeckInventory {
         List<String> namaherbivora = Arrays.asList("Kuda", "Sapi", "Domba");
         List<String> namakarnivora = Arrays.asList("Hiu");
         List<String> namaomnivora = Arrays.asList("Ayam");
-        List<String> namaproduk = Arrays.asList("DagingBeruang", "DagingDomba", "DagingKuda", "Jagung", "Pumpkin", "SharkFin", "Strawberry", "Susu", "Telur");
+        List<String> namaproduk = Arrays.asList("Daging_Beruang", "Daging_Domba", "Daging_Kuda", "Jagung", "Labu", "Sirip_Hiu", "Stroberi", "Susu", "Telur");
         List<String> namatanaman = Arrays.asList("CornSeeds", "StrawberrySeeds", "PumpkinSeeds");
         List<String> namaitem = Arrays.asList("Accelerate", "BearTrap", "Delay", "Destroy", "InstantHarvest", "Protect");
 

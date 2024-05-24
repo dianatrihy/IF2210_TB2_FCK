@@ -42,19 +42,19 @@ public class Kartu {
         if (nama.equals("Ayam")) {
             subPath = "Telur";
         } else if (nama.equals("Beruang")) {
-            subPath = "DagingBeruang";
+            subPath = "Daging_Beruang";
         } else if (nama.equals("Domba")) {
-            subPath = "DagingDomba";
+            subPath = "Daging_Domba";
         } else if (nama.equals("Kuda")) {
-            subPath = "DagingKuda";
+            subPath = "Daging_Kuda";
         } else if (nama.equals("CornSeeds")) {
             subPath = "Jagung";
         } else if (nama.equals("PumpkinSeeds")) {
-            subPath = "Pumpkin";
+            subPath = "Labu";
         } else if (nama.equals("StrawberrySeeds")) {
-            subPath = "Strawberry";
+            subPath = "Stroberi";
         } else if (nama.equals("Hiu")) {
-            subPath = "SharkFin";
+            subPath = "Sirip_Hiu";
         } else if (nama.equals("Sapi")) {
             subPath = "Susu";
         }

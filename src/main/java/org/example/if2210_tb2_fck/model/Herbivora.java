@@ -7,6 +7,6 @@ public class Herbivora extends Hewan {
     @Override
     public boolean canEat(Produk makanan){
         String name = makanan.getName();
-        return name.equals("Jagung") || name.equals("Strawberry") || name.equals("Pumpkin");
+        return name.equals("Jagung") || name.equals("Stroberi") || name.equals("Labu");
     }
 }

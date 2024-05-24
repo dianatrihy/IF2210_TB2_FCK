@@ -59,15 +59,15 @@ public class MakhlukHidup extends Kartu{
 
     public String getProdukName(){
         return switch (this.getName()) {
-            case "Hiu" -> "SharkFin";
+            case "Hiu" -> "Sirip_Hiu";
             case "Sapi" -> "Susu";
-            case "Domba" -> "DagingDomba";
-            case "Kuda" -> "DagingKuda";
+            case "Domba" -> "Daging_Domba";
+            case "Kuda" -> "Daging_Kuda";
             case "Ayam" -> "Telur";
-            case "Beruang" -> "DagingBeruang";
+            case "Beruang" -> "Daging_Beruang";
             case "CornSeeds" -> "Jagung";
-            case "PumpkinSeeds" -> "Pumpkin";
-            case "StrawberrySeeds" -> "Strawberry";
+            case "PumpkinSeeds" -> "Labu";
+            case "StrawberrySeeds" -> "Stroberi";
             default -> null;
         };
     }

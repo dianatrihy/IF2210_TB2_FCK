@@ -24,15 +24,15 @@ public class Toko {
     }
 
     private static void populateCatalogPrice() {
-        catalog_price.put("SharkFin", 500);
-        catalog_price.put("susu", 100);
-        catalog_price.put("DagingDomba", 120);
-        catalog_price.put("DagingKuda", 150);
-        catalog_price.put("telur", 50);
-        catalog_price.put("DagingBeruang", 500);
-        catalog_price.put("Jagung", 150);
-        catalog_price.put("pumpkin", 500);
-        catalog_price.put("strawberry", 350);
+        catalog_price.put("SIRIP_HIU", 500);
+        catalog_price.put("SUSU", 100);
+        catalog_price.put("DAGING_DOMBA", 120);
+        catalog_price.put("DAGING_KUDA", 150);
+        catalog_price.put("TELUR", 50);
+        catalog_price.put("DAGING_BERUANG", 500);
+        catalog_price.put("JAGUNG", 150);
+        catalog_price.put("LABU", 500);
+        catalog_price.put("STROBERI", 350);
     
     }
 
