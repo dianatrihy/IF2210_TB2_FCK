@@ -5,12 +5,14 @@ import java.util.Map;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
@@ -62,6 +64,11 @@ public class TokoController {
     @FXML
     public void initialize() throws IOException {
         handleShowToko();
+
+        backButton.setOnAction(event -> {
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.close();
+        });
     }
 
     private void handleShowToko() throws IOException {
@@ -104,6 +111,11 @@ public class TokoController {
     private void handlePlayerBuying(String productKey) {
         Kartu boughtCard = Toko.getInstance().playerBuying(productKey);
         Integer price = Toko.getInstance().getPrice(productKey);
+        if (this.player.getUang() < price) {
+            // Show error message
+            showError("Error", "Your money is not sufficient for this purchase.");
+            return;
+        }
         this.player.beli(boughtCard, price);
         try {
             cardGrid.getChildren().clear();
@@ -112,4 +124,24 @@ public class TokoController {
             e.printStackTrace();
         }
     }
+
+    private void showError(String title, String message) {
+        Stage errorStage = new Stage();
+        errorStage.setTitle(title);
+
+        Label label = new Label(message);
+        label.setStyle("-fx-padding: 10px;");
+
+        Button closeButton = new Button("Close");
+        closeButton.setOnAction(event -> errorStage.close());
+
+        VBox vbox = new VBox(label, closeButton);
+        vbox.setSpacing(10);
+        vbox.setPadding(new Insets(20));
+
+        Scene scene = new Scene(vbox);
+        errorStage.setScene(scene);
+        errorStage.show();
+    }
+
 }

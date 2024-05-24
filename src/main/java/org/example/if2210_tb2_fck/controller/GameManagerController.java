@@ -3,6 +3,7 @@ package org.example.if2210_tb2_fck.controller;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
@@ -26,6 +27,15 @@ public class GameManagerController {
     private Button startButton;
 
     @FXML
+    private Button ladangKuButton;
+
+    @FXML
+    private Button ladangLawanButton;
+
+    @FXML
+    private Button tokoButton;
+
+    @FXML
     private AnchorPane ladangContainer;
 
     private Player player1;
@@ -44,7 +54,7 @@ public class GameManagerController {
     @FXML
     public void initialize() {
         try {
-            loadLadang();
+            loadLadang(getCurrentPlayer());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,9 +66,53 @@ public class GameManagerController {
                 e.printStackTrace();
             }
         });
+
+        ladangKuButton.setOnAction(event -> {
+            try {
+                loadLadang(getCurrentPlayer());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        ladangLawanButton.setOnAction(event -> {
+            try {
+                loadLadang(getOtherPlayer());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        tokoButton.setOnAction(event -> {
+            try {
+                loadToko();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
-    private void loadLadang() throws IOException {
+    private void loadToko() throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Toko.fxml"));
+            TokoController tokoController = new TokoController();
+            tokoController.setPlayer(getCurrentPlayer());
+    
+            loader.setController(tokoController);
+            Parent tokoRoot = loader.load();
+            Scene tokoScene = new Scene(tokoRoot);
+    
+            Stage tokoStage = new Stage();
+            tokoStage.setScene(tokoScene);
+            tokoStage.setTitle("Toko");
+            tokoStage.initOwner(mainPane.getScene().getWindow());
+            tokoStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadLadang(Player player) throws IOException {
         System.out.println("Loading Ladang.fxml");
         FXMLLoader ladangLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml"));
         if (getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml") == null) {
@@ -74,7 +128,7 @@ public class GameManagerController {
         ladangContainer.getChildren().setAll(ladangPane);
 
         // Create a Player object and populate its ladang with some Kartu objects
-        Player player = new Player("Thea");
+        Player player1 = new Player("Thea");
         MakhlukHidup mh1 = new MakhlukHidup("CornSeeds", "Tanaman");
         MakhlukHidup mh2 = new MakhlukHidup("PumpkinSeeds", "Tanaman");
         Tanaman tn1 = new Tanaman("PumpkinSeeds");
