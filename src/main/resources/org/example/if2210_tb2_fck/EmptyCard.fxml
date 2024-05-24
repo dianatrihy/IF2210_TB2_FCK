@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+
+<Pane prefHeight="105.0" prefWidth="92.0" style="-fx-opacity: 40%;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.if2210_tb2_fck.controller.CardController">
+   <effect>
+      <DropShadow>
+         <color>
+            <Color red="0.035087719559669495" green="0.035087719559669495" blue="0.035087719559669495" />
+         </color>
+      </DropShadow>
+   </effect>
+</Pane>

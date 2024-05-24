@@ -9,10 +9,9 @@ public class Field extends GridMatrix<MakhlukHidup>{
 
     public synchronized void kasihItemDiLadang(Item item, int row, int col){
         MakhlukHidup makhlukhidup = retrieveKartu(row,col);
-        if (makhlukhidup==null){
+        if (makhlukhidup == null){
             return;
-        }
-        else{
+        } else {
             // item.applyEffect(makhlukhidup);
         }
     }
@@ -25,36 +24,38 @@ public class Field extends GridMatrix<MakhlukHidup>{
     }
 
     // cek apakah ada item trap di range petak tertentu
-    public boolean adaTrap(int idrowstart, int idrowend, int idcolstart, int idcolend){
-        for (int i = idrowstart; i<=idrowend; i++){
-            for (int j = idcolstart; j<=idcolend; j++){
-                if(retrieveKartu(i, j)!=null){
+    public synchronized boolean adaTrap(int idrowstart, int idrowend, int idcolstart, int idcolend){
+        boolean bool = false;
+        for (int i = idrowstart; i <= idrowend; i++){
+            for (int j = idcolstart; j <= idcolend; j++){
+                if(retrieveKartu(i, j) != null){
                     if (retrieveKartu(i, j).hasTrap()){
-                        System.out.println("Si " + i +" "+ j + "punya trap");
-                        return true;
+                        System.out.println("Si " + i + " " + j + " punya trap");
+                        bool = true;
+                        break;
                     }
                 }
             }
         }
-        return false;
+        return bool;
     } 
 
-    public void bearKills(int idrowstart, int idrowend, int idcolstart, int idcolend){
+    public synchronized void bearKills(int idrowstart, int idrowend, int idcolstart, int idcolend){
         if (!adaTrap(idrowstart, idrowend, idcolstart, idcolend)){
-            for (int i = idrowstart; i<=idrowend; i++){
-                for (int j = idcolstart; j<=idcolend; j++){
-                    if(retrieveKartu(i, j)!=null){
+            for (int i = idrowstart; i <= idrowend; i++){
+                for (int j = idcolstart; j <= idcolend; j++){
+                    System.out.println("WOWO " + i + j);
+                    if(retrieveKartu(i, j) != null){
                         if (!retrieveKartu(i, j).isProtected()){
-                            System.out.println("Successfully kills "+ retrieveKartu(i, j).getName());
+                            System.out.println("Successfully kills " + retrieveKartu(i, j).getName());
                             removeKartu(i, j);
                         }
                     }
                 }
             }
-        }
-        else{
+        } else {
             System.out.println("Gaada yang mati, beruang ketangkap");
-
+            
         }
     }
 
@@ -62,5 +63,4 @@ public class Field extends GridMatrix<MakhlukHidup>{
     public synchronized void addKartu(MakhlukHidup mh, int row, int col){
         placeKartu(row, col, mh);
     }
-    
 }
