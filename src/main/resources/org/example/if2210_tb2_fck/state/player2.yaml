@@ -1,0 +1,15 @@
+jumlah_gulden: 300
+jumlah_deck: 38
+jumlah_deck_aktif: 2
+deck_aktif:
+  - lokasi: A01
+    kartu: BERUANG
+  - lokasi: B01
+    kartu: BERUANG
+jumlah_kartu_ladang: 1
+ladang:
+  - lokasi: B02
+    kartu: AYAM
+    berat/umur: 0
+    jumlah_item_aktif: 0
+    items: []

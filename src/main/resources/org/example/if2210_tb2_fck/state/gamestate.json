@@ -1,0 +1,11 @@
+{
+  "current_turn": 1,
+  "jumlah_item_di_shop": 5,
+  "shop_items": [
+    {"name": "SIRIP_HIU", "stock": 5},
+    {"name": "SUSU", "stock": 2},
+    {"name": "DAGING_DOMBA", "stock": 3},
+    {"name": "DAGING_KUDA", "stock": 10},
+    {"name": "DAGING_BERUANG", "stock": 1}
+  ]
+}

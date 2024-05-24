@@ -1,0 +1,13 @@
+jumlah_gulden: 500
+jumlah_deck: 39
+jumlah_deck_aktif: 1
+deck_aktif:
+  - lokasi: A01
+    kartu: BERUANG
+jumlah_kartu_ladang: 1
+ladang:
+  - lokasi: A01
+    kartu: DOMBA
+    berat/umur: 5
+    jumlah_item_aktif: 3
+    items: [ACCELERATE, DELAY, PROTECT]
