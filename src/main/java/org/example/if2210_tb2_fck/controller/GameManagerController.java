@@ -8,8 +8,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.example.if2210_tb2_fck.command.ShowLadang;
 import org.example.if2210_tb2_fck.model.Player;
 import org.example.if2210_tb2_fck.model.Toko;
+import org.example.if2210_tb2_fck.model.MakhlukHidup;
+import org.example.if2210_tb2_fck.model.Tanaman;
 
 import java.io.IOException;
 import java.util.Random;
@@ -40,18 +43,15 @@ public class GameManagerController {
 
     @FXML
     public void initialize() {
+        try {
+            loadLadang();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         startButton.setOnAction(event -> {
             try {
                 startTurn();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-        // Call loadLadang using Platform.runLater to ensure FXML elements are initialized
-        Platform.runLater(() -> {
-            try {
-                loadLadang();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -61,10 +61,33 @@ public class GameManagerController {
     private void loadLadang() throws IOException {
         System.out.println("Loading Ladang.fxml");
         FXMLLoader ladangLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml"));
+        if (getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml") == null) {
+            System.out.println("Resource not found!");
+        }
+
         AnchorPane ladangPane = ladangLoader.load();
         CustomLadangController ladangController = ladangLoader.getController();
 
+        System.out.println("LadangPane ID: " + ladangPane.getId());
+        System.out.println("LadangController: " + (ladangController != null));
+
         ladangContainer.getChildren().setAll(ladangPane);
+
+        // Create a Player object and populate its ladang with some Kartu objects
+        Player player = new Player("Thea");
+        MakhlukHidup mh1 = new MakhlukHidup("CornSeeds", "Tanaman");
+        MakhlukHidup mh2 = new MakhlukHidup("PumpkinSeeds", "Tanaman");
+        Tanaman tn1 = new Tanaman("PumpkinSeeds");
+        tn1.setUmur(10);
+        player.getLadang().addKartu(mh1, 0, 0);
+        player.getLadang().addKartu(mh2, 0, 3);
+        player.getLadang().addKartu(tn1, 0, 1);
+
+        // Instantiate ShowLadang to update the ladang view
+        ShowLadang showLadang = new ShowLadang(player, ladangController);
+        ladangController.regeneratePanes();
+        showLadang.updateLadang(player);
+
         System.out.println("Ladang.fxml loaded and added to the main view");
     }
 

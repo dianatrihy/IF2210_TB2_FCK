@@ -17,8 +17,8 @@ public class CustomLadangController {
     @FXML
     private AnchorPane anchorPane; // Assuming this is your AnchorPane in FXML
     private final double padding = 10;
-    private int row = 10;            // Number of rows
-    private int col = 10;            // Number of columns
+    private int row = 4;            // Number of rows
+    private int col = 5;            // Number of columns
 
     private final double originalWidth = 92;
     private final double originalHeight = 105;
@@ -34,7 +34,8 @@ public class CustomLadangController {
     }
     // Your initialization method or wherever you set row and col values
     public void initialize() {
-        System.out.println("CustomLadangController initialized"); // Debugging
+        System.out.println("AnchorPane ID: " + anchorPane.getId());
+//        System.out.println("CustomLadangController initialized"); // Debugging
         generateCustomPanes();
     }
 
@@ -109,6 +110,11 @@ public class CustomLadangController {
             else if(this.row == 5){
                 loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/CardTiny.fxml"));
             }
+
+            if (loader == null) {
+                throw new IOException("Loader is null, cannot load the card.");
+            }
+
             Pane cardPane = loader.load();
 
             CardController cardController = loader.getController();

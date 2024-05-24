@@ -22,14 +22,13 @@ public class ShowLadang {
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                MakhlukHidup kartu = ladangplayer.retrieveKartu(i, j);
+                Kartu kartu = ladangplayer.retrieveKartu(i, j);
                 if(kartu != null){
                     try {
                         controller.setCardToPane(i, j, kartu);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }
             }
         }
