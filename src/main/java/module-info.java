@@ -11,6 +11,8 @@ module org.example.if2210_tb2_fck {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.io;
     requires java.compiler;
+    requires com.fasterxml.jackson.databind;
+    requires org.yaml.snakeyaml;
 
     opens org.example.if2210_tb2_fck to javafx.fxml;
     exports org.example.if2210_tb2_fck;
