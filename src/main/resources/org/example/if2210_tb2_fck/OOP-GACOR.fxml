@@ -150,7 +150,7 @@
             </DropShadow>
          </effect>
       </Button>
-      <Button layoutX="23.0" layoutY="221.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #fadb3e; -fx-border-color: white;" text="NEXT" textAlignment="CENTER" textFill="#260000" wrapText="true">
+      <Button fx:id="nextButton" layoutX="23.0" layoutY="221.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #fadb3e; -fx-border-color: white;" text="NEXT" textAlignment="CENTER" textFill="#260000" wrapText="true" onAction="#nextTurn">
          <font>
             <Font name="Bodoni MT" size="23.0" />
          </font>

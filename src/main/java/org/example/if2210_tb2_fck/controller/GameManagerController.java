@@ -34,6 +34,9 @@ public class GameManagerController {
     private Text currentPlayerText;
 
     @FXML
+    private Button nextButton;
+
+    @FXML
     private Button ladangKuButton;
 
     @FXML
@@ -83,6 +86,15 @@ public class GameManagerController {
 
         updateCurrentPlayerText();
 
+        nextButton.setOnAction(event -> {
+            try {
+                System.out.println("Next button clicked!");
+                nextTurn();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
         ladangKuButton.setOnAction(event -> {
             try {
                 loadLadang(getCurrentPlayer());
@@ -117,7 +129,9 @@ public class GameManagerController {
     }
 
     private void updateCurrentPlayerText(){
+        System.out.println("Updating current player text..." + getCurrentTurn() + getCurrentPlayer().getNama()); // debug
         currentPlayerText.setText(getCurrentPlayer().getNama() + " (" + getCurrentTurn() + ")");
+        System.out.println("DONE Updating current player text..." + getCurrentTurn() + getCurrentPlayer().getNama()); // debug
     }
 
     private void loadToko() throws IOException {
@@ -266,6 +280,8 @@ public class GameManagerController {
 
         AnchorPane rootPane = (AnchorPane) mainView;
         rootPane.getChildren().add(deckPane);
+
+        updateCurrentPlayerText();
     }
 
     public Player getCurrentPlayer(){
@@ -277,13 +293,14 @@ public class GameManagerController {
     }
 
     public void nextTurn() throws IOException {
+        System.out.println("Next turn..."); // debug
         current_turn++;
+        updateCurrentPlayerText();
         if (current_turn > MAX_TURNS){
             endGame();
         } else {
             startTurn();
         }
-        updateCurrentPlayerText();
     }
 
     public int getCurrentTurn(){
@@ -340,10 +357,8 @@ public class GameManagerController {
         this.player2 = loadState.getPlayer2();
         this.current_turn = loadState.getCurrentTurn();
         this.toko = loadState.getToko();
-        System.out.println("Load state successful!" + loadState.getCurrentTurn()); // debug
-
+        System.out.println("Load state successful!" + getCurrentTurn()); // debug
+        updateCurrentPlayerText();
         showMainView();
     }
-
-
 }
