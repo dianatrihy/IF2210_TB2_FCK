@@ -26,6 +26,10 @@ public class Hewan extends MakhlukHidup {
         };
     }
 
+    public void setBerat(Integer berat){
+        this.berat = berat;
+    }
+
     public void addBerat(Integer berat) {
         this.berat += berat;
     }
