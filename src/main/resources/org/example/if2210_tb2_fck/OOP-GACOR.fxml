@@ -88,7 +88,7 @@
          <font>
             <Font name="Bodoni MT" size="26.0" />
          </font></Text>
-      <Pane fx:id="deckAktifPane1" layoutX="177.0" layoutY="527.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+      <Pane layoutX="177.0" layoutY="527.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
          <effect>
             <DropShadow>
                <color>
@@ -223,7 +223,7 @@
             </DropShadow>
          </effect>
       </Button>
-      <Pane fx:id="deckAktifPane2" layoutX="295.0" layoutY="527.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+      <Pane layoutX="295.0" layoutY="527.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
          <effect>
             <DropShadow>
                <color>
@@ -232,7 +232,7 @@
             </DropShadow>
          </effect>
       </Pane>
-      <Pane fx:id="deckAktifPane3" layoutX="414.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+      <Pane layoutX="414.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
          <effect>
             <DropShadow>
                <color>
@@ -241,7 +241,7 @@
             </DropShadow>
          </effect>
       </Pane>
-      <Pane fx:id="deckAktifPane4" layoutX="532.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+      <Pane layoutX="532.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
          <effect>
             <DropShadow>
                <color>
@@ -250,7 +250,7 @@
             </DropShadow>
          </effect>
       </Pane>
-      <Pane fx:id="deckAktifPane5" layoutX="652.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+      <Pane layoutX="652.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
          <effect>
             <DropShadow>
                <color>
@@ -259,7 +259,7 @@
             </DropShadow>
          </effect>
       </Pane>
-      <Pane fx:id="deckAktifPane6" layoutX="770.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+      <Pane layoutX="770.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
          <effect>
             <DropShadow>
                <color>

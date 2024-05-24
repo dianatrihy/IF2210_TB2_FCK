@@ -58,7 +58,7 @@ public class GameManagerController {
         ShuffleController shuffleController = loader.getController();
         shuffleController.setPlayer(getCurrentPlayer());
         shuffleController.handleShuffle();
-//        mainPane.getChildren().setAll(shufflePane);
+
         Stage stage = new Stage();
         stage.setScene(new Scene(shufflePane));
         stage.showAndWait();
@@ -71,8 +71,14 @@ public class GameManagerController {
         mainPane.getChildren().setAll(mainView);
 
         // Load DeckAktifController
-        DeckAktifController deckController = loader.getController();
+        FXMLLoader deckLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/DeckAktif.fxml"));
+        Pane deckPane = deckLoader.load();
+        DeckAktifController deckController = deckLoader.getController();
         deckController.setDeckAktif(getCurrentPlayer().getDeckAktif());
+
+        // Add DeckAktifPane to the main view
+        AnchorPane rootPane = (AnchorPane) mainView;
+        rootPane.getChildren().add(deckPane);
     }
 
     public Player getCurrentPlayer(){

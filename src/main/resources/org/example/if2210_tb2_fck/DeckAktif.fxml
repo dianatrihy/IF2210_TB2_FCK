@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.paint.Color?>
+
+<Pane fx:id="deckAktifPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.if2210_tb2_fck.controller.DeckAktifController">
+    <children>
+        <Pane fx:id="deckAktifPane1" layoutX="177.0" layoutY="527.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+            <effect>
+                <DropShadow>
+                    <color>
+                        <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Pane>
+        <Pane fx:id="deckAktifPane2" layoutX="295.0" layoutY="527.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+            <effect>
+                <DropShadow>
+                    <color>
+                        <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Pane>
+        <Pane fx:id="deckAktifPane3" layoutX="414.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+            <effect>
+                <DropShadow>
+                    <color>
+                        <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Pane>
+        <Pane fx:id="deckAktifPane4" layoutX="532.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+            <effect>
+                <DropShadow>
+                    <color>
+                        <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Pane>
+        <Pane fx:id="deckAktifPane5" layoutX="652.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+            <effect>
+                <DropShadow>
+                    <color>
+                        <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Pane>
+        <Pane fx:id="deckAktifPane6" layoutX="770.0" layoutY="528.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
+            <effect>
+                <DropShadow>
+                    <color>
+                        <Color red="0.48245614767074585" green="0.48245614767074585" blue="0.48245614767074585" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Pane>
+    </children>
+</Pane>
