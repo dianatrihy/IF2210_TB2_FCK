@@ -16,6 +16,7 @@ import org.example.if2210_tb2_fck.model.Player;
 import org.example.if2210_tb2_fck.model.Toko;
 import org.example.if2210_tb2_fck.model.MakhlukHidup;
 import org.example.if2210_tb2_fck.model.Tanaman;
+import org.example.if2210_tb2_fck.model.LoadState;
 
 import java.io.IOException;
 import java.util.Random;
@@ -38,11 +39,15 @@ public class GameManagerController {
     private Button tokoButton;
 
     @FXML
+    private Button loadStateButton;
+
+    @FXML
     private AnchorPane Timer;
 
     @FXML
     private AnchorPane ladangContainer;
 
+    private LoadState loadState;
     private Player player1;
     private Player player2;
     private int current_turn;
@@ -91,6 +96,14 @@ public class GameManagerController {
         tokoButton.setOnAction(event -> {
             try {
                 loadToko();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        loadStateButton.setOnAction(event -> {
+            try {
+                handleLoadStateButton();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -145,7 +158,6 @@ public class GameManagerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
     }
 
     private void loadLadang(Player player) throws IOException {
@@ -154,7 +166,7 @@ public class GameManagerController {
         if (getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml") == null) {
             System.out.println("Resource not found!");
         }
-        
+
         AnchorPane ladangPane = ladangLoader.load();
         CustomLadangController ladangController = ladangLoader.getController();
 
@@ -162,7 +174,6 @@ public class GameManagerController {
 
         // Create a Player object and populate its ladang with some Kartu objects
         Player player1 = new Player("Thea");
-
         MakhlukHidup mh1 = new MakhlukHidup("CornSeeds", "Tanaman");
         MakhlukHidup mh2 = new MakhlukHidup("PumpkinSeeds", "Tanaman");
         mh1.addItem("BearTrap");
@@ -183,7 +194,6 @@ public class GameManagerController {
         // player.getLadang().addKartu(tn3, 3, 1);
         // player.getLadang().addKartu(tn4, 2, 3);
         // player.getLadang().addKartu(tn5, 3, 2);
-
 
         // Instantiate ShowLadang to update the ladang view
         ShowLadang showLadang = new ShowLadang(player, ladangController);
@@ -214,7 +224,6 @@ public class GameManagerController {
     
         System.out.println("LadangKWWWWWWWWWW.fxml loaded and added to the main view");
     }
-    
 
     public void handleStartButton() throws IOException {
         startTurn();
@@ -289,6 +298,7 @@ public class GameManagerController {
         // return random.nextBoolean();
         return false;
     }
+
     public void refreshLadang() {
         try {
             loadLadangKW(getCurrentPlayer());
@@ -300,4 +310,29 @@ public class GameManagerController {
     private void freeAction(){
         System.out.println("Free action phase...");
     }
+
+    public void handleLoadStateButton() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/LoadState.fxml"));
+        Pane loadStatePane = loader.load();
+        LoadStateController loadStateController = loader.getController();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(loadStatePane));
+        stage.showAndWait();
+
+        this.loadState = loadStateController.getLoadState();
+        if (loadState == null){
+            System.out.println("Load state failed!");
+            return;
+        }
+        this.player1 = loadState.getPlayer1();
+        this.player2 = loadState.getPlayer2();
+        this.current_turn = loadState.getCurrentTurn();
+        this.toko = loadState.getToko();
+        System.out.println("Load state successful!" + loadState.getCurrentTurn()); // debug
+
+        showMainView();
+    }
+
+
 }
