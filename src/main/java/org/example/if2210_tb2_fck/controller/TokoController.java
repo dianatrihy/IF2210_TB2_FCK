@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 
 import org.example.if2210_tb2_fck.model.Player;
 import org.example.if2210_tb2_fck.model.Toko;
+import org.example.if2210_tb2_fck.model.Kartu;
 
 public class TokoController {
     private DragAndDrop dad;
@@ -36,27 +37,15 @@ public class TokoController {
     @FXML
     private void handleJualButton() {
         try {
-            // Load the Jual.fxml file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Jual.fxml"));
-            System.out.println("hi");
-            Parent jualRoot = loader.load();
             JualController jualController = new JualController();
-            
-            // Create a new Player object (replace this with your actual player initialization logic)
-            Player player = new Player("Player 1");
-            
-            // Pass the Player object to the JualController
-            jualController.setPlayer(player);
-            System.out.println("Player passed to JualController: " + jualController.getPlayer().getNama());
-            loader.setController(jualController);
+            jualController.setPlayer(this.player);
 
-            // Create a new scene
+            loader.setController(jualController);
+            Parent jualRoot = loader.load();
             Scene jualScene = new Scene(jualRoot);
 
-            // Get the stage from the button
             Stage stage = (Stage) jualButton.getScene().getWindow();
-
-            // Set the scene and show the stage
             stage.setScene(jualScene);
             stage.show();
         } catch (IOException e) {
@@ -76,7 +65,7 @@ public class TokoController {
     }
 
     private void handleShowToko() throws IOException {
-        Map<String, Integer> product = Toko.getInstance(0).getStockMap();
+        Map<String, Integer> product = Toko.getInstance().getStockMap();
         int row = 0;
         int col = 0;
 
@@ -93,8 +82,8 @@ public class TokoController {
                 cardGrid.add(stockLabel, col, row + 1);
 
                 // Add buy button
-                Button buyButton = new Button("Buy (" + Toko.getInstance(0).getPrice(key) + "$)");
-                buyButton.setOnAction(event -> handleBuy(key));
+                Button buyButton = new Button("Buy (" + Toko.getInstance().getPrice(key) + "$)");
+                buyButton.setOnAction(event -> handlePlayerBuying(key));
                 cardGrid.add(buyButton, col, row + 2);
 
                 cardGrid.add(cardPane, col, row);
@@ -102,7 +91,7 @@ public class TokoController {
                 col++;
                 if (col == MAX_COLUMNS) {
                     col = 0;
-                    row += 3; // Increment row by 3 to leave space for stock, button, and next card
+                    row += 3;
                 }
             }
         }
@@ -112,7 +101,14 @@ public class TokoController {
         this.player = player;
     }
 
-    private void handleBuy(String productKey) {
-        
+    private void handlePlayerBuying(String productKey) {
+        Kartu boughtCard = Toko.getInstance().playerBuying(productKey);
+        Integer price = Toko.getInstance().getPrice(productKey);
+        this.player.beli(boughtCard, price);
+        try {
+            handleShowToko();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

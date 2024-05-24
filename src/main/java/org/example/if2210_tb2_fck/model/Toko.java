@@ -12,16 +12,13 @@ public class Toko {
         populateCatalogPrice();
     }
 
-    private Toko(int loadOption) {
-        if (loadOption == 1) {
-        } else {
-            defaultPopulateCatalogStock();
-        }
+    private Toko() {
+        defaultPopulateCatalogStock();
     }
 
-    public static Toko getInstance(int loadOption) {
+    public static Toko getInstance() {
         if (instance == null) {
-            instance = new Toko(loadOption);
+            instance = new Toko();
         }
         return instance;
     }
@@ -53,11 +50,13 @@ public class Toko {
         return catalog_price.get(key);
     }
 
-    public void buy(String name) {
+    public Produk playerBuying(String name) {
         catalog_stock.put(name, catalog_stock.get(name) - 1);
+        return new Produk(name);
     }
 
-    public void sell(String name) {
+    public void playerSelling(Kartu kartu) {
+        String name = kartu.getName();
         catalog_stock.put(name, catalog_stock.get(name) + 1);
     }
 

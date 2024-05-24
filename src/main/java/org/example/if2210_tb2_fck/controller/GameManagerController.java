@@ -38,7 +38,7 @@ public class GameManagerController {
         this.player1 = new Player("Player 1");
         this.player2 = new Player("Player 2");
         this.current_turn = 1;
-        this.toko = Toko.getInstance(0);
+        this.toko = Toko.getInstance();
     }
 
     @FXML
