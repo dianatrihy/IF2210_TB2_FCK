@@ -12,6 +12,7 @@ import org.example.if2210_tb2_fck.parser.IParser;
 import org.example.if2210_tb2_fck.parser.TxtParser;
 
 import java.io.File;
+import java.util.Set;
 
 public class LoadStateController {
 
@@ -31,6 +32,7 @@ public class LoadStateController {
     private Label statusLabel;
 
     private LoadState loadState;
+    private GameManagerController gameManagerController;
 
     @FXML
     public void initialize(){
@@ -38,6 +40,10 @@ public class LoadStateController {
         statusLabel.setVisible(false);
         backButton.setOnAction(event -> handleBackButton());
         loadButton.setOnAction(event -> handleLoadButton());
+    }
+
+    public void setGameManagerController(GameManagerController gameManagerController){
+        this.gameManagerController = gameManagerController;
     }
 
     private void handleBackButton(){
@@ -57,7 +63,7 @@ public class LoadStateController {
             statusLabel.setText("Folder not found.");
             statusLabel.setTextFill(javafx.scene.paint.Color.RED);
         } else {
-           boolean success = loadState(format, folder);
+            boolean success = loadState(format, folder);
             if (success){
                 statusLabel.setText("State Loaded Successfully");
                 statusLabel.setTextFill(javafx.scene.paint.Color.GREEN);
@@ -78,19 +84,28 @@ public class LoadStateController {
         return file.exists() && file.isDirectory();
     }
 
-   private boolean loadState(String format, String folder){
-       try {
-            IParser parser = new TxtParser();
+    private boolean loadState(String format, String folder){
+        try {
+            IParser parser = gameManagerController.getParser(format);
+            if (parser == null){
+                throw new IllegalArgumentException("No parser found for format: " + format);
+            }
             LoadState loadState = new LoadState(parser.parseGameState(folder + "/gamestate." + format), parser.parsePlayer(folder + "/player1." + format), parser.parsePlayer(folder + "/player2." + format));
             this.loadState = loadState;
             return true;
         } catch (Exception e){
-           e.printStackTrace();
-       }
-       return false;
-   }
+            e.printStackTrace();
+        }
+        return false;
+    }
 
-   public LoadState getLoadState(){
+    public LoadState getLoadState(){
         return this.loadState;
-   }
+    }
+
+    public void updateFormats(Set<String> formats) {
+        System.err.println("DI LOAD CONTROLLER: " + formats); // debug
+        formatComboBox.getItems().clear();
+        formatComboBox.getItems().addAll(formats);
+    }
 }
