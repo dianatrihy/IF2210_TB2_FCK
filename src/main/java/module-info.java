@@ -1,4 +1,5 @@
 module org.example.if2210_tb2_fck {
+    uses org.example.if2210_tb2_fck.plugin.Plugin;
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -28,4 +29,10 @@ module org.example.if2210_tb2_fck {
 
     opens org.example.if2210_tb2_fck.command to javafx.fxml;
     exports org.example.if2210_tb2_fck.command;
+
+    opens org.example.if2210_tb2_fck.parser to javafx.fxml;
+    exports org.example.if2210_tb2_fck.parser;
+
+    opens org.example.if2210_tb2_fck.plugin to javafx.fxml;
+    exports org.example.if2210_tb2_fck.plugin;
 }
