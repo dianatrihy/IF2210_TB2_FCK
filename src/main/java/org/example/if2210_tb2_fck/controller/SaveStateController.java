@@ -24,8 +24,8 @@ public class SaveStateController {
     @FXML
     private TextField folderTextField;
 
-    @FXML
-    private Button saveButton; // Renamed from loadButton
+//    @FXML
+//    private Button saveButton; // Renamed from loadButton
 
     @FXML
     private Label statusLabel;
@@ -38,7 +38,7 @@ public class SaveStateController {
         formatComboBox.getItems().addAll("txt");
         statusLabel.setVisible(false);
         backButton.setOnAction(event -> handleBackButton());
-        saveButton.setOnAction(event -> handleSaveButton()); // Updated method call
+//        saveButton.setOnAction(event -> handleSaveButton()); // Updated method call
     }
 
     public void setGameManagerController(GameManagerController gameManagerController){
@@ -66,8 +66,8 @@ public class SaveStateController {
                 statusLabel.setText("State Saved Successfully");
                 statusLabel.setTextFill(javafx.scene.paint.Color.GREEN);
                 // Optional: close window
-                Stage stage = (Stage) saveButton.getScene().getWindow();
-                stage.close();
+//                Stage stage = (Stage) saveButton.getScene().getWindow();
+//                stage.close();
             } else {
                 statusLabel.setText("Failed to Save State");
                 statusLabel.setTextFill(javafx.scene.paint.Color.RED);
