@@ -8,18 +8,31 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import org.example.if2210_tb2_fck.command.BearAttack;
 import org.example.if2210_tb2_fck.command.ShowLadang;
 import org.example.if2210_tb2_fck.model.Player;
 import org.example.if2210_tb2_fck.model.Toko;
+import org.example.if2210_tb2_fck.parser.IParser;
+
 import org.example.if2210_tb2_fck.model.MakhlukHidup;
 import org.example.if2210_tb2_fck.model.Tanaman;
 import org.example.if2210_tb2_fck.model.LoadState;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.ServiceLoader;
+
 import javafx.scene.text.Text;
+import org.example.if2210_tb2_fck.parser.TxtParser;
+import org.example.if2210_tb2_fck.plugin.Plugin;
 
 public class GameManagerController {
 
@@ -48,6 +61,9 @@ public class GameManagerController {
     private Button loadStateButton;
 
     @FXML
+    private Button loadPluginButton;
+
+    @FXML
     private AnchorPane Timer;
 
     @FXML
@@ -65,6 +81,7 @@ public class GameManagerController {
     private int current_turn;
     private static final int MAX_TURNS = 20;
     private Toko toko;
+    private Map<String, IParser> parsers;
 
     public GameManagerController(){
         this.player1 = new Player("Player 1");
@@ -72,6 +89,9 @@ public class GameManagerController {
         this.player2 = new Player("Player 2");
         this.current_turn = 1;
         this.toko = Toko.getInstance();
+        this.parsers = new HashMap<>();
+        // Default parsers
+        this.parsers.put("txt", new TxtParser());
     }
 
     @FXML
@@ -132,6 +152,10 @@ public class GameManagerController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        });
+
+        loadPluginButton.setOnAction(event -> {
+            loadPlugin();
         });
     }
 
@@ -317,6 +341,8 @@ public class GameManagerController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/LoadState.fxml"));
         Pane loadStatePane = loader.load();
         LoadStateController loadStateController = loader.getController();
+        loadStateController.setGameManagerController(this);
+        loadStateController.updateFormats(parsers.keySet());
 
         Stage stage = new Stage();
         stage.setScene(new Scene(loadStatePane));
@@ -334,5 +360,56 @@ public class GameManagerController {
 
         updateCurrentPlayerText();
         showMainView();
+    }
+
+    public IParser getParser(String format){
+        return parsers.get(format);
+    }
+
+    public void addParser(String format, IParser parser) {
+        parsers.put(format, parser);
+    }
+
+    private void updateLoadStateFormats() {
+        System.out.println("Updating LoadState formats..."); // debug
+        Platform.runLater(() -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/LoadState.fxml"));
+                Pane loadStatePane = loader.load();
+                LoadStateController loadStateController = loader.getController();
+                // print parsers dan value
+                for (Map.Entry<String, IParser> entry : parsers.entrySet()) {
+                    System.out.println(entry.getKey() + " = " + entry.getValue());
+                } // debug
+                loadStateController.updateFormats(parsers.keySet());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void loadPlugin() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JAR files (*.jar)", "*.jar"));
+        File file = fileChooser.showOpenDialog(mainPane.getScene().getWindow());
+
+        if (file != null) {
+            try {
+                URL[] urls = {file.toURI().toURL()};
+                URLClassLoader classLoader = new URLClassLoader(urls);
+                ServiceLoader<Plugin> serviceLoader = ServiceLoader.load(Plugin.class, classLoader);
+
+                for (Plugin plugin : serviceLoader) {
+                    plugin.onLoad(this);
+                }
+
+                System.out.println("Plugin loaded from " + file.getName());
+
+                // Update ComboBox in LoadStateController
+                updateLoadStateFormats();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
