@@ -26,6 +26,7 @@ public class BearAttack {
     }
 
     public void bearAttackCommand(Player player, GameManagerController gm) {
+        gm.disableActionButtons(true);
         System.out.println("Bear attack!");
         int numRows = player.getLadang().getRow();
         int numCols = player.getLadang().getCol();
@@ -96,7 +97,7 @@ public class BearAttack {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                gameManagerController.disableActionButtons(true);
+                // gameManagerController.disableActionButtons(true);
             });
         } finally {
             lock.unlock();
