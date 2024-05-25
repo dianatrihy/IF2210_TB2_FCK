@@ -261,11 +261,19 @@ public class GameManagerController {
             Pane deckPane = deckLoader.load();
             DeckAktifController deckController = deckLoader.getController();
             deckController.setDeckAktif(getCurrentPlayer().getDeckAktif());
+            
+            AnchorPane.setTopAnchor(deckPane, 0.0);
+            AnchorPane.setBottomAnchor(deckPane, 0.0);
+            AnchorPane.setLeftAnchor(deckPane, 0.0);
+            AnchorPane.setRightAnchor(deckPane, 0.0);
+    
             rootPane.getChildren().add(deckPane);
+    
+            deckPane.setMouseTransparent(true);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }    
 
     public void showMainView() throws IOException {
         System.out.println("Loading OOP-GACOR.fxml");
@@ -325,7 +333,7 @@ public class GameManagerController {
     }
 
     private boolean bearAttackOccurs() {
-        return true;
+        return false;
     }
 
     public void refreshLadang() {
