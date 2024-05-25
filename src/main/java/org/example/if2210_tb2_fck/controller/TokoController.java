@@ -109,13 +109,13 @@ public class TokoController {
     }
 
     private void handlePlayerBuying(String productKey) {
-        Kartu boughtCard = Toko.getInstance().playerBuying(productKey);
         Integer price = Toko.getInstance().getPrice(productKey);
         if (this.player.getUang() < price) {
             // Show error message
             showError("Error", "Your money is not sufficient for this purchase.");
             return;
         }
+        Kartu boughtCard = Toko.getInstance().playerBuying(productKey);
         this.player.beli(boughtCard, price);
         try {
             cardGrid.getChildren().clear();
