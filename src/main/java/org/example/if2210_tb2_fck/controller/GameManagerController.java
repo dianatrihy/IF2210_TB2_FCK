@@ -240,6 +240,18 @@ public class GameManagerController {
         System.out.println("Ladang.fxml loaded and added to the main view");
     }
 
+    public void loadLadangWithBeruang(Player player, int startRow, int endRow, int startCol, int endCol) throws IOException {
+        System.out.println("Loading Ladang.fxml");
+        FXMLLoader ladangLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/LadangBeruang.fxml"));
+        AnchorPane ladangPane = ladangLoader.load();
+        CustomLadangBeruangController ladangController = ladangLoader.getController();
+        ladangController.setBearAttackPositions(startRow, endRow, startCol, endCol);
+
+        ladangContainer.getChildren().setAll(ladangPane);
+        ShowLadang showLadang = new ShowLadang(player, ladangController);
+        showLadang.updateLadang(player);
+    }
+
     public void loadLadangKW(Player player) throws IOException {
         System.out.println("Loading Ladang.fxml");
         FXMLLoader ladangLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml"));

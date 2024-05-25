@@ -15,15 +15,15 @@ import javafx.scene.layout.Pane;
 public class CustomLadangController {
 
     @FXML
-    private AnchorPane anchorPane; // Assuming this is your AnchorPane in FXML
-    private final double padding = 10;
-    private int row = 4;            // Number of rows
-    private int col = 5;            // Number of columns
-    private boolean isInitialized = false;
+    protected AnchorPane anchorPane; // Assuming this is your AnchorPane in FXML
+    protected final double padding = 10;
+    protected int row = 4;            // Number of rows
+    protected int col = 5;            // Number of columns
+    protected boolean isInitialized = false;
 
-    private final double originalWidth = 92;
-    private final double originalHeight = 105;
-    private final double aspectRatio = originalWidth / originalHeight;
+    protected final double originalWidth = 92;
+    protected final double originalHeight = 105;
+    protected final double aspectRatio = originalWidth / originalHeight;
 
 
     public CustomLadangController() {
@@ -261,7 +261,7 @@ public class CustomLadangController {
     }
 
 
-    private Kartu createCardByType(String cardType, String cardName) {
+    protected Kartu createCardByType(String cardType, String cardName) {
         switch (cardType) {
             case "Makhluk Hidup":
                 return new MakhlukHidup(cardName, "Makhluk Hidup");
