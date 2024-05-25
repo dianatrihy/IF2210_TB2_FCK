@@ -87,10 +87,10 @@ public class GameManagerController {
         this.player1 = new Player("Player 1");
         player1.setUang(400);
         this.player2 = new Player("Player 2");
+        player2.setUang(400);
         this.current_turn = 1;
         this.toko = Toko.getInstance();
         this.parsers = new HashMap<>();
-        // Default parsers
         this.parsers.put("txt", new TxtParser());
     }
 
@@ -104,7 +104,7 @@ public class GameManagerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
         startButton.setOnAction(event -> {
             try {
                 startTurn();
@@ -196,7 +196,7 @@ public class GameManagerController {
 
         Timer.getChildren().setAll(timerPane);
         BearAttack bearAttack = new BearAttack();
-        bearAttack.bearAttackCommand(getCurrentPlayer(), timerController, this);
+        bearAttack.bearAttackCommand(getCurrentPlayer(), timerController);
 
         System.out.println("Timer.fxml loaded and added to the main view");
     }
@@ -265,7 +265,6 @@ public class GameManagerController {
         Stage stage = new Stage();
         stage.setScene(new Scene(shufflePane));
         stage.showAndWait();
-        showMainView();
     }
 
     private void showMainView() throws IOException {
