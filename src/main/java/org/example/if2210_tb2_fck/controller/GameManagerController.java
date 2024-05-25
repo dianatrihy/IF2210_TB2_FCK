@@ -107,6 +107,7 @@ public class GameManagerController {
         }
         
         startButton.setOnAction(event -> {
+            startButton.setVisible(false);
             try {
                 startTurn();
             } catch (IOException e) {
@@ -229,9 +230,6 @@ public class GameManagerController {
 
         ladangContainer.getChildren().setAll(ladangPane);
 
-        Tanaman tnx = new Tanaman("BIJI_LABU");
-        player.getLadang().addKartu(tnx, 1, 2);
-
         ladangController.regeneratePanes(player);
 
         System.out.println("Ladang.fxml loaded and added to the main view");
@@ -251,7 +249,8 @@ public class GameManagerController {
         Stage stage = new Stage();
         stage.setScene(new Scene(shufflePane));
         stage.showAndWait();
-        updateDeckAktifView();
+
+        refreshMainView();
     }
 
     public void updateDeckAktifView() {
@@ -275,26 +274,12 @@ public class GameManagerController {
         }
     }    
 
-    public void showMainView() throws IOException {
-        System.out.println("Loading OOP-GACOR.fxml");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/OOP-GACOR.fxml"));
-        Pane mainView = loader.load();
-        mainPane.getChildren().setAll(mainView);
-
-        System.out.println("Loading DeckAktif.fxml");
-        FXMLLoader deckLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/DeckAktif.fxml"));
-        Pane deckPane = deckLoader.load();
-        DeckAktifController deckController = deckLoader.getController();
-        deckController.setDeckAktif(getCurrentPlayer().getDeckAktif());
-
-        AnchorPane rootPane = (AnchorPane) mainView;
-        rootPane.getChildren().add(deckPane);
-
-        System.out.println("Ladang current player: " + getCurrentPlayer().getLadang().getAllCards()); // debug
-        System.out.println("Ladang other player: " + getOtherPlayer().getLadang().getAllCards()); // debug
-
-        updateCurrentPlayerText();
+    public void refreshMainView(){
         refreshLadang();
+        updateDeckAktifView();
+        updateCurrentPlayerText();
+        updatePlayerMoney(getCurrentPlayer());
+        updatePlayerMoney(getOtherPlayer());
     }
 
     public Player getCurrentPlayer() {
@@ -307,7 +292,7 @@ public class GameManagerController {
 
     public void nextTurn() throws IOException {
         current_turn++;
-        updateCurrentPlayerText();
+        refreshMainView();
         if (current_turn > MAX_TURNS) {
             endGame();
         } else {
@@ -325,7 +310,7 @@ public class GameManagerController {
 
     public void startTurn() throws IOException {
         shuffleCards();
-        loadLadangKW(getCurrentPlayer());
+        refreshMainView();
         if (bearAttackOccurs()) {
             bearAttack();
         }
@@ -333,7 +318,8 @@ public class GameManagerController {
     }
 
     private boolean bearAttackOccurs() {
-        return false;
+        Random random = new Random();
+        return random.nextBoolean();
     }
 
     public void refreshLadang() {
@@ -369,8 +355,8 @@ public class GameManagerController {
         this.current_turn = loadState.getCurrentTurn();
         this.toko = loadState.getToko();
 
-        updateCurrentPlayerText();
-        showMainView();
+        updateLoadStateFormats();
+        refreshMainView();
     }
 
     public IParser getParser(String format){
@@ -424,8 +410,15 @@ public class GameManagerController {
         }
     }
 
+    private void loadPluginParsers() {
+        ServiceLoader<Plugin> serviceLoader = ServiceLoader.load(Plugin.class);
+        for (Plugin plugin : serviceLoader) {
+            plugin.onLoad(this);
+        }
+    }
+
     public void disableButtons(boolean enable) {
-        System.out.println("MASUK DISABLE BUTTONS -------------------------------------------------");
+        System.out.println("MASUK DISABLE BUTTONS -------------------------------------------------"); // debug
         startButton.setDisable(enable);
         ladangKuButton.setDisable(enable);
         ladangLawanButton.setDisable(enable);
