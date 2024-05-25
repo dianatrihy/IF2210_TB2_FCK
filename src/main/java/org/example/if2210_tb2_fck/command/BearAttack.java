@@ -37,6 +37,12 @@ public class BearAttack {
         int maxCols = Math.min(numCols - startCol, 3);
         int endCol = startCol + random.nextInt(maxCols);
 
+        try {
+            gm.loadLadangWithBeruang(player, startRow, endRow, startCol, endCol);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         System.out.println("Start Row: " + startRow);
         System.out.println("End Row: " + endRow);
         System.out.println("Start Column: " + startCol);
