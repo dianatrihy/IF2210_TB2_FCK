@@ -47,4 +47,30 @@ public class DeckAktif extends GridMatrix<Kartu> {
         return ret;
     }
 
+    public List<Kartu> getAllKartuNull() {
+        List<Kartu> ret = new ArrayList<Kartu>();
+
+        for (int i = 0; i < 6; i++) {
+            if (retrieveKartu(0, i) != null) {
+                ret.add(retrieveKartu(0, i));
+            } else {
+                ret.add(null);
+            }
+        }
+
+        return ret;
+    }
+
+    public List<Integer> getAllKartuLocation() {
+        List<Integer> ret = new ArrayList<>(6);
+        for (int i = 0; i < 6; i++) {
+            if (retrieveKartu(0, i) != null) {
+                ret.add(1);
+            } else {
+                ret.add(0);
+            }
+        }
+
+        return ret;
+    }
 }

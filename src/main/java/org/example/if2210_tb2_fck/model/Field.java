@@ -3,6 +3,8 @@ package org.example.if2210_tb2_fck.model;
 import org.example.if2210_tb2_fck.controller.GameManagerController;
 import org.example.if2210_tb2_fck.model.Item.Item;
 
+import java.util.ArrayList;
+
 public class Field extends GridMatrix<MakhlukHidup>{
     public Field(int row, int col) {
         super(row, col);
@@ -61,6 +63,41 @@ public class Field extends GridMatrix<MakhlukHidup>{
             player.simpanBeruang(beruang);
             System.out.println("HITUNG JUMLAH ELEMEN DI DECK AKTIF "+player.getDeckAktif().getNumOfElements());
         }
+    }
+
+    public ArrayList<ArrayList<Integer>> getAllKartuLocation(int r, int c) {
+        ArrayList<ArrayList<Integer>> ret = new ArrayList<>(r);
+
+        for (int i = 0; i < r; i++) {
+            ArrayList<Integer> row = new ArrayList<>(c);
+            for (int j = 0; j < c; j++) {
+                if (retrieveKartu(i, j) == null) { // Menganggap retrieveKartu mengembalikan 0 atau non-0
+                    row.add(0);
+                } else {
+                    row.add(1);
+                }
+            }
+            ret.add(row);
+        }
+
+        return ret;
+    }
+
+    public ArrayList<ArrayList<MakhlukHidup>> getAllKartuNull(int r, int c) {
+        ArrayList<ArrayList<MakhlukHidup>> ret = new ArrayList<>(r);
+
+        for (int i = 0; i < r; i++) {
+            ArrayList<MakhlukHidup> row = new ArrayList<>(c);
+            for (int j = 0; j < c; j++) {
+                if (retrieveKartu(i, j) != null) {
+                    row.add((MakhlukHidup) retrieveKartu(i, j));
+                } else {
+                    row.add(null);
+                }
+            }
+            ret.add(row);
+        }
+        return ret;
     }
 
     // DEBUGGING TES SHOW LADANG

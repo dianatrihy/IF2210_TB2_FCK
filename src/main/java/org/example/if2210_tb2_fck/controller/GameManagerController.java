@@ -58,6 +58,9 @@ public class GameManagerController {
     private Button tokoButton;
 
     @FXML
+    private Button saveStateButton;
+
+    @FXML
     private Button loadStateButton;
 
     @FXML
@@ -143,6 +146,14 @@ public class GameManagerController {
         tokoButton.setOnAction(event -> {
             try {
                 loadToko();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        saveStateButton.setOnAction(event -> {
+            try {
+                handleSaveStateButton();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -453,4 +464,32 @@ public class GameManagerController {
     public void setRootPane(AnchorPane rootPane) {
         this.rootPane = rootPane;
     }
+
+    public void handleSaveStateButton() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/SaveState.fxml"));
+        Pane saveStatePane = loader.load();
+        SaveStateController saveStateController = loader.getController();
+
+        // Set GameManagerController in SaveStateController
+        saveStateController.setGameManagerController(this);
+        saveStateController.updateFormats(parsers.keySet());
+
+        // Setup the scene and stage
+        Stage stage = new Stage();
+        stage.setScene(new Scene(saveStatePane));
+        stage.setTitle("Save Game State");
+        stage.initOwner(mainPane.getScene().getWindow()); // Set owner to link stage position with the main application window
+        stage.showAndWait();
+
+        // After saving, you might want to do something based on the success of the save operation
+        if (saveStateController.getSaveState() != null) {
+            System.out.println("Game state saved successfully.");
+        }
+    }
+
+    public LoadState getLoadState(){
+        return this.loadState;
+    }
+
+
 }

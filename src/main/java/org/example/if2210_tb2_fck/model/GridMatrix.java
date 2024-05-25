@@ -83,5 +83,8 @@ public class GridMatrix<T> {
         }
         return allKartu;
     }
-    
+
+    public int getDeckInventoryLength() {
+        return this.numofelements;
+    }
 }
