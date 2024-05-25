@@ -41,11 +41,8 @@ public class Player {
         this.uang = uang;
     }
 
-    // public void ambilKartu()
-
-    public void panen(int idrow, int idcol){
-        // ambil dari ladang, delete + return kartu
-        // simpan auto ke deckaktif
+    public void setDeckInventory(DeckInventory deck_inventory){
+        this.deck_inventory = deck_inventory;
     }
 
     public void simpanDeckAktif(int row, int col, Kartu kartu){

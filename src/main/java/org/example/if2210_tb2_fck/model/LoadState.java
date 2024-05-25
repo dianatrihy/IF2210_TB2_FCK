@@ -55,7 +55,9 @@ public class LoadState {
         int jumlahDeck = Integer.parseInt(lines[lineIndex++].trim());
         int jumlahDeckAktif = Integer.parseInt(lines[lineIndex++].trim());
 
-        DeckAktif deckAktif = player.getDeckAktif();
+        DeckInventory deckInventory = new DeckInventory(jumlahDeck);
+        player.setDeckInventory(deckInventory);
+
         for (int i = 0; i < jumlahDeckAktif; i++){
             String[] cardData = lines[lineIndex++].trim().split(" ");
             String lokasi = cardData[0];
