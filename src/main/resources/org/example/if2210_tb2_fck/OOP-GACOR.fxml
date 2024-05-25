@@ -218,7 +218,7 @@
             </DropShadow>
          </effect>
       </Button>
-      <Button fx:id="loadPluginButton" layoutX="924.0" layoutY="440.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="122.0" style="-fx-background-color: FFFFFF; -fx-border-color: white;" text="Load Plugin" textAlignment="CENTER" textFill="#260000" wrapText="true" onAction="#loadPlugin">
+      <Button fx:id="loadPluginButton" layoutX="924.0" layoutY="440.0" mnemonicParsing="false" onAction="#loadPlugin" prefHeight="52.0" prefWidth="122.0" style="-fx-background-color: FFFFFF; -fx-border-color: white;" text="Load Plugin" textAlignment="CENTER" textFill="#260000" wrapText="true">
          <font>
             <Font name="Bodoni MT" size="16.0" />
          </font>
@@ -275,6 +275,7 @@
             </DropShadow>
          </effect>
       </Pane>
+      <Pane fx:id="Timer" layoutX="22.0" layoutY="284.0" prefHeight="115.0" prefWidth="207.0" />
 
 <!--      <Pane layoutX="291.0" layoutY="20.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF; -fx-opacity: 40%;">-->
 <!--         <effect>-->

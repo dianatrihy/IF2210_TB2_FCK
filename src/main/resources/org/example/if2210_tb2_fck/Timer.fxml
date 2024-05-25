@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane fx:id="timerPane" prefHeight="124.0" prefWidth="207.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.if2210_tb2_fck.controller.TimerController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4b84b3" height="68.0" layoutY="52.0" stroke="WHITE" strokeType="INSIDE" width="207.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fadb3e" height="52.0" stroke="WHITE" strokeType="INSIDE" width="207.0" />
       <Text layoutX="14.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SISA WAKTU:" wrappingWidth="90.52293395996094">
          <font>
@@ -23,10 +27,26 @@
             <Font name="Bodoni MT" size="22.0" />
          </font>
       </Text>
-      <Text layoutX="4.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WHOA ADA BERUANG MENYERANGGG!" textAlignment="CENTER" wrappingWidth="199.11460876464844">
+      <Text layoutX="5.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADA BERUANG MENYERANG, ZEUS!" textAlignment="CENTER" wrappingWidth="199.11460876464844">
          <font>
-            <Font name="Bodoni Bd BT Bold" size="20.0" />
+            <Font name="Bodoni MT" size="19.0" />
          </font>
+         <fill>
+            <LinearGradient endX="0.3593380614657211" startY="0.4893617021276596">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8618420958518982" green="0.7550428509712219" blue="0.2793006896972656" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9803921580314636" green="0.8588235378265381" blue="0.24313725531101227" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
       </Text>
    </children>
 </Pane>

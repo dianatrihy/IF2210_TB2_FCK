@@ -64,7 +64,7 @@ public class GameManagerController {
     private Button loadPluginButton;
 
     @FXML
-    private AnchorPane Timer;
+    private Pane Timer;
 
     @FXML
     private AnchorPane ladangContainer;
@@ -188,26 +188,25 @@ public class GameManagerController {
         tokoStage.show();
     }
 
-    private void loadTimer() throws IOException {
+    public TimerController loadTimer() throws IOException {
         System.out.println("Loading Timer.fxml");
         FXMLLoader timerLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Timer.fxml"));
-        AnchorPane timerPane = timerLoader.load();
+        Pane timerPane = timerLoader.load();
         TimerController timerController = timerLoader.getController();
 
         Timer.getChildren().setAll(timerPane);
-        BearAttack bearAttack = new BearAttack();
-        bearAttack.bearAttackCommand(getCurrentPlayer(), timerController, this);
-
         System.out.println("Timer.fxml loaded and added to the main view");
+        return timerController;
+    }
+
+    public void clearTimer() {
+        Timer.getChildren().clear();
     }
     
     private void bearAttack() {
         System.out.println("Bear attack!");
-        try {
-            loadTimer();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        BearAttack bearAttack = new BearAttack();
+        bearAttack.bearAttackCommand(getCurrentPlayer(), this);
     }
 
     private void loadLadang(Player player) throws IOException {
