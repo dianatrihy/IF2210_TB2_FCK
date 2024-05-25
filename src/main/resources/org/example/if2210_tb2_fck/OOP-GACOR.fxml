@@ -150,14 +150,6 @@
             </DropShadow>
          </effect>
       </Button>
-      <Button fx:id="nextButton" layoutX="23.0" layoutY="221.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #fadb3e; -fx-border-color: white;" text="NEXT" textAlignment="CENTER" textFill="#260000" wrapText="true">
-         <font>
-            <Font name="Bodoni MT" size="23.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Button>
       <Button fx:id="ladangKuButton" layoutX="925.0" layoutY="93.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="122.0" style="-fx-background-color: FFFFFF; -fx-border-color: white;" text="Ladangku" textAlignment="CENTER" textFill="#260000" wrapText="true">
          <font>
             <Font name="Bodoni MT" size="16.0" />
@@ -276,6 +268,14 @@
          </effect>
       </Pane>
       <Pane fx:id="Timer" layoutX="22.0" layoutY="284.0" prefHeight="115.0" prefWidth="207.0" />
+      <Button fx:id="nextButton" layoutX="23.0" layoutY="221.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #fadb3e; -fx-border-color: white;" text="NEXT" textAlignment="CENTER" textFill="#260000" wrapText="true">
+         <font>
+            <Font name="Bodoni MT" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
 
 <!--      <Pane layoutX="291.0" layoutY="20.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF; -fx-opacity: 40%;">-->
 <!--         <effect>-->

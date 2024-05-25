@@ -253,6 +253,11 @@ public class GameManagerController {
         refreshMainView();
     }
 
+    private void refreshButton(Button button) {
+        rootPane.getChildren().remove(button);
+        rootPane.getChildren().add(button);
+    }
+
     public void refreshDeckAktif() {
         System.out.println("Updating deck aktif view...");
         try {
@@ -260,20 +265,27 @@ public class GameManagerController {
             Pane deckPane = deckLoader.load();
             DeckAktifController deckController = deckLoader.getController();
             deckController.setDeckAktif(getCurrentPlayer().getDeckAktif());
-            
+    
+            rootPane.getChildren().removeIf(node -> node.getId() != null && node.getId().equals("deckPane"));
+            deckPane.setId("deckPane");
             AnchorPane.setTopAnchor(deckPane, 0.0);
             AnchorPane.setBottomAnchor(deckPane, 0.0);
             AnchorPane.setLeftAnchor(deckPane, 0.0);
             AnchorPane.setRightAnchor(deckPane, 0.0);
     
             rootPane.getChildren().add(deckPane);
-    
-            deckPane.setMouseTransparent(true);
+
+            refreshButton(nextButton);
+            refreshButton(tokoButton);
+            refreshButton(loadStateButton);
+            refreshButton(loadPluginButton);
+            refreshButton(ladangKuButton);
+            refreshButton(ladangLawanButton);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }    
-
+    }
+    
     public void refreshMainView(){
         refreshLadang();
         refreshDeckAktif();
@@ -319,8 +331,9 @@ public class GameManagerController {
     }
 
     private boolean bearAttackOccurs() {
-        Random random = new Random();
-        return random.nextBoolean();
+        // Random random = new Random();
+        // return random.nextBoolean();
+        return false;
     }
 
     public void refreshLadang() {
