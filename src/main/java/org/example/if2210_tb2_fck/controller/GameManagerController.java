@@ -82,6 +82,7 @@ public class GameManagerController {
     private static final int MAX_TURNS = 20;
     private Toko toko;
     private Map<String, IParser> parsers;
+    private AnchorPane rootPane;
 
     public GameManagerController(){
         this.player1 = new Player("Player 1");
@@ -100,7 +101,7 @@ public class GameManagerController {
         updatePlayerMoney(player2);
         updateCurrentPlayerText();
         try {
-            loadLadang(getCurrentPlayer());
+            loadLadangKW(getCurrentPlayer());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -209,37 +210,6 @@ public class GameManagerController {
         bearAttack.bearAttackCommand(getCurrentPlayer(), this);
     }
 
-    private void loadLadang(Player player) throws IOException {
-        System.out.println("Loading Ladang.fxml");
-        FXMLLoader ladangLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml"));
-        AnchorPane ladangPane = ladangLoader.load();
-        CustomLadangController ladangController = ladangLoader.getController();
-
-        ladangContainer.getChildren().setAll(ladangPane);
-
-        MakhlukHidup mh1 = new MakhlukHidup("CornSeeds", "Tanaman");
-        MakhlukHidup mh2 = new MakhlukHidup("PumpkinSeeds", "Tanaman");
-        Tanaman tn1 = new Tanaman("PumpkinSeeds");
-        Tanaman tn2 = new Tanaman("StrawberrySeeds");
-        Tanaman tn3 = new Tanaman("CornSeeds");
-        mh1.addItem("BearTrap");
-        mh2.addItem("BearTrap");
-        tn1.addItem("BearTrap");
-        tn3.addItem("BearTrap");
-        tn2.addItem("BearTrap");
-        tn1.setUmur(10);
-        player.getLadang().addKartu(mh1, 0, 0);
-        player.getLadang().addKartu(mh2, 1, 3);
-        player.getLadang().addKartu(tn1, 2, 1);
-        player.getLadang().addKartu(tn2, 3, 0);
-        player.getLadang().addKartu(tn3, 2, 3);
-        // Instantiate ShowLadang to update the ladang view
-        ShowLadang showLadang = new ShowLadang(player, ladangController);
-        showLadang.updateLadang(player);
-
-        System.out.println("Ladang.fxml loaded and added to the main view");
-    }
-
     public void loadLadangWithBeruang(Player player, int startRow, int endRow, int startCol, int endCol) throws IOException {
         System.out.println("Loading Ladang.fxml");
         FXMLLoader ladangLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/LadangBeruang.fxml"));
@@ -249,7 +219,6 @@ public class GameManagerController {
 
         ladangContainer.getChildren().setAll(ladangPane);
         ShowLadang showLadang = new ShowLadang(player, ladangController);
-        showLadang.updateLadang(player);
     }
 
     public void loadLadangKW(Player player) throws IOException {
@@ -260,7 +229,7 @@ public class GameManagerController {
 
         ladangContainer.getChildren().setAll(ladangPane);
 
-        Tanaman tnx = new Tanaman("PumpkinSeeds");
+        Tanaman tnx = new Tanaman("BIJI_LABU");
         player.getLadang().addKartu(tnx, 1, 2);
 
         ladangController.regeneratePanes(player);
@@ -282,6 +251,20 @@ public class GameManagerController {
         Stage stage = new Stage();
         stage.setScene(new Scene(shufflePane));
         stage.showAndWait();
+        updateDeckAktifView();
+    }
+
+    public void updateDeckAktifView() {
+        System.out.println("Updating deck aktif view...");
+        try {
+            FXMLLoader deckLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/DeckAktif.fxml"));
+            Pane deckPane = deckLoader.load();
+            DeckAktifController deckController = deckLoader.getController();
+            deckController.setDeckAktif(getCurrentPlayer().getDeckAktif());
+            rootPane.getChildren().add(deckPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void showMainView() throws IOException {
@@ -303,7 +286,7 @@ public class GameManagerController {
         System.out.println("Ladang other player: " + getOtherPlayer().getLadang().getAllCards()); // debug
 
         updateCurrentPlayerText();
-//        refreshLadang();
+        refreshLadang();
     }
 
     public Player getCurrentPlayer() {
@@ -440,5 +423,9 @@ public class GameManagerController {
         ladangLawanButton.setDisable(enable);
         tokoButton.setDisable(enable);
         loadStateButton.setDisable(enable);
+    }
+
+    public void setRootPane(AnchorPane rootPane) {
+        this.rootPane = rootPane;
     }
 }

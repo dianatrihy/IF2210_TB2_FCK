@@ -112,6 +112,7 @@ public class JualController {
         this.player.jual(kartu, price);
         Toko.getInstance().playerSelling(kartu);
         gm.updatePlayerMoney(player);
+        gm.updateDeckAktifView();
         try {
             cardGrid.getChildren().clear();
             handleShowJual();

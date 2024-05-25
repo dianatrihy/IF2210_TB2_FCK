@@ -92,7 +92,7 @@ public class BearAttack {
                 player.getLadang().bearKills(startRow, endRow, startCol, endCol, player, gameManagerController);
                 try {
                     gameManagerController.loadLadangKW(player); 
-                    gameManagerController.showMainView();
+                    gameManagerController.updateDeckAktifView();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
