@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="timerPane" prefHeight="124.0" prefWidth="207.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.if2210_tb2_fck.controller.TimerController">
-   <!-- <children>
+<Pane fx:id="timerPane" prefHeight="124.0" prefWidth="207.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.if2210_tb2_fck.controller.TimerController">
+   <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fadb3e" height="52.0" stroke="WHITE" strokeType="INSIDE" width="207.0" />
       <Text layoutX="14.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SISA WAKTU:" wrappingWidth="90.52293395996094">
          <font>
@@ -18,7 +18,7 @@
             <Font name="Bodoni MT" size="16.0" />
          </font>
       </Text>
-      <Text fx:id="sisaWaktu" layoutX="98.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="30.7" wrappingWidth="41.66668701171875">
+      <Text fx:id="sisaWaktu" layoutX="98.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="41.66668701171875">
          <font>
             <Font name="Bodoni MT" size="22.0" />
          </font>
@@ -28,5 +28,5 @@
             <Font name="Bodoni Bd BT Bold" size="20.0" />
          </font>
       </Text>
-   </children> -->
-</AnchorPane>
+   </children>
+</Pane>

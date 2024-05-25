@@ -39,11 +39,10 @@ public class JualController {
     private void handleBackButton() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Toko.fxml"));
-            TokoController tokoController = new TokoController();
-            tokoController.setPlayer(this.player);
-
-            loader.setController(tokoController);
             Parent tokoRoot = loader.load();
+            TokoController tokoController = loader.getController();
+            tokoController.setPlayer(this.player);
+            tokoController.setGameManagerController(this.gm);
             Scene tokoScene = new Scene(tokoRoot);
 
             Stage stage = (Stage) backButton.getScene().getWindow();
