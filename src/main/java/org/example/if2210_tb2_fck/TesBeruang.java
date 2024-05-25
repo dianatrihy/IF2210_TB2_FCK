@@ -18,7 +18,7 @@ import org.example.if2210_tb2_fck.model.Tanaman;
 
 import java.io.IOException;
 
-public class TesBeruang extends Application {
+public class TesBERUANG extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {

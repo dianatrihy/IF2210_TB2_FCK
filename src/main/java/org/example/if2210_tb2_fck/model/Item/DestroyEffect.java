@@ -10,7 +10,7 @@ public class DestroyEffect extends Item implements ItemEffect {
     private int col;
 
     public DestroyEffect(Field field, int row, int col) {
-        super("Destroy");
+        super("DESTROY");
         this.field = field;
         this.row = row;
         this.col = col;

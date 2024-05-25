@@ -5,7 +5,7 @@ import org.example.if2210_tb2_fck.model.Tanaman;
 
 public class AccelerateEffect extends Item implements ItemEffect {
     public AccelerateEffect() {
-        super("Accelerate");
+        super("ACCELERATE");
     }
     @Override
     public void apply(Hewan hewan) {

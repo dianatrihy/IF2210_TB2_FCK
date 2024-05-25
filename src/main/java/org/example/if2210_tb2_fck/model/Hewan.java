@@ -18,10 +18,10 @@ public class Hewan extends MakhlukHidup {
         return switch (name) {
             case "Hiu" -> 20;
             case "Sapi" -> 10;
-            case "Domba" -> 12;
+            case "DOMBA" -> 12;
             case "Kuda" -> 14;
-            case "Ayam" -> 5;
-            case "Beruang" -> 25;
+            case "AYAM" -> 5;
+            case "BERUANG" -> 25;
             default -> 0;
         };
     }

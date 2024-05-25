@@ -57,8 +57,8 @@ public class Field extends GridMatrix<MakhlukHidup>{
             }
         } else {
             System.out.println("Gaada yang mati, beruang ketangkap");
-            Karnivora beruang = new Karnivora("Beruang");
-            player.simpanBeruang(beruang);
+            Karnivora beruang = new Karnivora("BERUANG");
+            player.simpanBERUANG(beruang);
             System.out.println("HITUNG JUMLAH ELEMEN DI DECK AKTIF "+player.getDeckAktif().getNumOfElements());
         }
     }

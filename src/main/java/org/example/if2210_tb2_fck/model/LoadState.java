@@ -93,15 +93,15 @@ public class LoadState {
     }
 
     private Kartu createKartu(String namaKartu){
-        if (namaKartu.equals("HIU")){
+        if (namaKartu.equals("HIU_DARAT")){
             return new Karnivora(namaKartu);
         } else if (namaKartu.equals("SAPI") || namaKartu.equals("DOMBA") || namaKartu.equals("KUDA")){
             return new Herbivora(namaKartu);
         } else if (namaKartu.equals("AYAM") || namaKartu.equals("BERUANG")){
             return new Omnivora(namaKartu);
-        } else if (namaKartu.equals("CORNSEEDS") || namaKartu.equals("PUMPKINSEEDS") || namaKartu.equals("STRAWBERRYSEEDS")){
+        } else if (namaKartu.equals("BIJI_JAGUNG") || namaKartu.equals("BIJI_LABU") || namaKartu.equals("BIJI_STROBERI")){
             return new Tanaman(namaKartu);
-        } else if (namaKartu.equals("ACCELERATE") || namaKartu.equals("BEARTRAP") || namaKartu.equals("DELAY") || namaKartu.equals("DESTROY") || namaKartu.equals("INSTANTHARVEST") || namaKartu.equals("PROTECT")){
+        } else if (namaKartu.equals("ACCELERATE") || namaKartu.equals("TRAP") || namaKartu.equals("DELAY") || namaKartu.equals("DESTROY") || namaKartu.equals("INSTANT_HARVEST") || namaKartu.equals("PROTECT")){
             return new Item(namaKartu);
         } else {
             return new Produk(namaKartu);

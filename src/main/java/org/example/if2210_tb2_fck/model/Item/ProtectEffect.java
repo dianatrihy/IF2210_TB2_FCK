@@ -5,7 +5,7 @@ import org.example.if2210_tb2_fck.model.Tanaman;
 
 public class ProtectEffect extends Item implements ItemEffect {
     public ProtectEffect() {
-        super("Protect");
+        super("PROTECT");
     }
 
     @Override

@@ -10,7 +10,7 @@ public class InstantHarvestEffect extends Item implements ItemEffect {
     private DeckAktif deckAktif;
 
     public InstantHarvestEffect(DeckAktif deckAktif) {
-        super("Instant Harvest");
+        super("INSTANT_HARVEST");
         this.deckAktif = deckAktif;
 
     }

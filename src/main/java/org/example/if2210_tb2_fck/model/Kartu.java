@@ -39,24 +39,24 @@ public class Kartu {
 
     public String getNamaProdukKW(){
         String subPath = "";
-        if (nama.equals("Ayam")) {
+        if (nama.equals("AYAM")) {
             subPath = "Telur";
-        } else if (nama.equals("Beruang")) {
-            subPath = "Daging_Beruang";
-        } else if (nama.equals("Domba")) {
-            subPath = "Daging_Domba";
-        } else if (nama.equals("Kuda")) {
-            subPath = "Daging_Kuda";
-        } else if (nama.equals("CornSeeds")) {
-            subPath = "Jagung";
-        } else if (nama.equals("PumpkinSeeds")) {
-            subPath = "Labu";
-        } else if (nama.equals("StrawberrySeeds")) {
-            subPath = "Stroberi";
-        } else if (nama.equals("Hiu")) {
-            subPath = "Sirip_Hiu";
-        } else if (nama.equals("Sapi")) {
-            subPath = "Susu";
+        } else if (nama.equals("BERUANG")) {
+            subPath = "DAGING_BERUANG";
+        } else if (nama.equals("DOMBA")) {
+            subPath = "DAGING_DOMBA";
+        } else if (nama.equals("KUDA")) {
+            subPath = "DAGING_KUDA";
+        } else if (nama.equals("BIJI_JAGUNG")) {
+            subPath = "JAGUNG";
+        } else if (nama.equals("BIJI_LABU")) {
+            subPath = "LABU";
+        } else if (nama.equals("BIJI_STROBERI")) {
+            subPath = "STROBERI";
+        } else if (nama.equals("HIU_DARAT")) {
+            subPath = "SIRIP_HIU";
+        } else if (nama.equals("SAPI")) {
+            subPath = "SUSU";
         }
         return subPath;
     }

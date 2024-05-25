@@ -11,12 +11,12 @@ public class DeckInventory {
         this.numofelements = numofelements;
         this.deckinventory = new ArrayList<>();
 
-        List<String> namaherbivora = Arrays.asList("Kuda", "Sapi", "Domba");
-        List<String> namakarnivora = Arrays.asList("Hiu");
-        List<String> namaomnivora = Arrays.asList("Ayam");
-        List<String> namaproduk = Arrays.asList("Daging_Beruang", "Daging_Domba", "Daging_Kuda", "Jagung", "Labu", "Sirip_Hiu", "Stroberi", "Susu", "Telur");
-        List<String> namatanaman = Arrays.asList("CornSeeds", "StrawberrySeeds", "PumpkinSeeds");
-        List<String> namaitem = Arrays.asList("Accelerate", "BearTrap", "Delay", "Destroy", "InstantHarvest", "Protect");
+        List<String> namaherbivora = Arrays.asList("KUDA", "SAPI", "DOMBA");
+        List<String> namakarnivora = Arrays.asList("HIU_DARAT");
+        List<String> namaomnivora = Arrays.asList("AYAM");
+        List<String> namaproduk = Arrays.asList("DAGING_BERUANG", "DAGING_DOMBA", "DAGING_KUDA", "JAGUNG", "LABU", "SIRIP_HIU", "STROBERI", "SUSU", "TELUR");
+        List<String> namatanaman = Arrays.asList("BIJI_JAGUNG", "BIJI_STROBERI", "BIJI_LABU");
+        List<String> namaitem = Arrays.asList("ACCELERATE", "TRAP", "DELAY", "DESTROY", "INSTANT_HARVEST", "PROTECT");
 
         int cardsPerType = numofelements / 6;
         int extraCards = numofelements % 6;

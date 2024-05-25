@@ -9,20 +9,20 @@ public class TrapEffect extends Item implements ItemEffect {
     private DeckAktif deckAktif;
 
     public TrapEffect(DeckAktif deckAktif) {
-        super("Trap");
+        super("TRAP");
         this.deckAktif = deckAktif;
     }
 
     @Override
     public void apply(Hewan hewan) {
-        Kartu kartu = new Kartu("Beruang", "Makhluk Hidup");
+        Kartu kartu = new Kartu("BERUANG", "Makhluk Hidup");
         deckAktif.simpanAuto(kartu);
 
     }
 
     @Override
     public void apply(Tanaman tanaman) {
-        Kartu kartu = new Kartu("Beruang", "Makhluk Hidup");
+        Kartu kartu = new Kartu("BERUANG", "Makhluk Hidup");
         deckAktif.simpanAuto(kartu);
     }
 

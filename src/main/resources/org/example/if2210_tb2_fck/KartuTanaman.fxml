@@ -40,7 +40,7 @@
       </Text>
       <ImageView fx:id="tanamanImageView" fitHeight="169.0" fitWidth="163.0" layoutX="55.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
          <!--         <image>-->
-         <!--            <Image url="@Assets/Hewan/Ayam.png" />-->
+         <!--            <Image url="@Assets/Hewan/AYAM.png" />-->
          <!--         </image>-->
          <effect>
             <DropShadow>

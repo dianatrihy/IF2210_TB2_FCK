@@ -39,35 +39,35 @@ public class MakhlukHidup extends Kartu{
 //    }
 
     public boolean isProtected() {
-        return (item_aktif.containsKey("Protect"));
+        return (item_aktif.containsKey("PROTECT"));
     }
 
     // cek apakah dia punya trap terpasang
     public boolean hasTrap() {
-        return (item_aktif.containsKey("BearTrap"));
+        return (item_aktif.containsKey("TRAP"));
     }
 
     public void setProtected(boolean isProtected) {
         if (isProtected) {
-            if (!item_aktif.containsKey("Protect")) {
-                this.addItem("Protect");
+            if (!item_aktif.containsKey("PROTECT")) {
+                this.addItem("PROTECT");
             }
         } else {
-            item_aktif.remove("Protect");
+            item_aktif.remove("PROTECT");
         }
     }
 
     public String getProdukName(){
         return switch (this.getName()) {
-            case "Hiu" -> "Sirip_Hiu";
-            case "Sapi" -> "Susu";
-            case "Domba" -> "Daging_Domba";
-            case "Kuda" -> "Daging_Kuda";
-            case "Ayam" -> "Telur";
-            case "Beruang" -> "Daging_Beruang";
-            case "CornSeeds" -> "Jagung";
-            case "PumpkinSeeds" -> "Labu";
-            case "StrawberrySeeds" -> "Stroberi";
+            case "HIU_DARAT" -> "SIRIP_HIU";
+            case "SAPI" -> "SUSU";
+            case "DOMBA" -> "DAGING_DOMBA";
+            case "KUDA" -> "DAGING_KUDA";
+            case "AYAM" -> "TELUR";
+            case "BERUANG" -> "DAGING_BERUANG";
+            case "BIJI_JAGUNG" -> "JAGUNG";
+            case "BIJI_LABU" -> "LABU";
+            case "BIJI_STROBERI" -> "STROBERI";
             default -> null;
         };
     }

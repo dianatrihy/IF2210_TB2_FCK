@@ -5,7 +5,7 @@ import org.example.if2210_tb2_fck.model.Tanaman;
 
 public class DelayEffect extends Item implements ItemEffect {
     public DelayEffect() {
-        super("Delay");
+        super("DELAY");
     }
     @Override
     public void apply(Hewan hewan) {
