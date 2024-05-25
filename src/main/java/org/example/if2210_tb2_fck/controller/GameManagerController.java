@@ -287,6 +287,7 @@ public class GameManagerController {
             Pane deckPane = deckLoader.load();
             DeckAktifController deckController = deckLoader.getController();
             deckController.setDeckAktif(getCurrentPlayer().getDeckAktif());
+            deckController.setGameManagerController(this);
     
             rootPane.getChildren().removeIf(node -> node.getId() != null && node.getId().equals("deckPane"));
             deckPane.setId("deckPane");

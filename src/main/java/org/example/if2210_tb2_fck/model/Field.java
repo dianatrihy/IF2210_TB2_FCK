@@ -65,6 +65,18 @@ public class Field extends GridMatrix<MakhlukHidup>{
         }
     }
 
+    public void simpanAutoLadang(MakhlukHidup kartu){
+        for (int i = 0; i < getRow(); i++){
+            for (int j = 0; j < getCol(); j++){
+                if (retrieveKartu(i, j) == null){
+                    placeKartu(i, j, kartu);
+                    return;
+                }
+            }
+        }
+    }
+
+
     public ArrayList<ArrayList<Integer>> getAllKartuLocation(int r, int c) {
         ArrayList<ArrayList<Integer>> ret = new ArrayList<>(r);
 

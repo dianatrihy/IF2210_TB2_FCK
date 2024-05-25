@@ -45,6 +45,10 @@ public class Player {
         this.deck_inventory = deck_inventory;
     }
 
+    public void simpanAutoLadang(MakhlukHidup kartu){
+        this.ladang.simpanAutoLadang(kartu);
+    }
+
     public void simpanDeckAktif(int row, int col, Kartu kartu){
         this.deck_aktif.placeKartu(row, col, kartu);
     }

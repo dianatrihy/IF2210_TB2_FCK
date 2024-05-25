@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import org.example.if2210_tb2_fck.model.Kartu;
 import org.example.if2210_tb2_fck.model.DeckAktif;
 import org.example.if2210_tb2_fck.controller.DragAndDrop;
+import org.example.if2210_tb2_fck.model.MakhlukHidup;
 
 import java.io.IOException;
 
@@ -29,6 +30,7 @@ public class DeckAktifController {
 
     private DeckAktif deckAktif;
     private DragAndDrop dad;
+    private GameManagerController gameManagerController;
 
     public static final DataFormat CARD_TYPE = new DataFormat("cardType");
 
@@ -37,6 +39,10 @@ public class DeckAktifController {
         this.deckAktif = deckAktif;
         this.dad = new DragAndDrop();
         updateDeckAktifView();
+    }
+
+    public void setGameManagerController(GameManagerController gameManagerController) {
+        this.gameManagerController = gameManagerController;
     }
 
     public void updateDeckAktifView(){
@@ -68,6 +74,11 @@ public class DeckAktifController {
                 content.putString(kartuName);
                 content.put(CARD_TYPE, kartuType);
                 System.out.println("Drag detected with kartu name: " + kartuName + " and type: " + kartuType);
+                deckAktif.deleteCard(kartu);
+                updateDeckAktifView();
+                gameManagerController.refreshMainView();
+                gameManagerController.getCurrentPlayer().simpanAutoLadang((MakhlukHidup) kartu);
+                gameManagerController.refreshLadang();
             } else {
                 System.out.println("Kartu name or type is null or empty");
             }
@@ -79,6 +90,16 @@ public class DeckAktifController {
 
             event.consume();
         });
+
+//        cardPane.setOnDragDone(event -> {
+//            if (event.getTransferMode() == TransferMode.MOVE) {
+//                deckAktif.deleteCard(kartu);
+//                gameManagerController.getCurrentPlayer().simpanAutoLadang((MakhlukHidup) kartu);
+//                updateDeckAktifView();
+//                gameManagerController.refreshLadang();
+//            }
+//            event.consume();
+//        });
     }
 
 }
