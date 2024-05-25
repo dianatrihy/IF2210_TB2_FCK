@@ -97,55 +97,6 @@ public class CustomLadangBeruangController extends CustomLadangController {
         addOverlaySquare();
     }
 
-    private void setupDragAndDropHandlers(Pane pane) {
-        pane.setOnDragOver(event -> {
-            System.out.println("Drag over event on " + pane.getId());
-            if (event.getGestureSource() != pane && event.getDragboard().hasString()) {
-                event.acceptTransferModes(TransferMode.ANY);
-            }
-            event.consume();
-        });
-        pane.setOnDragEntered(event -> {
-            System.out.println("Drag entered event on " + pane.getId());
-        });
-
-        pane.setOnDragExited(event -> {
-            System.out.println("Drag exited event on " + pane.getId());
-        });
-
-        pane.setOnDragEntered(event -> {
-            System.out.println("Drag entered event on " + pane.getId());
-        });
-
-        pane.setOnDragExited(event -> {
-            System.out.println("Drag exited event on " + pane.getId());
-        });
-
-        pane.setOnDragDropped(event -> {
-            Dragboard db = event.getDragboard();
-            boolean success = false;
-            if (db.hasString() && db.getContent(DeckAktifController.CARD_TYPE) != null) {
-                String cardName = db.getString();
-                String cardType = db.getContent(DeckAktifController.CARD_TYPE).toString();
-                System.out.println("Dropping card with name: " + cardName + " and type: " + cardType);
-
-                Kartu kartu = createCardByType(cardType, cardName);
-                try {
-                    System.out.println("Setting card to pane at row: " + pane.getId().substring(4, 5) + " col: " + pane.getId().substring(5));
-                    setCardToPane(Integer.parseInt(pane.getId().substring(4, 5)), Integer.parseInt(pane.getId().substring(5)), kartu);
-                    success = true;
-                    System.out.println("Card dropped successfully.");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                System.out.println("Drop data is invalid.");
-            }
-            event.setDropCompleted(success);
-            event.consume();
-        });
-    }
-
     public void setBearAttackPositions(int startRow, int endRow, int startCol, int endCol) {
         this.startRow = startRow;
         this.endRow = endRow;

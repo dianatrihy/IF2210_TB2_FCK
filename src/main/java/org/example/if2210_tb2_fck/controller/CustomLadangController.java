@@ -211,7 +211,7 @@ public class CustomLadangController {
         }
     }
 
-    private void setupDragAndDropHandlers(Pane pane) {
+    protected void setupDragAndDropHandlers(Pane pane) {
         pane.setOnDragOver(event -> {
             System.out.println("Drag over event on " + pane.getId());
             if (event.getGestureSource() != pane && event.getDragboard().hasString()) {
