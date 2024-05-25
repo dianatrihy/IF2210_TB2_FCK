@@ -81,6 +81,9 @@ public class GameManagerController {
     @FXML
     private Text deckCountText;
 
+    @FXML
+    private Text winnerText;
+
     private LoadState loadState;
     private Player player1;
     private Player player2;
@@ -337,7 +340,21 @@ public class GameManagerController {
     }
 
     private void endGame() {
-        System.out.println("Game Over!");
+        System.out.println("Game ended!");
+        disableActionButtons(true);
+        String winner = determineWinner();
+        winnerText.setText(winner + " menang! 🪙💸⚡");
+        winnerText.setVisible(true);
+    }
+
+    private String determineWinner() {
+        if (player1.getUang() > player2.getUang()) {
+            return player1.getNama();
+        } else if (player2.getUang() > player1.getUang()) {
+            return player2.getNama();
+        } else {
+            return "Tidak ada yang menang. 😡⚔️⚡";
+        }
     }
 
     public void startTurn() throws IOException {

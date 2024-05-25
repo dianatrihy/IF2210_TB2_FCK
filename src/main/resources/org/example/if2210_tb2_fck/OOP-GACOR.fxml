@@ -227,6 +227,11 @@
             </DropShadow>
          </effect>
       </Button>
+      <Text fx:id="winnerText" layoutX="300.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="50.0" />
+         </font>
+      </Text>
       <Pane layoutX="295.0" layoutY="527.0" prefHeight="105.0" prefWidth="92.0" style="-fx-background-color: FFFFFF;">
          <effect>
             <DropShadow>
