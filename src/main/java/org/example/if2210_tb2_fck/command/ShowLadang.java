@@ -1,4 +1,5 @@
 package org.example.if2210_tb2_fck.command;
+import org.example.if2210_tb2_fck.controller.GameManagerController;
 
 import org.example.if2210_tb2_fck.controller.CustomLadangController;
 import org.example.if2210_tb2_fck.model.Kartu;

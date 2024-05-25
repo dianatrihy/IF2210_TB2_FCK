@@ -40,7 +40,7 @@ public class Kartu {
     public String getNamaProdukKW(){
         String subPath = "";
         if (nama.equals("AYAM")) {
-            subPath = "Telur";
+            subPath = "TELUR";
         } else if (nama.equals("BERUANG")) {
             subPath = "DAGING_BERUANG";
         } else if (nama.equals("DOMBA")) {

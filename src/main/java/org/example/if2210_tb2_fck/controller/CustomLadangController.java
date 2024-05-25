@@ -1,9 +1,12 @@
 package org.example.if2210_tb2_fck.controller;
 import java.io.IOException;
 
+import javafx.scene.Scene;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
+
+import org.example.if2210_tb2_fck.command.Panen;
 import org.example.if2210_tb2_fck.model.*;
 import org.example.if2210_tb2_fck.model.Item.*;
 
@@ -11,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class CustomLadangController {
 
@@ -149,13 +153,48 @@ public class CustomLadangController {
                         e.printStackTrace();
                     }
                 }
-
+                System.out.println("KECLICKKKKKKKKKKKKKKKKKKKK");
                 pane.toFront();
-
+                System.out.println("KECL]sadsadaKK");
+                pane.setOnMouseClicked(event -> handlePaneClick(kartu,p));
+                
             }
         }
     }
-    
+    private void handlePaneClick(Kartu kartu, Player p) {
+        System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLL");
+        if (kartu instanceof Hewan) {
+            // Show Hewan details in a popup or another UI component
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/KartuHewan.fxml"));
+                Pane detailPane = loader.load();
+                HewanDetailController controller = loader.getController();
+                Panen panenCommand = new Panen(kartu);
+                controller.setHewan((Hewan) kartu, p, panenCommand);
+                
+                Stage stage = new Stage();
+                stage.setScene(new Scene(detailPane));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if (kartu instanceof Tanaman){
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/KartuTanaman.fxml"));
+                Pane detailPane = loader.load();
+                TanamanDetailController controller = loader.getController();
+                Panen panenCommand = new Panen(kartu);
+                controller.setTanaman((Tanaman) kartu, p, panenCommand);
+                
+                Stage stage = new Stage();
+                stage.setScene(new Scene(detailPane));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     // Method to set the number of rows
     public void setRow(int row) {

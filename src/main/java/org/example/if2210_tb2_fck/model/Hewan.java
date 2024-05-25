@@ -16,10 +16,10 @@ public class Hewan extends MakhlukHidup {
 
     public Integer getBeratHarvest(String name){
         return switch (name) {
-            case "Hiu" -> 20;
-            case "Sapi" -> 10;
+            case "HIU_DARAT" -> 20;
+            case "SAPI" -> 10;
             case "DOMBA" -> 12;
-            case "Kuda" -> 14;
+            case "KUDA" -> 14;
             case "AYAM" -> 5;
             case "BERUANG" -> 25;
             default -> 0;

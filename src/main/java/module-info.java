@@ -14,6 +14,7 @@ module org.example.if2210_tb2_fck {
     requires java.compiler;
     requires com.fasterxml.jackson.databind;
     requires org.yaml.snakeyaml;
+    requires javafx.graphics;
 
     opens org.example.if2210_tb2_fck to javafx.fxml;
     exports org.example.if2210_tb2_fck;

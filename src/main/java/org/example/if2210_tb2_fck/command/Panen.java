@@ -5,19 +5,20 @@ import org.example.if2210_tb2_fck.model.MakhlukHidup;
 import org.example.if2210_tb2_fck.model.Player;
 import org.example.if2210_tb2_fck.model.Produk;
 
-public class Panen implements ICommand {
-    private Player player;
-    private Kartu kartu;
 
+public class Panen {
+
+    private Kartu kartu;
+    
     public Panen(Kartu kartu) {
         this.kartu = kartu;
     }
 
-    @Override
-    public void execute() {
+    public void panenMakhlukHidup(Player player, MakhlukHidup kartu ) {
         if (!player.getDeckAktif().isFull()){
-            MakhlukHidup makhluk = (MakhlukHidup) kartu;
-            Produk produk = makhluk.changeToProduk();
+            Produk produk = kartu.changeToProduk();
+            player.simpanAutoDeckAktif(produk);
+            
         } else {
             System.out.println("Deck Aktif penuh.");
         }

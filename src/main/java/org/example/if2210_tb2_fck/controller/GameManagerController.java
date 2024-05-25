@@ -308,6 +308,8 @@ public class GameManagerController {
             e.printStackTrace();
         }
     }
+
+    
     
     public void refreshMainView(){
         refreshLadang();

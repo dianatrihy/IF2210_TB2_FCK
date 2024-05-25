@@ -18,8 +18,8 @@ public class Tanaman extends MakhlukHidup {
     public Integer getUmurHarvest(String name){
         return switch (name) {
             case "BIJI_JAGUNG" -> 3;
-            case "LABU" -> 5;
-            case "STROBERI" -> 4;
+            case "BIJI_LABU" -> 5;
+            case "BIJI_STROBERI" -> 4;
             default -> 0;
         };
     }
