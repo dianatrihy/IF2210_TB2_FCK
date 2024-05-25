@@ -78,4 +78,12 @@ public class Player {
         this.uang += price;
         this.deck_aktif.deleteCard(kartu);
     }
+    public void simpanBeruang(Kartu kartuberuang){
+        if(!this.getDeckAktif().isFull()){
+            simpanAutoDeckAktif(kartuberuang);
+        }
+        else{
+            System.out.println("Deck aktif penuh sehingga tidak bisa save kartu beruang");
+        }
+    }
 }

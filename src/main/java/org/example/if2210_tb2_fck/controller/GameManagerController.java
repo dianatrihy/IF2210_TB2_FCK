@@ -124,7 +124,7 @@ public class GameManagerController {
 
         ladangKuButton.setOnAction(event -> {
             try {
-                loadLadang(getCurrentPlayer());
+                loadLadangKW(getCurrentPlayer());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -217,16 +217,22 @@ public class GameManagerController {
 
         ladangContainer.getChildren().setAll(ladangPane);
 
-        // Example of how you can add items to the player's ladang
         MakhlukHidup mh1 = new MakhlukHidup("CornSeeds", "Tanaman");
+        MakhlukHidup mh2 = new MakhlukHidup("PumpkinSeeds", "Tanaman");
+        Tanaman tn1 = new Tanaman("PumpkinSeeds");
+        Tanaman tn2 = new Tanaman("StrawberrySeeds");
+        Tanaman tn3 = new Tanaman("CornSeeds");
         mh1.addItem("BearTrap");
-        Tanaman tn1 = new Tanaman("StrawberrySeeds");
+        mh2.addItem("BearTrap");
         tn1.addItem("BearTrap");
+        tn3.addItem("BearTrap");
+        tn2.addItem("BearTrap");
         tn1.setUmur(10);
-
         player.getLadang().addKartu(mh1, 0, 0);
-        player.getLadang().addKartu(tn1, 1, 1);
-
+        player.getLadang().addKartu(mh2, 1, 3);
+        player.getLadang().addKartu(tn1, 2, 1);
+        player.getLadang().addKartu(tn2, 3, 0);
+        player.getLadang().addKartu(tn3, 2, 3);
         // Instantiate ShowLadang to update the ladang view
         ShowLadang showLadang = new ShowLadang(player, ladangController);
         showLadang.updateLadang(player);
@@ -234,7 +240,7 @@ public class GameManagerController {
         System.out.println("Ladang.fxml loaded and added to the main view");
     }
 
-    private void loadLadangKW(Player player) throws IOException {
+    public void loadLadangKW(Player player) throws IOException {
         System.out.println("Loading Ladang.fxml");
         FXMLLoader ladangLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Ladang.fxml"));
         AnchorPane ladangPane = ladangLoader.load();
@@ -266,7 +272,7 @@ public class GameManagerController {
         stage.showAndWait();
     }
 
-    private void showMainView() throws IOException {
+    public void showMainView() throws IOException {
         System.out.println("Loading OOP-GACOR.fxml");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/OOP-GACOR.fxml"));
         Pane mainView = loader.load();
@@ -324,7 +330,7 @@ public class GameManagerController {
     }
 
     private boolean bearAttackOccurs() {
-        return false;
+        return true;
     }
 
     public void refreshLadang() {
@@ -413,5 +419,14 @@ public class GameManagerController {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void disableButtons(boolean enable) {
+        System.out.println("MASUK DISABLE BUTTONS -------------------------------------------------");
+        startButton.setDisable(enable);
+        ladangKuButton.setDisable(enable);
+        ladangLawanButton.setDisable(enable);
+        tokoButton.setDisable(enable);
+        loadStateButton.setDisable(enable);
     }
 }

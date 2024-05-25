@@ -1,5 +1,6 @@
 package org.example.if2210_tb2_fck.model;
 
+import org.example.if2210_tb2_fck.controller.GameManagerController;
 import org.example.if2210_tb2_fck.model.Item.Item;
 
 public class Field extends GridMatrix<MakhlukHidup>{
@@ -40,7 +41,7 @@ public class Field extends GridMatrix<MakhlukHidup>{
         return bool;
     } 
 
-    public synchronized void bearKills(int idrowstart, int idrowend, int idcolstart, int idcolend){
+    public synchronized void bearKills(int idrowstart, int idrowend, int idcolstart, int idcolend, Player player, GameManagerController gameManagerController){
         if (!adaTrap(idrowstart, idrowend, idcolstart, idcolend)){
             for (int i = idrowstart; i <= idrowend; i++){
                 for (int j = idcolstart; j <= idcolend; j++){
@@ -49,13 +50,16 @@ public class Field extends GridMatrix<MakhlukHidup>{
                         if (!retrieveKartu(i, j).isProtected()){
                             System.out.println("Successfully kills " + retrieveKartu(i, j).getName());
                             removeKartu(i, j);
+                            gameManagerController.refreshLadang();
                         }
                     }
                 }
             }
         } else {
             System.out.println("Gaada yang mati, beruang ketangkap");
-            
+            Karnivora beruang = new Karnivora("Beruang");
+            player.simpanBeruang(beruang);
+            System.out.println("HITUNG JUMLAH ELEMEN DI DECK AKTIF "+player.getDeckAktif().getNumOfElements());
         }
     }
 

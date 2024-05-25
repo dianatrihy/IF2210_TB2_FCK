@@ -2,6 +2,7 @@ package org.example.if2210_tb2_fck.command;
 
 import org.example.if2210_tb2_fck.controller.GameManagerController;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -76,18 +77,24 @@ public class BearAttack {
         timeline.setCycleCount(initialDurationSeconds + 1);
         timeline.play();
     }
-
     private void handleBearAttackEnd(Player player, int startRow, int endRow, int startCol, int endCol, GameManagerController gameManagerController) {
         lock.lock();
         try {
             Platform.runLater(() -> {
                 System.out.println("Bear attack ended. Removing plants or animals...");
                 gameManagerController.clearTimer();
-                player.getLadang().bearKills(startRow, endRow, startCol, endCol);
-                gameManagerController.refreshLadang(); // Refresh ladang after attack ends
+                player.getLadang().bearKills(startRow, endRow, startCol, endCol, player, gameManagerController);
+                try {
+                    gameManagerController.loadLadangKW(player); 
+                    gameManagerController.showMainView();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                gameManagerController.disableButtons(false);
             });
         } finally {
             lock.unlock();
         }
     }
+    
 }
