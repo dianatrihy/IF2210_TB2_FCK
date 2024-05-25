@@ -92,11 +92,11 @@ public class BearAttack {
                 player.getLadang().bearKills(startRow, endRow, startCol, endCol, player, gameManagerController);
                 try {
                     gameManagerController.loadLadangKW(player); 
-                    gameManagerController.updateDeckAktifView();
+                    gameManagerController.refreshDeckAktif();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                gameManagerController.disableButtons(false);
+                gameManagerController.disableActionButtons(true);
             });
         } finally {
             lock.unlock();

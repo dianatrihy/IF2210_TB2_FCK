@@ -253,7 +253,7 @@ public class GameManagerController {
         refreshMainView();
     }
 
-    public void updateDeckAktifView() {
+    public void refreshDeckAktif() {
         System.out.println("Updating deck aktif view...");
         try {
             FXMLLoader deckLoader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/DeckAktif.fxml"));
@@ -276,7 +276,7 @@ public class GameManagerController {
 
     public void refreshMainView(){
         refreshLadang();
-        updateDeckAktifView();
+        refreshDeckAktif();
         updateCurrentPlayerText();
         updatePlayerMoney(getCurrentPlayer());
         updatePlayerMoney(getOtherPlayer());
@@ -309,6 +309,7 @@ public class GameManagerController {
     }
 
     public void startTurn() throws IOException {
+        disableActionButtons(true);
         shuffleCards();
         refreshMainView();
         if (bearAttackOccurs()) {
@@ -332,6 +333,7 @@ public class GameManagerController {
 
     private void freeAction() {
         System.out.println("Free action phase...");
+        disableActionButtons(false);
     }
 
     public void handleLoadStateButton() throws IOException {
@@ -417,14 +419,23 @@ public class GameManagerController {
         }
     }
 
-    public void disableButtons(boolean enable) {
-        System.out.println("MASUK DISABLE BUTTONS -------------------------------------------------"); // debug
-        startButton.setDisable(enable);
-        ladangKuButton.setDisable(enable);
-        ladangLawanButton.setDisable(enable);
-        tokoButton.setDisable(enable);
-        loadStateButton.setDisable(enable);
-    }
+    public void disableActionButtons(boolean disable) {
+        ladangKuButton.setDisable(disable);
+        ladangLawanButton.setDisable(disable);
+        tokoButton.setDisable(disable);
+        loadStateButton.setDisable(disable);
+        loadPluginButton.setDisable(disable);
+        nextButton.setDisable(disable);
+    }    
+
+    // public void disableButtons(boolean enable) {
+    //     System.out.println("MASUK DISABLE BUTTONS -------------------------------------------------"); // debug
+    //     startButton.setDisable(enable);
+    //     ladangKuButton.setDisable(enable);
+    //     ladangLawanButton.setDisable(enable);
+    //     tokoButton.setDisable(enable);
+    //     loadStateButton.setDisable(enable);
+    // }
 
     public void setRootPane(AnchorPane rootPane) {
         this.rootPane = rootPane;

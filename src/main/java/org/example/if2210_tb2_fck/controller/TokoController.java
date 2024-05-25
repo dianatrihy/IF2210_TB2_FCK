@@ -124,7 +124,7 @@ public class TokoController {
         Kartu boughtCard = Toko.getInstance().playerBuying(productKey);
         this.player.beli(boughtCard, price);
         this.gm.updatePlayerMoney(this.player);
-        this.gm.updateDeckAktifView();
+        this.gm.refreshDeckAktif();
         try {
             cardGrid.getChildren().clear();
             handleShowToko();
