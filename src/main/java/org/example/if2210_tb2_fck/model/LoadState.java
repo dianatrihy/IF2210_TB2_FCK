@@ -61,9 +61,10 @@ public class LoadState {
         for (int i = 0; i < jumlahDeckAktif; i++){
             String[] cardData = lines[lineIndex++].trim().split(" ");
             String lokasi = cardData[0];
+            int col = getColFromLokasi(lokasi);
             String namaKartu = cardData[1];
             Kartu kartu = createKartu(namaKartu);
-            player.simpanDeckAktif(0, i, kartu);
+            player.simpanDeckAktif(0, col, kartu);
         }
 
         int jumlahKartuLadang = Integer.parseInt(lines[lineIndex++].trim());
