@@ -78,6 +78,9 @@ public class GameManagerController {
     @FXML
     private Text p2Money;
 
+    @FXML
+    private Text deckCountText;
+
     private LoadState loadState;
     private Player player1;
     private Player player2;
@@ -185,6 +188,11 @@ public class GameManagerController {
         currentPlayerText.setText(getCurrentPlayer().getNama() + " (" + getCurrentTurn() + ")");
         System.out.println("DONE Updating current player text..." + getCurrentTurn() + getCurrentPlayer().getNama()); // debug
     }
+
+    public void updateDeckCount() {
+        int count = getCurrentPlayer().getDeckInventory().getNumOfElements();
+        deckCountText.setText(count + "/40");
+    }    
 
     private void loadToko() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Toko.fxml"));
@@ -303,6 +311,7 @@ public class GameManagerController {
         updateCurrentPlayerText();
         updatePlayerMoney(getCurrentPlayer());
         updatePlayerMoney(getOtherPlayer());
+        updateDeckCount();
     }
 
     public Player getCurrentPlayer() {

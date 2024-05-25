@@ -77,6 +77,10 @@ public class DeckInventory {
         return shuffledDeck;
     }
 
+    public int getNumOfElements(){
+        return numofelements;
+    }
+
     public static void main(String[] args) {
         DeckInventory deck = new DeckInventory(40);
 

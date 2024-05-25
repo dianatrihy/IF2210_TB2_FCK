@@ -39,7 +39,7 @@ public class SaveState {
 
         DeckAktif deckAktif = player.getDeckAktif();
 
-        writer.write(player.getDeckInventory().getDeckInventoryLength() + "\n");
+        writer.write(player.getDeckInventory().getNumOfElements() + "\n");
         writer.write(deckAktif.getAllKartu().size() + "\n");
 
         List<Kartu> listKartuDA = deckAktif.getAllKartuNull();

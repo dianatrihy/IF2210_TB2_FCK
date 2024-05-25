@@ -97,6 +97,11 @@
             <Font name="Bodoni MT" size="23.0" />
          </font>
       </Text>
+      <Text fx:id="deckCountText" layoutX="33.0" layoutY="586.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0/40">
+         <font>
+            <Font name="Bodoni MT" size="23.0" />
+         </font>
+      </Text>
       <Text layoutX="917.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="3.0" text="MADE BY:">
          <font>
             <Font name="Bodoni MT Black" size="18.0" />
@@ -138,7 +143,7 @@
          </font>
       </Text>
       <fx:include fx:id="ladangContainer" layoutX="258.0" layoutY="19.0" prefHeight="485.0" prefWidth="629.0" source="Ladang.fxml" />
-      <Button fx:id="startButton" layoutX="414.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleStartButton" prefHeight="145.0" prefWidth="257.0" style="-fx-background-color: FFFFFF; -fx-border-color: white;" text="MULAI MAIN" textAlignment="CENTER" textFill="#260000" wrapText="true">
+      <Button fx:id="startButton" layoutX="414.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleStartButton" prefHeight="145.0" prefWidth="257.0" style="-fx-background-color: FFFFFF; -fx-border-color: white;" text="⚔️⚡ MULAI JUDI ⚡⚔️" textAlignment="CENTER" textFill="#260000" wrapText="true">
          <font>
             <Font name="Bodoni MT" size="16.0" />
          </font>
