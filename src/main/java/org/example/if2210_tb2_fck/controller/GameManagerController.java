@@ -132,7 +132,7 @@ public class GameManagerController {
 
         ladangLawanButton.setOnAction(event -> {
             try {
-                loadLadang(getOtherPlayer());
+                loadLadangKW(getOtherPlayer());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -196,7 +196,7 @@ public class GameManagerController {
 
         Timer.getChildren().setAll(timerPane);
         BearAttack bearAttack = new BearAttack();
-        bearAttack.bearAttackCommand(getCurrentPlayer(), timerController);
+        bearAttack.bearAttackCommand(getCurrentPlayer(), timerController, this);
 
         System.out.println("Timer.fxml loaded and added to the main view");
     }
@@ -282,7 +282,11 @@ public class GameManagerController {
         AnchorPane rootPane = (AnchorPane) mainView;
         rootPane.getChildren().add(deckPane);
 
+        System.out.println("Ladang current player: " + getCurrentPlayer().getLadang().getAllCards()); // debug
+        System.out.println("Ladang other player: " + getOtherPlayer().getLadang().getAllCards()); // debug
+
         updateCurrentPlayerText();
+//        refreshLadang();
     }
 
     public Player getCurrentPlayer() {
