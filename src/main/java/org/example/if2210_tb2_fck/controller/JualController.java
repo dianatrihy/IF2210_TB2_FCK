@@ -21,6 +21,7 @@ import org.example.if2210_tb2_fck.model.Kartu;
 public class JualController {
     private DragAndDrop dad;
     private Player player;
+    private GameManagerController gm;
 
     @FXML
     private AnchorPane jualPane;
@@ -99,6 +100,10 @@ public class JualController {
         this.player = player;
     }
 
+    public void setGameManagerController(GameManagerController gm) {
+        this.gm = gm;
+    }
+
     public Player getPlayer() {
         return this.player;
     }
@@ -107,6 +112,7 @@ public class JualController {
         Integer price = Toko.getInstance().getPrice(kartu.getName());
         this.player.jual(kartu, price);
         Toko.getInstance().playerSelling(kartu);
+        gm.updatePlayerMoney(player);
         try {
             cardGrid.getChildren().clear();
             handleShowJual();

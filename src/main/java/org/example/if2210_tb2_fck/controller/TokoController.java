@@ -23,6 +23,7 @@ import org.example.if2210_tb2_fck.model.Kartu;
 public class TokoController {
     private DragAndDrop dad;
     private Player player;
+    private GameManagerController gm;
 
     @FXML
     private GridPane cardGrid;
@@ -42,6 +43,7 @@ public class TokoController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Jual.fxml"));
             JualController jualController = new JualController();
             jualController.setPlayer(this.player);
+            jualController.setGameManagerController(this.gm);
 
             loader.setController(jualController);
             Parent jualRoot = loader.load();
@@ -108,15 +110,20 @@ public class TokoController {
         this.player = player;
     }
 
+    public void setGameManagerController(GameManagerController gm) {
+        this.gm = gm;
+    }
+
     private void handlePlayerBuying(String productKey) {
         Integer price = Toko.getInstance().getPrice(productKey);
         if (this.player.getUang() < price) {
             // Show error message
-            showError("Error", "Your money is not sufficient for this purchase.");
+            showError("Error", "Your money is insufficient for this purchase.");
             return;
         }
         Kartu boughtCard = Toko.getInstance().playerBuying(productKey);
         this.player.beli(boughtCard, price);
+        this.gm.updatePlayerMoney(this.player);
         try {
             cardGrid.getChildren().clear();
             handleShowToko();

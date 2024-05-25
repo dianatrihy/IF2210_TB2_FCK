@@ -54,6 +54,12 @@ public class GameManagerController {
     @FXML
     private AnchorPane ladangContainer;
 
+    @FXML
+    private Text p1Money;
+
+    @FXML
+    private Text p2Money;
+
     private LoadState loadState;
     private Player player1;
     private Player player2;
@@ -63,6 +69,7 @@ public class GameManagerController {
 
     public GameManagerController(){
         this.player1 = new Player("Player 1");
+        player1.setUang(400);
         this.player2 = new Player("Player 2");
         this.current_turn = 1;
         this.toko = Toko.getInstance();
@@ -70,6 +77,9 @@ public class GameManagerController {
 
     @FXML
     public void initialize() {
+        updatePlayerMoney(player1);
+        updatePlayerMoney(player2);
+        updateCurrentPlayerText();
         try {
             loadLadang(getCurrentPlayer());
         } catch (IOException e) {
@@ -128,6 +138,14 @@ public class GameManagerController {
         });
     }
 
+    public void updatePlayerMoney(Player player) {
+        if (player.getNama().equals("Player 1")) {
+            p1Money.setText("" + player.getUang());
+        } else {
+            p2Money.setText("" + player.getUang());
+        }
+    }
+
     private void updateCurrentPlayerText(){
         System.out.println("Updating current player text..." + getCurrentTurn() + getCurrentPlayer().getNama()); // debug
         currentPlayerText.setText(getCurrentPlayer().getNama() + " (" + getCurrentTurn() + ")");
@@ -139,6 +157,7 @@ public class GameManagerController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/if2210_tb2_fck/Toko.fxml"));
             TokoController tokoController = new TokoController();
             tokoController.setPlayer(getCurrentPlayer());
+            tokoController.setGameManagerController(this);
     
             loader.setController(tokoController);
             Parent tokoRoot = loader.load();
