@@ -36,7 +36,7 @@ public class LoadStateController {
 
     @FXML
     public void initialize(){
-        formatComboBox.getItems().addAll("txt");
+//        formatComboBox.getItems().addAll("txt");
         statusLabel.setVisible(false);
         backButton.setOnAction(event -> handleBackButton());
         loadButton.setOnAction(event -> handleLoadButton());

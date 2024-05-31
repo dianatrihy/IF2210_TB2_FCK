@@ -376,9 +376,9 @@ public class GameManagerController {
     }
 
     private boolean bearAttackOccurs() {
-        // Random random = new Random();
-        // return random.nextBoolean();
-        return false;
+         Random random = new Random();
+         return random.nextBoolean();
+//        return false;
     }
 
     public void refreshLadang() {
