@@ -301,7 +301,7 @@ public class GameManagerController {
             AnchorPane.setRightAnchor(deckPane, 0.0);
     
             rootPane.getChildren().add(deckPane);
-            deckPane.mouseTransparentProperty().set(true);
+//            deckPane.mouseTransparentProperty().set(true);
             refreshButton(nextButton);
             refreshButton(tokoButton);
             refreshButton(loadStateButton);
