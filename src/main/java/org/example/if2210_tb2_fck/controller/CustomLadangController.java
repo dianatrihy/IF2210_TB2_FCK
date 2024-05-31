@@ -153,16 +153,13 @@ public class CustomLadangController {
                         e.printStackTrace();
                     }
                 }
-                System.out.println("KECLICKKKKKKKKKKKKKKKKKKKK");
                 pane.toFront();
-                System.out.println("KECL]sadsadaKK");
                 pane.setOnMouseClicked(event -> handlePaneClick(kartu,p));
                 
             }
         }
     }
     private void handlePaneClick(Kartu kartu, Player p) {
-        System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLL");
         if (kartu instanceof Hewan) {
             // Show Hewan details in a popup or another UI component
             try {

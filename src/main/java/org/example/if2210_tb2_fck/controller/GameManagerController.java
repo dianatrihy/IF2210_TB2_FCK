@@ -279,6 +279,10 @@ public class GameManagerController {
         rootPane.getChildren().remove(button);
         rootPane.getChildren().add(button);
     }
+    private void refreshAnchorPane(AnchorPane anchorPane){
+        rootPane.getChildren().remove(anchorPane);
+        rootPane.getChildren().add(anchorPane);
+    }
 
     public void refreshDeckAktif() {
         System.out.println("Updating deck aktif view...");
@@ -297,13 +301,14 @@ public class GameManagerController {
             AnchorPane.setRightAnchor(deckPane, 0.0);
     
             rootPane.getChildren().add(deckPane);
-
+            deckPane.mouseTransparentProperty().set(true);
             refreshButton(nextButton);
             refreshButton(tokoButton);
             refreshButton(loadStateButton);
             refreshButton(loadPluginButton);
             refreshButton(ladangKuButton);
             refreshButton(ladangLawanButton);
+            refreshAnchorPane(ladangContainer);
         } catch (IOException e) {
             e.printStackTrace();
         }

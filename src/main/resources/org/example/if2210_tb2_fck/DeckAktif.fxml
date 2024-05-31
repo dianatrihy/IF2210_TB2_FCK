@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
 
 <Pane fx:id="deckAktifPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.if2210_tb2_fck.controller.DeckAktifController">
